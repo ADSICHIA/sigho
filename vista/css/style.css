@@ -1,0 +1,58 @@
+/* 
+    Document   : style
+    Created on : 21/11/2013, 11:38:26 AM
+    Author     : alejo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+body{
+    font-family: sans-serif;
+    background-image: URL("../imagenes/fondo.jpg");
+}
+#verdana24blanca{
+font-family:Verdana;
+color:#FFF;
+font-size:24px;}
+#menu{
+position: relative;
+margin:0 auto;
+height:auto;
+background-color:#238276;
+}
+article{
+position: relative;
+margin:5px auto;
+height:600px;
+width:1024px;
+background-color:#e8e8e7;
+}
+header{
+margin: auto;
+width:1024px;
+}
+nav li{
+display:inline;
+height:auto;
+}
+
+nav a{
+text-decoration:none;
+color:#FFF;
+transition: all 100ms ease-in-out;
+}
+nav a:hover{
+background:#59b548;
+}
+
+footer{
+position: relative;
+margin:auto;
+width:1024;
+height:90;
+background-image:url(../imagenes/pie.jpg);
+}
+

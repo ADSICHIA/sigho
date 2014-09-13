@@ -1,0 +1,87 @@
+<html>
+<head>
+<style type="text/css">
+* {
+padding:0px;
+margin:0px;
+}
+
+#menu{
+margin:auto;
+width:500px;
+}
+
+ul, ol{
+list-style:none;
+}
+
+.nav li a {
+background-color:#000;
+color:#fff;
+text-decoration:none;
+padding:10px 15px;
+display:block;
+}
+
+.nav li a:hover {
+background-color:#434343;
+}
+
+.nav > li{
+float:left;
+}
+
+.nav li ul {
+display:none;
+position:absolute;
+min-width:140px;
+}
+
+.nav li:hover > ul{
+display:block;
+}
+
+.nav li ul li{
+position:relative;
+}
+.nav li ul li ul{
+right:-140px;
+top:0px;
+}
+
+</style>
+</head>
+<body>
+<div id="menu">
+<ul class="nav">
+<li><a href="#" >menu1</a></li>
+
+<li><a href="#" >menu2</a>
+<ul>
+<li><a href="#" >submenu1</a></li>
+<li><a href="#" >submenu2</a></li>
+<li><a href="#" >submenu3</a></li>
+<li><a href="#" >submenu4</a>
+<ul>
+<li><a href="#" >subsub2</a></li>
+<li><a href="#" >subsub2</a></li>
+<li><a href="#" >subsub2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li><a href="#" >menu3</a>
+<ul>
+<li><a href="#" >submenu1</a></li>
+<li><a href="#" >submenu2</a></li>
+<li><a href="#" >submenu3</a></li>
+<li><a href="#" >submenu4</a></li>
+</ul>
+</li>
+
+<li><a href="#" >menu4</a></li>
+</ul>
+</div>
+</body>
+</html>

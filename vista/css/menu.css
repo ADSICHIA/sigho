@@ -1,0 +1,63 @@
+/* 
+    Document   : menu.css
+    Created on : 16/01/2014, 09:13:22 AM
+    Author     : Alejandro
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+ul#menu {
+ background: #333;
+ width: 940px;
+ float:left;
+ padding: 5px;
+}
+   
+ul#menu li {
+ color: #fff;
+ float: left;
+ list-style: none;
+ margin: 0% 5%;
+}
+   
+ul#menu li:hover{
+ color: #aaa073;
+ cursor:pointer;
+}
+   
+ul#menu ul {
+ display: none;
+ position: absolute;
+ top: 49px;
+ background: #333;
+ color: #fff;
+ padding: 5px 0px 5px 5px;
+ margin: 0;
+ }
+   
+ul#menu ul li{
+ float: left;
+ color: #fff;
+ width:100%;
+ margin:2% 0%;
+}
+  
+  
+ul#menu ul li a{
+ color: #fff;
+}
+   
+ul#menu ul li a:hover{
+ color: #aaa073;
+ cursor:pointer;
+}
+   
+ul#menu li:hover ul ul,ul#menu li:hover ul ul ul,ul#menu li.iehover ul ul,ul#menu li.iehover ul ul ul {
+ display: none;
+ cursor:pointer;
+}
+   
+ul#menu li:hover ul,ul#menu ul li:hover ul,ul#menu ul ul li:hover ul,ul#menu li.iehover ul,ul#menu ul li.iehover ul,ul#menu ul ul li.iehover ul {
+ display: block;
+ cursor:pointer;
+}
