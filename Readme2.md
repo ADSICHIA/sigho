@@ -1,3 +1,1 @@
-Este es un archivo creado desde mi maquina local.
-
-Este fue un cambio realizado desde la pagina web de github.com
+Este archivo fue modificado en el grupo de la tarde 520487.
