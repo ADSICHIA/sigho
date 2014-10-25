@@ -18,7 +18,7 @@
 			$_SESSION["documento"] = isset($datosUsuario[0]['identificacion']) ? $datosUsuario[0]['identificacion']:NULL;
 			$_SESSION["perfil"] = isset($datosUsuario[0]['perfilid']) ? $datosUsuario[0]['perfilid']:NULL;
 			$_SESSION["autentificado"]= 10;
-			var_dump("Si entro");
+			//var_dump("Si entro");
 			echo "<script type='text/javascript'>window.location='home.php';</script>";
 		}else{
 			session_destroy();
