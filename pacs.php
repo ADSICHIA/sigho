@@ -15,7 +15,7 @@
                         } else if ($Pac == "103") {
                             include("vista/vparametro.php");
                         } else if ($Pac == "104") {
-							include("vista/vparametro.php");
+							              include("vista/vparametro1.php");
                         } else if ($Pac == "105") {
                             include("vista/vperfil.php");
                         } else if ($Pac == "106") {
