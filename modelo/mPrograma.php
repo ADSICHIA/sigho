@@ -7,12 +7,8 @@ class mPrograma{
 	}
 	
 	function insert($idprograma, $programa, $version, $areaid){
-		$valida = "SELECT idprograma from porgrama where idprograma = '".$idprograma."'";
-		if ($valida){
-			$mensajeresultado = "El Programa ya existe";
-			return $mensajeresultado;
-		}
 		$sql = "INSERT INTO programa(idprograma, programa, version, areaid) values ('".$idprograma."', '".$programa."', '".$version."', '".$areaid."');";
+		$this->cons($sql);
 	}
 	
 	function update($idprograma, $programa, $version, $areaid){
@@ -45,6 +41,13 @@ class mPrograma{
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+	function validaPrograma($idprograma){
+		$valida = "SELECT idprograma from programa where idprograma = '".$idprograma."'";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($valida, 0);
 		return $data;
 	}
 	/*

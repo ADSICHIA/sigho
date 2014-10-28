@@ -7,10 +7,10 @@ include ("controlador/cPrograma.php");
 
 <form name="programa" action="" method="post">
 	<label for= "idprograma">Identificador del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input type="text" id="idprograma" class="form-control" name="idprograma" required="required">
+    <input type="text" id="idprograma" class="form-control" name="idprograma" required="required" data-rule-number="true" data-msg-number="Debe Ingresar Solo N&uacute;meros">
         <?php
-        if ($resultado){
-            echo "<span id='resultado' style='color:red'><strong>" .$resultado ."</strong></span><br/>";
+        if ($mensaje){
+            echo "<span id='resultado' style='color:red'><strong>" .$mensaje."</strong></span><br/>";
         }
     ?>
     <br/><label for="programa">Descripci&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>

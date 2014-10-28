@@ -1,7 +1,7 @@
 <?php
 include ("modelo/mPrograma.php");
 	$ins = new mPrograma();
-	$resultado="";
+	$mensaje="";
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
     if ($delete){
       $ins->delete($del);
@@ -12,18 +12,20 @@ include ("modelo/mPrograma.php");
 	$areaid = isset($_POST["areaid"]) ? $_POST["areaid"]:NULL;
 	$actu = isset($_POST["actu"]) ? $_POST["actu"]:NULL;
 	$area =  $ins->selArea();
-	$tabla = $ins->select();
+	
 
 	if ($idprograma && $programa && $version && $areaid && $actu){
 		$ins->update($idprograma,$programa,$version,$areaid);
 	}
 	
 	if ($idprograma && $programa && $version && $areaid && !$actu){
-		$resultado = $ins->insert($idprograma,$programa,$version,$areaid);
+		$resultado = $ins->validaPrograma($idprograma);
 		if ($resultado){
-			return $resultado;
+			$mensaje = "El programa que intenta ingresar ya existe";
+		}else{
+			$ins->insert($idprograma,$programa,$version,$areaid);
 		}
 	}
 
-
+	$tabla = $ins->select();
 ?>
