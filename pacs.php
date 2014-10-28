@@ -8,6 +8,8 @@
 							}else if($perusu==1){
                             include("vista/vencuapren.php");
 							}*/
+                         } else if ($Pac == "110") {
+                            include("vista/vgrupo.php");                             
                         } else if ($Pac == "101") {
                             include("vista/vregistro.php");
 						} else if ($Pac == "102") {
