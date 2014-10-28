@@ -46,7 +46,5 @@
                           include("vista/vpre.php");
                         } else if ($Pac == "118") {
                            include("vista/vregistrousu.php");
-						}
-								
-          
-                        ?>
+						            }	
+ ?>

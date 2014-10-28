@@ -5,27 +5,28 @@ class msede{
 	function msede(){}
 	
 	
-	function mantenimiento($act,$doc){
-		$sql = "UPDATE estacion SET mantenimiento='".$act."' WHERE id_estacion='".$doc."';";
+	function mantenimiento($act,$pr){
+		$sql = "UPDATE sede SET estado='".$act."' WHERE idsede='".$pr."';";
 		$this->cons($sql);
 	}
 	
 	
-	function delesta($del){
-		$sql = "DELETE FROM estacion WHERE id_estacion='".$del."';";
+	function delsede($del){
+		$sql = "DELETE FROM sede WHERE idsede='".$del."';";
 		$this->cons($sql);
 	}
 
 	function insede($nomsede, $direccion , $telefono,$municipio){
-		$sql = "INSERT INTO sede(idsede,sede, direccion, telefono, municipioid, `estado`) VALUES ('','".$nomsede."','".$direccion."','".$telefono."','".$municipio."');";
+		$sql = "INSERT INTO sede(idsede,sede, direccion, telefono, municipioid) VALUES ('','".$nomsede."','".$direccion."','".$telefono."','".$municipio."');";
 		$this->cons($sql);
 	}
-	function updesta($id_estacion,$nomesta,$ubicacion, $descripcion ,$parada,$troncal){
-		$sql = "UPDATE estacion SET nombre='".$nomesta."', ubicacion='".$ubicacion."', descripcion='".$descripcion."', tipo_parada='".$parada."', id_troncal='".$troncal."' WHERE id_estacion='".$id_estacion."';";
+	function upsede($nomsede, $direccion , $telefono,$municipio,$pr){
+		$sql = "UPDATE sede SET sede='".$nomsede."', direccion='".$direccion."', telefono='".$telefono."', municipioid='".$municipio."' WHERE idsede='".$pr."';";
 		$this->cons($sql);
 	}
-	function selestaupd($pr){
-		$sql = "SELECT id_estacion,nombre,ubicacion,descripcion,mantenimiento FROM estacion WHERE id_estacion='".$pr."';";
+
+	function selsedeupd($pr){
+		$sql = "SELECT * FROM sede WHERE idsede='".$pr."';";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
@@ -34,6 +35,14 @@ class msede{
 
 	function selmuni(){
 		$sql = "SELECT * FROM municipio";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
+	function selesedes(){
+		$sql = "SELECT * FROM sede";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);

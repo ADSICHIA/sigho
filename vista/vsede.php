@@ -1,45 +1,56 @@
 <?php
 	include_once("controlador/csede.php");
 ?>
-<center>
-<form name="form1" action="" method="post" >
-	<table width="400" >
-        <tr>
-        	<td colspan="2" align="center" style="font-size: 20.5px;">
-            	<h1>SEDES</h1>
-            </td>
-        </tr>
-        <tr><td><br><br></td>
-        </tr>
+
+<div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">SEDES</h3>
+                    </div>
+                    <div class="panel-body">
+<form name="form1" action="" method="post" id="frm_sedes" >
+<fieldset>
+       <div class="form-group">
+          Nombre:
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="Ingrese el nombre de la sede"  name="nomsede" type="text" value="<?php if($in){ echo $selupd[0]['sede']; } ?>" autofocus>
+          
+        </div>
+        <div class="form-group">
+          Direccion:
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="Ingrese la direccion de la sede" name="direccion" type="text" value="<?php if($in){ echo $selupd[0]['direccion']; } ?>" autofocus>
          
-    	<tr>
-        	<td align="left">Nombre:</td>
-        	<td><input type="text" name="nomsede" size="30" maxlength="30" required="required" placeholder="Ingrese el nombre de la sede" /></td>
-        </tr>
-        <tr>
-        	<td align="left">Direccion:</td>
-        	<td><input type="text" name="direccion" size="30" maxlength="40" required="required" placeholder="Ingrese la direccion de la sede"  /></td>
-        </tr>
-         <tr>
-            <td align="left">Telefono:</td>
-            <td><input type="text" name="telefono" size="30" maxlength="40" required="required" placeholder="Ingrese un telefono de la sede"  /></td>
-        </tr>
-         <tr>
-            <td align="left">Municipio:</td>
-                <td><select name="municipio">
+        </div>
+          <div class="form-group">
+          Telefono:
+        </div>
+        <div class="form-group">
+            <input class="form-control"  placeholder="Ingrese un telefono de la sede" name="telefono" type="text" value="<?php if($in){ echo $selupd[0]['telefono']; } ?>" autofocus>
+            <?php if($in){  ?>  <input class="form-control"  placeholder="Ingrese un telefono de la sede" name="actu" type="hidden" value="actu" autofocus> <?php } ?>
+         
+         
+        </div> 
+         <div class="form-group">
+          Municipio:
+        </div>
+        <div class="form-group">
+           <select name="municipio" class="form-control">
             <?php for($i=0;$i<count($mu);$i++){?>
                 <option value="<?php echo $mu[$i]['idmunicipio']?>"><?php echo $mu[$i]['municipio']?></option>
             <?php } ?>
                 </select>
-            </td>
-        </tr>
+        </div> 
+      
         
-        <tr>
-        	<td colspan="2" align="center">
-            	<input type="submit" value="Guardar" />
-            </td>
-        </tr>
-    </table>
+        <!-- Change this to a button or input when using this as a form -->
+        <a href="#" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block"><?php if($in){ ?> Actualizar <?php }else{  ?> Enviar <?php } ?></a>
+    </fieldset>
 </form>
-
-</center>
+</div>
+</div>
+</div>
+</div>
