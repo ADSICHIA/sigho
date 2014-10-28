@@ -1,19 +1,24 @@
 <?php
-include ("../controlador/cPrograma.php");
+include ("controlador/cPrograma.php");
 ?>
-<link href="../css/bootstrap.css" rel="stylesheet">
+
 <div>
 <h3>INGRESAR PROGRAMA</h3>
 
 <form name="programa" action="" method="post">
 	<label for= "idprograma">Identificador del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input type="text" id="idprograma" name="idprograma" required="required"><br/>
-    <label for="programa">Descripci&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input type="text" name="programa" id="programa" required="required"><br/>
+    <input type="text" id="idprograma" class="form-control" name="idprograma" required="required">
+        <?php
+        if ($resultado){
+            echo "<span id='resultado' style='color:red'><strong>" .$resultado ."</strong></span><br/>";
+        }
+    ?>
+    <br/><label for="programa">Descripci&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
+    <input class="form-control" type="text" name="programa" id="programa" required="required"><br/>
     <label for="version">Versi&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input type="text" name="version" id="version" required="required"><br/>
+    <input class="form-control" type="text" name="version" id="version" required="required"><br/>
     <label for="areaid">Area a la que pertenece el Programa</label>
-    <select id="areaid" name="areaid" required="required">
+    <select class="form-control" id="areaid" name="areaid" required="required">
     <option value="0" selected="selected"> </option>
     <?php 
         for($i = 0; $i<count($area); $i++){
@@ -23,9 +28,11 @@ include ("../controlador/cPrograma.php");
         }
     ?>
     </select><br/>
-    <input type="submit" value="Guardar">
+    <input type="submit" value="Guardar" class="btn btn-default">
     <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <input type="button" value="Cancelar">
+    <input type="button" value="Cancelar" class="btn btn-default">
+
+    
 </form>
 </div>
 

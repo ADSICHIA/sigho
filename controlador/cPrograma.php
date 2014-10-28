@@ -1,7 +1,7 @@
 <?php
-include ("../modelo/mPrograma.php");
+include ("modelo/mPrograma.php");
 	$ins = new mPrograma();
-	
+	$resultado="";
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
     if ($delete){
       $ins->delete($del);
@@ -11,16 +11,19 @@ include ("../modelo/mPrograma.php");
 	$version = isset($_POST["version"]) ? $_POST["version"]:NULL;
 	$areaid = isset($_POST["areaid"]) ? $_POST["areaid"]:NULL;
 	$actu = isset($_POST["actu"]) ? $_POST["actu"]:NULL;
-
+	$area =  $ins->selArea();
+	$tabla = $ins->select();
 
 	if ($idprograma && $programa && $version && $areaid && $actu){
 		$ins->update($idprograma,$programa,$version,$areaid);
 	}
-
+	
 	if ($idprograma && $programa && $version && $areaid && !$actu){
-		$ins->insert($idprograma,$programa,$version,$areaid);
+		$resultado = $ins->insert($idprograma,$programa,$version,$areaid);
+		if ($resultado){
+			return $resultado;
+		}
 	}
 
-	$area =  $ins->selArea();
-	$tabla = $ins->select();
+
 ?>

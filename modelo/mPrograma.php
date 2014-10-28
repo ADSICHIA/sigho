@@ -1,15 +1,18 @@
 <?php
 
-include("../controlador/conexion.php");
+//include("/controlador/conexion.php");
 
 class mPrograma{
 	function mPrograma(){
 	}
-
 	
 	function insert($idprograma, $programa, $version, $areaid){
+		$valida = "SELECT idprograma from porgrama where idprograma = '".$idprograma."'";
+		if ($valida){
+			$mensajeresultado = "El Programa ya existe";
+			return $mensajeresultado;
+		}
 		$sql = "INSERT INTO programa(idprograma, programa, version, areaid) values ('".$idprograma."', '".$programa."', '".$version."', '".$areaid."');";
-		$this->cons($sql);
 	}
 	
 	function update($idprograma, $programa, $version, $areaid){
