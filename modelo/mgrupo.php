@@ -1,8 +1,8 @@
 <?php
-include ("controlador/conexion.php");
-class mruta{
+include_once("controlador/conexion.php");
+class mgrupo{
 	var $arr;
-	function mruta(){}
+	function mgrupo(){}
 	
 	
 	function cons($c){
@@ -133,6 +133,22 @@ ubicacion as ubi on ap.codubi=ubi.codubi
 	}
         function ubicacion($ndocapre){
 		$sql = "SELECT  * FROM ubicacion WHERE codubi='".$ndocapre."' ";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+        //usuada
+        function seldirector(){
+		$sql = "SELECT  * FROM usuario WHERE perfilid='2' ";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+        //usuada
+        function selambiente(){
+		$sql = "SELECT  * FROM ambiente";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
