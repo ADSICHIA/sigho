@@ -12,14 +12,14 @@
                             include("vista/vgrupo.php");                             
                         } else if ($Pac == "101") {
                             include("vista/vregistro.php");
-						} else if ($Pac == "102") {
+					              } else if ($Pac == "102") {
                             include("vista/vvalor1.php");
                         } else if ($Pac == "103") {
                             include("vista/vparametro.php");
                         } else if ($Pac == "104") {
-							              include("vista/vparametro1.php");
+							               include("vista/vparametro.php");
                         } else if ($Pac == "105") {
-                            include("vista/vperfil.php");
+                            include("vista/varea.php");
                         } else if ($Pac == "106") {
                             include("vista/vprograma.php");
                         } else if ($Pac == "107") {
@@ -48,6 +48,35 @@
                            include("vista/vregistrousu.php");
 						}
 								
-                       
+<<<<<<< HEAD
+                        //}
                         
                         ?>
+                        <form>
+<div class="row">
+    <div class="form-group col-md-4">
+      <label for="full_name">Aqui texto</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="form-group col-md-4">
+     <label for="full_name">Aqui texto</label>
+      <input type="text" class="form-control">
+         
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="full_name">Aqui texto</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="full_name">Aqui texto</label>
+      <input type="password" class="form-control">
+    </div>
+    <input type="submit" class="btn btn-primary"/>
+  </div>
+  </form>
+=======
+          
+                        ?>
+>>>>>>> 990777672d8bba5b110f58f6226ff3bf77f063f2
