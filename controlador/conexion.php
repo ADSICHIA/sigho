@@ -38,5 +38,7 @@ class conexion{
 			return $arrayResultado;
 		}
 	}
+
+
 }
 ?>
