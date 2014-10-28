@@ -6,8 +6,8 @@ class mparametro{
 	var $arr;
 	function mparametro(){}
 	
-	function inspar($nompar){
-		$sql = "INSERT INTO parametro (nompar) VALUES ('".$nompar."');";
+	function inspar($nompar, $edit){
+		$sql = "INSERT INTO parametro (parametro, editable) VALUES ('".$nompar."','".$edit."'');";
 		$this->cons($sql);
 	}
 	
