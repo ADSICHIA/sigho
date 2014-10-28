@@ -45,7 +45,7 @@
                         <h3 class="panel-title">Iniciar Sesión</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="#" id="frm_login" method="POST">
+                        <form role="frm_login" action="#" id="frm_login" method="POST">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Identificación" name="identificacion" type="identificacion" autofocus>
