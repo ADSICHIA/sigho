@@ -8,16 +8,18 @@
 							}else if($perusu==1){
                             include("vista/vencuapren.php");
 							}*/
+                         } else if ($Pac == "110") {
+                            include("vista/vgrupo.php");                             
                         } else if ($Pac == "101") {
                             include("vista/vregistro.php");
-						} else if ($Pac == "102") {
+					              } else if ($Pac == "102") {
                             include("vista/vvalor1.php");
                         } else if ($Pac == "103") {
                             include("vista/vparametro.php");
                         } else if ($Pac == "104") {
-							              include("vista/vparametro1.php");
+							               include("vista/vparametro.php");
                         } else if ($Pac == "105") {
-                            include("vista/vperfil.php");
+                            include("vista/varea.php");
                         } else if ($Pac == "106") {
                             include("vista/vprograma.php");
                         } else if ($Pac == "107") {
@@ -46,6 +48,5 @@
                            include("vista/vregistrousu.php");
 						}
 								
-                       
-                        
+          
                         ?>
