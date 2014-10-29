@@ -47,8 +47,8 @@
                         } else if ($Pac == "116") {
                           include("vista/vaprenmas.php");
                         } else if ($Pac == "117") {
-                          include("vista/vpre.php");
+                          include("vista/vjornada.php");
                         } else if ($Pac == "118") {
-                           include("vista/vregistrousu.php");
+                           include("vista/vlistarjor.php");
 						            }	
  ?>
