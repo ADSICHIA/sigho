@@ -154,6 +154,11 @@ ubicacion as ubi on ap.codubi=ubi.codubi
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
+         //usuada
+        function insgrupo($nombregr ,$director , $ambiente){
+		$sql = "INSERT INTO `grupo`(`grupo`, `director`, `ambienteid`) VALUES ('".$nombregr."','". $director."','". $ambiente."');";
+		$this->cons($sql);
+	}
        
-}
+} 
 ?>
