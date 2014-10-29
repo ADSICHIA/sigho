@@ -10,8 +10,8 @@
 							}*/
                          } else if ($Pac == "110") {
                             include("vista/vgrupo.php");                             
-                        } else if ($Pac == "101") {
-                            include("vista/vregistro.php");
+                        } else if ($Pac == "111") {
+                            include("vista/vlistagrupo.php");
 					              } else if ($Pac == "102") {
                             include("vista/vvalor1.php");
                         } else if ($Pac == "103") {
