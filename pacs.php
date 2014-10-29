@@ -35,9 +35,9 @@
                         } else if ($Pac == "112") {
                            include ("vista/vencuapren.php");
                         } else if ($Pac == "113") {
-                           include ("vista/vestadi.php");
+                           include ("vista/vsede.php");
                         } else if ($Pac == "114") {
-                          include("vista/vpromas.php");
+                          include("vista/vlistarsede.php");
                         } else if ($Pac == "115") {
                           include("vista/vfichamas.php");
                         } else if ($Pac == "116") {
@@ -46,7 +46,5 @@
                           include("vista/vpre.php");
                         } else if ($Pac == "118") {
                            include("vista/vregistrousu.php");
-						}
-								
-          
-                        ?>
+						            }	
+ ?>

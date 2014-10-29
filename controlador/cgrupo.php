@@ -1,8 +1,8 @@
 <?php
-	include ("modelo/mruta.php");
+	include ("modelo/mgrupo.php");
         //include ("modelo/mpagina.php");
       
-	$ins = new mruta();
+	$ins = new mgrupo();
 	//Eliminar
        
 	$del = isset($_GET["del"]) ? $_GET["del"]:NULL;
@@ -71,10 +71,12 @@
 <?php
         }
 
-	$datos1=$ins->selruta1($pr);
-	$det = $ins->selper();
-        $datos =$ins->selruta();
-        $marca =$ins->selmarca();
+	$seldirector=$ins->seldirector();
+        
+        $selambiente=$ins->selambiente();
+	//$det = $ins->selper();
+        //$datos =$ins->selruta();
+        //$marca =$ins->selmarca();
 
        //Paginar
 	   /*
