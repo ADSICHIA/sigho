@@ -35,10 +35,25 @@
 	
 	
 	}
+         $pr = isset($_GET["pr"]) ? $_GET["pr"]:NULL;
+        $act = isset($_GET["act"]) ? $_GET["act"]:NULL;
+        if ($act){
+             if ($act==2){
+                 $ins->cambiar1(0,$pr);
+                 
+             }else{
+                    $ins->cambiar2(1,$pr);
+                 
+             }
+            
+            
+            
+        }
+        
         
         //$pac=107;
         //$filtro=isset($_GET["filtro"]) ? $_GET["filtro"]:NULL;
-     $pr = isset($_GET["pr"]) ? $_GET["pr"]:NULL;
+     
         $idgrupo= isset($_POST["idgrupo"]) ? $_POST["idgrupo"]:NULL;
 	$nombregr = isset($_POST["nombre"]) ? $_POST["nombre"]:NULL;
 	$director = isset($_POST["director"]) ? $_POST["director"]:NULL;
@@ -57,7 +72,7 @@
 <?php
 		
 	}
-        if ($placa && $npuesto && $idconductor  && $idruta && $modelo && $idmarca && $actu ) {
+        if ($nombregr && $director && $ambiente && $actu) {
            
 		$ins->upruta($placa,$npuesto,$idconductor ,$idruta ,$modelo,$idmarca);
                 ?>
@@ -72,6 +87,7 @@
 	$seldirector=$ins->seldirector();
         
         $selambiente=$ins->selambiente();
+        $datos=$ins->selgrupo();
 	//$det = $ins->selper();
         //$datos =$ins->selruta();
         //$marca =$ins->selmarca();
