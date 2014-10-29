@@ -30,7 +30,7 @@
                                                    <td><a href="home.php?pac=111&act=<?php echo $datos[$i]['vigente']+1 ?>&pr=<?php echo $datos[$i]['idgrupo'] ?>"  onclick="return confirm('¿Desea cambiar el estado?');"><span <?php if($datos[$i]['vigente']==1){?> class="glyphicon glyphicon-ok" <?php }else{ ?> class="glyphicon glyphicon-remove" <?php }?>></span></a></td>
                                                     <td><?php echo $datos[$i]['nombres'] ?> <?php echo $datos[$i]['apellidos'] ?></td>
                                                      <td><?php echo $datos[$i]['ambiente'] ?></td>
-                                                    <td><a href="home.php?pac=114&act=<?php echo $sedes[$i]['estado'] ?>&pr=<?php echo $sedes[$i]['idsede'] ?>"  onclick="return confirm('¿Desea cambiarle el estado de la sede?');"><span <?php if($sedes[$i]['estado']==1){?> class="glyphicon glyphicon-ok" <?php }else{ ?> class="glyphicon glyphicon-remove" <?php }?>></span></a></td>
+                                                
                                                     <td><a href="home.php?pac=113&in=2&pr=<?php echo $sedes[$i]['idsede'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
                                                     <td><a href="home.php?pac=114&del=<?php echo $sedes[$i]['idsede'] ?>" onclick="return confirm('¿Desea eliminar la sede?');"><span class="glyphicon glyphicon-trash"></span></a></td>
                                                 </tr>
