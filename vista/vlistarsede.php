@@ -6,6 +6,10 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="table-responsive">
+                                        <table>
+                                            <tr><td>  <a href="home.php?pac=113" class="btn btn-warning" >Crear nueva sede</a></td></tr>
+                                        </table>
+                                        <br>
                                         <table class="table table-bordered table-hover table-striped">
                                             <thead>
                                                 <tr>

@@ -1,6 +1,7 @@
 <?php
 include_once ("controlador/cgrupo.php");
 ?>
+<center>
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -26,7 +27,7 @@ include_once ("controlador/cgrupo.php");
 		
 		?>
        
-         <option value=" <?php 	echo $seldirector[$i]['identificacion'] ?>" /> <?php echo $seldirector[$i]['identificacion'] ?> <?php echo $seldirector[$i]['nombres'] ?> </option>
+         <option value=" <?php 	echo $seldirector[$i]['idusuario'] ?>" /> <?php echo $seldirector[$i]['identificacion'] ?> <?php echo $seldirector[$i]['nombres'] ?> </option>
 		
 		 <?php } ?>
 			
