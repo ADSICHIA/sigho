@@ -42,7 +42,7 @@ class msede{
 	}
 
 	function selesedes(){
-		$sql = "SELECT * FROM sede";
+		$sql = "SELECT * FROM sede ORDER by idsede DESC";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
