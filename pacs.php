@@ -21,7 +21,11 @@
                         } else if ($Pac == "105") {
                             include("vista/varea.php");
                         } else if ($Pac == "106") {
-                            include("vista/vprograma.php");
+                            if (is_null($Up)){
+                              include("vista/vprograma.php");
+                            }else{
+                              include("vista/vprograma1.php");
+                            }
                         } else if ($Pac == "107") {
                         	include("vista/vficha.php");
                         } else if ($Pac == "108") {
