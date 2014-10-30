@@ -8,18 +8,17 @@
 							}else if($perusu==1){
                             include("vista/vencuapren.php");
 							}*/
-                         } else if ($Pac == "110") {
-                            include("vista/vgrupo.php");                             
-                        } else if ($Pac == "111") {
+                                                
+                        } else if ($Pac == "101") {
                             include("vista/vlistagrupo.php");
 					              } else if ($Pac == "102") {
                             include("vista/vvalor1.php");
                         } else if ($Pac == "103") {
-                            include("vista/vparametro.php");
+                            include("vista/vcrearhorario.php");
                         } else if ($Pac == "104") {
-							               include("vista/vparametro.php");
+							               include("vista/varea.php");
                         } else if ($Pac == "105") {
-                            include("vista/varea.php");
+                            include("vista/vFormRol.php");
                         } else if ($Pac == "106") {
                             if (is_null($Up)){
                               include("vista/vprograma.php");
@@ -27,28 +26,30 @@
                               include("vista/vprograma1.php");
                             }
                         } else if ($Pac == "107") {
-                        	include("vista/vficha.php");
+                        	include("vista/vcambiarcontra.php");
                         } else if ($Pac == "108") {
-                           include("vista/vaprendiz.php");
+                           include("vista/vCompetencia.php");
                         } else if ($Pac == "109") {
-                           include("vista/vencuesta.php");
+                           include("vista/vdisponi.php");
                         } else if ($Pac == "110") {
-                           include("vista/vcontes.php");
+                           include("vista/vcrearhorario.php");
                         } else if ($Pac == "111") {
-                           include ("vista/vencuapren.php");
+                           include ("vista/vverhorario.php");
                         } else if ($Pac == "112") {
-                           include ("vista/vencuapren.php");
+                           include ("vista/vficha.php");
                         } else if ($Pac == "113") {
-                           include ("vista/vsede.php");
+                           include ("vista/vgrupo.php");
                         } else if ($Pac == "114") {
                           include("vista/vlistarsede.php");
                         } else if ($Pac == "115") {
-                          include("vista/vfichamas.php");
+                          include("vista/vambiente.php");
                         } else if ($Pac == "116") {
-                          include("vista/vaprenmas.php");
-                        } else if ($Pac == "117") {
                           include("vista/vjornada.php");
+                        } else if ($Pac == "117") {
+                          include("vista/vparametro.php");
                         } else if ($Pac == "118") {
                            include("vista/vlistarjor.php");
-						            }	
+						            }	else if ($Pac == "119") {
+                          include("vista/vsede.php");
+                        }
  ?>
