@@ -52,7 +52,7 @@ include_once ("controlador/cgrupo.php");
                                 
                                 </div>
                              <a href="#" onclick="frm_grupo.submit();" class="btn btn-lg btn-success btn-block">Guardar</a>
-                              <a href="home.php?pac=111"  class="btn btn-warning btn-block">Grupos</a>
+                              <a href="home.php?pac=119"  class="btn btn-warning btn-block">Grupos</a>
                             
                             
                               
