@@ -1,12 +1,15 @@
 <?php
 include ("modelo/mPrograma.php");
 	$ins = new mPrograma();
-	$mensaje="";
+
 
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
     if ($delete){
-      $ins->delete($del);
+      $ins->delete($delete);
     }
+
+	$mensaje="";
+
     $pac = 106;
     $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 	$idprograma = isset ($_POST["idprograma"]) ? $_POST["idprograma"]:NULL;

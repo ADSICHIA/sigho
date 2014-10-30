@@ -1,11 +1,13 @@
 <?php
 include ("modelo/mficha.php");
-	$ins = new mPrograma();
+	$ins = new mficha();
+	
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
     if ($delete){
-      $ins->delete($del);
+      $ins->delete($delete);
     }
 
+    $mensaje="";
     
 	$idficha = isset ($_POST["idficha"]) ? $_POST["idficha"]:NULL;
 	$fecha_inicio = isset($_POST["fecha_inicio"]) ? $_POST["fecha_inicio"]:NULL;
@@ -18,19 +20,26 @@ include ("modelo/mficha.php");
 
 	$programa =  $ins->selPrograma();
 	$jornada = $ins->selJornada();
-	$tabla = $ins->select();
-	$tabla1 = $ins->selJornadaid();
 	
-
+	$selOferta = $ins ->selOferta();
+	
 
 	if ($idficha && $actu){
 		$ins->update($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
 	}
 	
 	if ($idficha && $fecha_inicio && $fecha_fin && $oferta && !$actu){
-	    $ins->insert($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
+		$resultado = $ins->validaFicha($idficha);
+		if ($resultado){
+			$mensaje = "La Ficha que intenta crear ya existe";
+		}else{
+			 $ins->insert($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
+		}
+	   
 		
 	}
 
+	$tabla = $ins->select();
+	$tabla1 = $ins->selJornadaid();
 
 ?>

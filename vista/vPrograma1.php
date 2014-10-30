@@ -36,6 +36,7 @@ include ("controlador/cPrograma.php");
 </form>
 </div>
 
+<form name="tablaPrograma" action="" method="GET" onSubmit="return confirm('¿Desea eliminar?')">
 <div class="table-responsive">
 <h3>PROGRAMAS ACTIVOS</h3>
 <table class="table table-bordered table-hover table-striped">
@@ -49,11 +50,12 @@ include ("controlador/cPrograma.php");
 </tr>
 </thead>
 <tbody>
+<input name="pac" type="hidden" id="pac" value="106"/>
 <?php 
 for($i = 0; $i<count($tabla); $i++){
  ?>
  <tr>
-    <td align = "left"><input type="submit" name="del" value="<?php echo $tabla[$i]['idprograma']?>"/><input name="pac" type="hidden" id="pac" value="105"/></td>
+    <td align = "left"><input type="submit" name="del" value="<?php echo $tabla[$i]['idprograma'] ?>"/></td>
     <td><?php echo $tabla[$i]['programa']?></td>
     <td><?php echo $tabla[$i]['version']?></td>
     <td><?php echo $tabla[$i]['area']?></td>
@@ -70,3 +72,4 @@ for($i = 0; $i<count($tabla); $i++){
 </tbody>
 </table>
 </div>
+</form>

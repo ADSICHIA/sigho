@@ -2,8 +2,8 @@
 
 //include("/controlador/conexion.php");
 
-class mPrograma{
-	function mPrograma(){
+class mFicha{
+	function mFicha(){
 	}
 	
 	function insert($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices){
@@ -11,14 +11,14 @@ class mPrograma{
 		$this->cons($sql);
 	}
 	
-	function update($idprograma, $programa, $version, $areaid){
-		$sql = "UPDATE programa SET idprograma = '".$idprograma."', programa = '".$programa."', version = '".$version."', areaid = '".$areaid."'";
-		$sql .=" WHERE idprograma = '".$idprograma."';";
+	function update($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices){
+		$sql = "UPDATE ficha SET idficha = '".$idficha."', fecha_inicio = '".$fecha_inicio."', fecha_fin = '".$fecha_fin."', oferta = '".$oferta."', programaid = '".$programaid."',";
+		$sql .="jornadaid = '".$jornadaid."', cant_aprendices = '".$cant_aprendices."' WHERE idficha = '".$idficha."';";
 		$this->cons($sql);
 	}
 	
 	function delete ($idficha){
-		$sql = "DELETE * FROM ficha WHERE idficha = '".$idficha."';";
+		$sql = "DELETE FROM ficha WHERE idficha = '".$idficha."';";
 		$this->cons($sql);
 	}
 	
@@ -44,6 +44,21 @@ class mPrograma{
 		return $data;
 	}
 
+	function validaFicha($idficha){
+		$valida = "SELECT idficha from ficha where idficha = '".$idficha."'";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($valida, 0);
+		return $data;
+	}
+
+	function selOferta(){
+		$sql = "SELECT idvalor, valor from valor WHERE parametroid = 5";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
 	function selJornada(){
 		$sql = "SELECT idjornada, jornada FROM jornada;";
 		$conexionBD = new conexion();
