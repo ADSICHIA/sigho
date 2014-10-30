@@ -25,6 +25,13 @@ class mjornada{
 		return $data;
     }
     
+    function seledit($pr){
+        $sql = "SELECT * from jornada where idjornada='".$pr."';";
+	$conexionBD = new conexion();
+	$conexionBD->conectarBD();
+	$data = $conexionBD->ejeCon($sql,0);
+	return $data;
+    }
 }
 
 

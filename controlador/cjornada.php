@@ -11,6 +11,8 @@ $horafin = isset($_POST['horafin']) ? $_POST['horafin']:NULL;
 $canti = isset($_POST['canti']) ? $_POST['canti']:NULL;
 $actu = isset($_POST['actu']) ? $_POST['canti']:NULL;
 $in = isset($_POST['in']) ? $_POST['in']:NULL;
+$pr = isset($_POST['pr']) ? $_POST['pr']:NULL;
+
 
 if($jornada && $horaini && $horafin && $canti && !$actu){
     
@@ -28,5 +30,6 @@ location.href = "";
 
 $jornada = $ins->seljornada();
 
+$jornafilt = $ins->seledit($pr);
 
 ?>

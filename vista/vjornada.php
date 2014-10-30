@@ -6,13 +6,15 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">JORNADAS</h3>
+                        
+                        <h3 class="panel-title">JORNADAS<?php echo " "; ?><span class="glyphicon glyphicon-time"></span></h3>
                     </div>
+                    
                     <div class="panel-body">
 <form name="form1" action="" method="post" id="frm_sedes" >
 <fieldset>
        <div class="form-group">
-          Jornada:
+          Jornada: 
         </div>
         <div class="form-group">
             <input class="form-control" placeholder="Ingrese el tipo de jornada"  name="jornada" type="text" value="<?php if($in){ echo $selupd[0]['sede']; } ?>" autofocus>
@@ -52,6 +54,8 @@
         
         <!-- Change this to a button or input when using this as a form -->
         <a href="#" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block"><?php if($in){ ?> Actualizar <?php }else{  ?> Enviar <?php } ?></a>
+        <br>
+        <a href="home.php" onclick="frm_sedes.submit();" class="btn btn-lg btn-warning btn-success btn-block"><?php if($in){ ?> Volver <?php }else{  ?> Cancelar <?php } ?></a>
     </fieldset>
 </form>
 </div>
