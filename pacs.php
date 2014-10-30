@@ -26,11 +26,8 @@
                               include("vista/vprograma1.php");
                             }
                         } else if ($Pac == "107") {
-<<<<<<< HEAD
                         	include("vista/v_parametro.php");
-=======
-                        	include("vista/vcambiarcontra.php");
->>>>>>> 03d1c6392ff80e18b9ee08432a01248ee85c772f
+                         	include("vista/vcambiarcontra.php");
                         } else if ($Pac == "108") {
                            include("vista/vCompetencia.php");
                         } else if ($Pac == "109") {
@@ -42,7 +39,7 @@
                         } else if ($Pac == "112") {
                            include ("vista/vficha.php");
                         } else if ($Pac == "113") {
-                           include ("vista/vgrupo.php");
+                           include ("vista/vsede.php");
                         } else if ($Pac == "114") {
                           include("vista/vlistarsede.php");
                         } else if ($Pac == "115") {
