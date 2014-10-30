@@ -23,7 +23,7 @@
                         } else if ($Pac == "106") {
                             include("vista/vprograma.php");
                         } else if ($Pac == "107") {
-                        	include("vista/vficha.php");
+                        	include("vista/v_parametro.php");
                         } else if ($Pac == "108") {
                            include("vista/vaprendiz.php");
                         } else if ($Pac == "109") {
