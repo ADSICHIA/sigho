@@ -51,7 +51,7 @@
                            include("vista/vlistarjor.php");
 						            }	else if ($Pac == "119") {
                           include("vista/vsede.php");
-                        }else if ($Pac == "119") {
-                          include("vista/vlistargrupo.php");
+                        }else if ($Pac == "120") {
+                          include("vista/vlistagrupo.php");
                         }
  ?>
