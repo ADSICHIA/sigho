@@ -18,7 +18,7 @@ class mPrograma{
 	}
 	
 	function delete ($idprograma){
-		$sql = "DELETE * FROM programa WHERE idprograma = '".$idprograma."';";
+		$sql = "DELETE FROM programa WHERE idprograma = '".$idprograma."'";
 		$this->cons($sql);
 	}
 	
@@ -37,7 +37,7 @@ class mPrograma{
 	}
 
 	function select(){
-		$sql = "SELECT  idprograma, programa, version, areaid FROM programa;";
+		$sql = "SELECT  p.idprograma, p.programa, p.version, p.areaid, a.area FROM programa AS p LEFT JOIN area AS a ON a.idarea = p.areaid;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
@@ -48,6 +48,14 @@ class mPrograma{
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($valida, 0);
+		return $data;
+	}
+
+	function selEditar($idprograma){
+		$sql = "SELECT  idprograma, programa, version, areaid FROM programa WHERE idprograma = '".$idprograma."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
 	/*

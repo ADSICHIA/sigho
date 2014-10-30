@@ -154,6 +154,30 @@ ubicacion as ubi on ap.codubi=ubi.codubi
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-       
-}
+         //usuada
+        function insgrupo($nombregr ,$director , $ambiente){
+		$sql = "INSERT INTO `grupo`(`grupo`, `director`, `ambienteid`) VALUES ('".$nombregr."','". $director."','". $ambiente."');";
+		$this->cons($sql);
+	}
+      
+
+       //usuada
+        function selgrupo(){
+		 $sql = "SELECT gr.idgrupo,gr.grupo,gr.agendado,gr.vigente ,usu.nombres,usu.apellidos,am.ambiente FROM `grupo` as gr inner join usuario as usu on gr.director=usu.idusuario inner join ambiente as am on gr.ambienteid=am.idambiente order by gr.idgrupo desc";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+        //usada
+        function cambiar1($numero , $idgrupo){
+		$sql = "UPDATE grupo SET vigente='".$numero."'WHERE idgrupo ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+         //usada
+        function cambiar2($numero , $idgrupo){
+		$sql = "UPDATE grupo SET vigente='".$numero."'WHERE idgrupo ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+        } 
 ?>

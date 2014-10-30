@@ -1,17 +1,25 @@
 <?php
 include ("modelo/mPrograma.php");
 	$ins = new mPrograma();
-	$mensaje="";
+
+
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
     if ($delete){
-      $ins->delete($del);
+      $ins->delete($delete);
     }
+
+	$mensaje="";
+
+    $pac = 106;
+    $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 	$idprograma = isset ($_POST["idprograma"]) ? $_POST["idprograma"]:NULL;
 	$programa = isset($_POST["programa"]) ? $_POST["programa"]:NULL;
 	$version = isset($_POST["version"]) ? $_POST["version"]:NULL;
 	$areaid = isset($_POST["areaid"]) ? $_POST["areaid"]:NULL;
 	$actu = isset($_POST["actu"]) ? $_POST["actu"]:NULL;
+	$actu = isset($_POST["actu"]) ? $_POST["actu"]:NULL;
 	$area =  $ins->selArea();
+	$editar = $ins->selEditar($pr);
 	
 
 	if ($idprograma && $programa && $version && $areaid && $actu){
