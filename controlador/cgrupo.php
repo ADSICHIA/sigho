@@ -35,23 +35,36 @@
 	
 	
 	}
+         $pr = isset($_GET["pr"]) ? $_GET["pr"]:NULL;
+        $act = isset($_GET["act"]) ? $_GET["act"]:NULL;
+        if ($act){
+             if ($act==2){
+                 $ins->cambiar1(0,$pr);
+                 
+             }else{
+                    $ins->cambiar2(1,$pr);
+                 
+             }
+            
+            
+            
+        }
+        
         
         //$pac=107;
         //$filtro=isset($_GET["filtro"]) ? $_GET["filtro"]:NULL;
-     $pr = isset($_GET["pr"]) ? $_GET["pr"]:NULL;
-        $idruta= isset($_POST["idruta"]) ? $_POST["idruta"]:NULL;
-	$placa = isset($_POST["placa"]) ? $_POST["placa"]:NULL;
-	$npuesto = isset($_POST["npuesto"]) ? $_POST["npuesto"]:NULL;
-	$idconductor= isset($_POST["idconductor"]) ? $_POST["idconductor"]:NULL;
-        $idmarca= isset($_POST["idmarca"]) ? $_POST["idmarca"]:NULL;
-        $modelo= isset($_POST["modelo"]) ? $_POST["modelo"]:NULL;
+     
+        $idgrupo= isset($_POST["idgrupo"]) ? $_POST["idgrupo"]:NULL;
+	$nombregr = isset($_POST["nombre"]) ? $_POST["nombre"]:NULL;
+	$director = isset($_POST["director"]) ? $_POST["director"]:NULL;
+	$ambiente= isset($_POST["ambiente"]) ? $_POST["ambiente"]:NULL;
 	$actu= isset($_POST["actu"]) ? $_POST["actu"]:NULL;
  
-	if ($placa && $npuesto && $idconductor && $idmarca && $modelo &&!$actu) {
-		$ins->insruta($placa,$npuesto,$idconductor,$modelo,$idmarca);
+	if ($nombregr && $director && $ambiente &&!$actu) {
+		$ins->insgrupo($nombregr ,$director , $ambiente);
                 ?>
 		<script language="javascript">
-		 alert ("Ruta Creada con \u00e9xito");
+		 alert ("Grupo Creado con \u00e9xito");
                  //location.href='home.php?pac=107';
 	
 </script>
@@ -59,7 +72,7 @@
 <?php
 		
 	}
-        if ($placa && $npuesto && $idconductor  && $idruta && $modelo && $idmarca && $actu ) {
+        if ($nombregr && $director && $ambiente && $actu) {
            
 		$ins->upruta($placa,$npuesto,$idconductor ,$idruta ,$modelo,$idmarca);
                 ?>
@@ -74,6 +87,7 @@
 	$seldirector=$ins->seldirector();
         
         $selambiente=$ins->selambiente();
+        $datos=$ins->selgrupo();
 	//$det = $ins->selper();
         //$datos =$ins->selruta();
         //$marca =$ins->selmarca();

@@ -6,24 +6,24 @@ include ("controlador/cPrograma.php");
 <h3>INGRESAR PROGRAMA</h3>
 
 <form name="programa" action="" method="post">
-	<label for= "idprograma">Identificador del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input type="text" id="idprograma" class="form-control" name="idprograma" required="required" pattern="[0-9][0-9]{1,10}" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')">
+    <label for= "idprograma">Identificador del Programa&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="idprograma" class="form-control" name="idprograma" required="required" value = "<?php echo $editar[0]['idprograma']; ?>"/>
         <?php
         if ($mensaje){
             echo "<span id='resultado' style='color:red'><strong>" .$mensaje."</strong></span><br/>";
         }
     ?>
     <br/><label for="programa">Descripci&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input class="form-control" type="text" name="programa" id="programa" required="required" ><br/>
+    <input class="form-control" type="text" name="programa" id="programa" required="required" value = "<?php echo $editar[0]['programa']; ?>"/><br/>
     <label for="version">Versi&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input class="form-control" type="text" name="version" id="version" required="required"><br/>
+    <input class="form-control" type="text" name="version" id="version" required="required" value = "<?php echo $editar[0]['version']; ?>"><br/>
     <label for="areaid">Area a la que pertenece el Programa</label>
-    <select class="form-control" id="areaid" name="areaid" required="required">
+    <select class="form-control" id="areaid" name="areaid" required="required" >
     <option value="0" selected="selected"> </option>
     <?php 
         for($i = 0; $i<count($area); $i++){
     ?>
-    <option value="<?php echo $area[$i]['idarea']; ?>"> <?php echo $area[$i]['area']; ?> </option>
+    <option value="<?php echo $area[$i]['idarea']; ?>" <?php if($editar[0]['areaid']==$area[$i]['idarea']) echo 'selected'; ?>> <?php echo $area[$i]['area']; ?> </option>
     <?php
         }
     ?>

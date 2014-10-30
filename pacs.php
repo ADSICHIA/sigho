@@ -10,8 +10,8 @@
 							}*/
                          } else if ($Pac == "110") {
                             include("vista/vgrupo.php");                             
-                        } else if ($Pac == "101") {
-                            include("vista/vregistro.php");
+                        } else if ($Pac == "111") {
+                            include("vista/vlistagrupo.php");
 					              } else if ($Pac == "102") {
                             include("vista/vvalor1.php");
                         } else if ($Pac == "103") {
@@ -21,7 +21,11 @@
                         } else if ($Pac == "105") {
                             include("vista/varea.php");
                         } else if ($Pac == "106") {
-                            include("vista/vprograma.php");
+                            if (is_null($Up)){
+                              include("vista/vprograma.php");
+                            }else{
+                              include("vista/vprograma1.php");
+                            }
                         } else if ($Pac == "107") {
                         	include("vista/vficha.php");
                         } else if ($Pac == "108") {
@@ -43,8 +47,8 @@
                         } else if ($Pac == "116") {
                           include("vista/vaprenmas.php");
                         } else if ($Pac == "117") {
-                          include("vista/vpre.php");
+                          include("vista/vjornada.php");
                         } else if ($Pac == "118") {
-                           include("vista/vregistrousu.php");
+                           include("vista/vlistarjor.php");
 						            }	
  ?>
