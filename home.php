@@ -28,6 +28,7 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,6 +40,11 @@
 </head>
 
 <body>
+<div class="page-header">
+    <h1 style="font-family: Oswald;position: relative;bottom: -2px;left: 40px;color: white;font-size: 72px;">Sigho 
+        <small style="font-size: 18px;position: relative;left: 810px;top: 20px;color: lightblue;">Centro de Desarrollo Agroempresarial SENA</small>
+        <p style="font-size: 15px;position: relative;right: 14px;top: 10px;color: lightblue;">Sistema de Gestión de Horarios</p>
+    </h1>
 
     <div id="wrapper">
 
