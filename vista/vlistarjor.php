@@ -23,14 +23,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php for($i=0;$i<count($jornada);$i++){ ?>
+                                            <?php for($i=0;$i<count($jornadas);$i++){ ?>
                                                 <tr>
-                                                    <td><?php echo $jornada[$i]['jornada'] ?></td>
-                                                    <td><?php echo $jornada[$i]['hora_inicio'] ?></td>
-                                                    <td><?php echo $jornada[$i]['hora_fin'] ?></td>
+                                                    <td><?php echo $jornadas[$i]['jornada'] ?></td>
+                                                    <td><?php echo $jornadas[$i]['hora_inicio'] ?></td>
+                                                    <td><?php echo $jornadas[$i]['hora_fin'] ?></td>
                                                     
                                                     
-                                                    <td><a href="home.php?pac=117&pr=<?php echo $jornada[$i]['idjornada'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                                    <td><a href="home.php?pac=117&pr=<?php echo $jornadas[$i]['idjornada'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
                                                    
                                                 </tr>
                                                 <?php } ?>

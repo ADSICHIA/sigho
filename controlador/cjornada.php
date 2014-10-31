@@ -13,7 +13,8 @@ $actua = isset($_POST['actua']) ? $_POST['actua']:NULL;
 $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 
 
-echo $pr;
+
+
 
 
 if($jornada && $horaini && $horafin && $canti && !$actua){
@@ -30,7 +31,7 @@ location.href = "home.php";
     
 }
 
-$jornada = $ins->seljornada();
+$jornadas = $ins->seljornada();
 
 if($pr){
 $jornafilt = $ins->seledit($pr);
@@ -42,8 +43,8 @@ if($jornada && $horaini && $horafin && $canti && $actua){
     ?>
     
     <script>
-       alert("La jornada se ha actualizado exitosamente");
-       location.href = "home.php?pac=118";
+     alert("La jornada se ha actualizado exitosamente");
+     location.href = "home.php?pac=118";
     </script>
     
 
