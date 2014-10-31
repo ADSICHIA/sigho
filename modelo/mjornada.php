@@ -32,6 +32,11 @@ class mjornada{
 	$data = $conexionBD->ejeCon($sql,0);
 	return $data;
     }
+    
+    function updjor($jornada, $horaini, $horafin, $canti, $actua){
+        $sql= "update jornada set jornada='".$jornada."', hora_inicio='".$horaini."', hora_fin='".$horafin."', horas ='".$canti."' where idjornada ='".$actua."';";
+        $this->cons($sql);
+    }
 }
 
 

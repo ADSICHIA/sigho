@@ -7,7 +7,7 @@
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
                         
-                        <h3 class="panel-title">JORNADAS<?php echo " "; ?><span class="glyphicon glyphicon-time"></span></h3>
+                        <h3 class="panel-title"><?php if($pr){ ?>EDITAR JORNADA <?php }else{ ?>JORNADAS<?php } ?><?php echo " "; ?><span class="glyphicon glyphicon-time"></span></h3>
                     </div>
                     
                     <div class="panel-body">
@@ -17,7 +17,7 @@
           Jornada: 
         </div>
         <div class="form-group">
-            <input class="form-control" placeholder="Ingrese el tipo de jornada"  name="jornada" type="text" value="<?php if($in){ echo $jornafilt[0]['jornada']; } ?>" autofocus>
+            <input class="form-control" placeholder="Ingrese el tipo de jornada"  name="jornada" type="text" value="<?php if($pr){ echo $jornafilt[0]['jornada']; } ?>" autofocus>
           
         </div>
         <div class="form-group">
@@ -27,14 +27,14 @@
         </div>
      
         <div class="form-group">
-            <input class="form-control"  name="horaini" type="time" value="<?php if($in){ echo $jornafilt[0]['hora_inicio']; } ?>" autofocus>
+            <input class="form-control"  name="horaini" type="time" value="<?php if($pr){ echo $jornafilt[0]['hora_inicio']; } ?>" autofocus>
             <div class="form-group" >
                 <br>
           Hora de Fin:
  
          </div>
             <div class="form-group">
-             <input class="form-control"  width="30" name="horafin" type="time" value="<?php if($in){ echo $jornafilt[0]['hora_fin']; } ?>" autofocus>
+             <input class="form-control"  width="30" name="horafin" type="time" value="<?php if($pr){ echo $jornafilt[0]['hora_fin']; } ?>" autofocus>
             
          
               </div>
@@ -46,16 +46,17 @@
  
          </div>
           <div class="form-group">
-              <input class="form-control"  width="30" name="canti" type="text" value="<?php if($in){ echo $jornafilt[0]['horas']; } ?>" autofocus>
+              <input class="form-control"  width="30" name="canti" type="text" value="<?php if($pr){ echo $jornafilt[0]['horas']; } ?>" autofocus>
             
          
               </div>    
     
         
         <!-- Change this to a button or input when using this as a form -->
-        <a href="#" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block"><?php if($in){ ?> Actualizar <?php }else{  ?> Enviar <?php } ?></a>
+        <a href="#" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block"><?php if($pr){ ?> Actualizar <input type="hidden" name="actua" value="<?php echo $jornafilt[0]['idjornada']?>"><?php }else{  ?> Enviar <?php } ?></a>
         <br>
-        <a href="home.php" onclick="frm_sedes.submit();" class="btn btn-lg btn-warning btn-success btn-block"><?php if($in){ ?> Volver <?php }else{  ?> Cancelar <?php } ?></a>
+        <a href="home.php" onclick="frm_sedes.submit();" class="btn btn-lg btn-warning btn-success btn-block"><?php if($pr){ ?> Cancelar <?php }else{  ?> Cancelar <?php } ?></a>
+       
     </fieldset>
 </form>
 </div>
