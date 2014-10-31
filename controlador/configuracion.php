@@ -1,4 +1,5 @@
 
+
 <?php
 
 	/*$usu_db = "adsi";
@@ -14,6 +15,16 @@
 	$pass_db = "";
 	$serv_db = "localhost";
 	$db = "db_sigho";
+?>
+
+
+
+<?php
+
+	/*$usu_db = "root";
+	$pass_db = "";
+	$serv_db = "localhost";
+	$db = "sigho";*/
 ?>
 
 

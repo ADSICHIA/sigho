@@ -30,8 +30,8 @@
                                                     <td><?php echo $jornada[$i]['hora_fin'] ?></td>
                                                     
                                                     
-                                                    <td><a href="home.php?pac=113&in=2&pr=<?php echo $sedes[$i]['idsede'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
-                                                    <td><a href="home.php?pac=114&del=<?php echo $sedes[$i]['idsede'] ?>" onclick="return confirm('¿Desea eliminar la sede?');"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                                    <td><a href="home.php?pac=117&in=2&pr=<?php echo $jornada[$i]['idjornada'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                                    <td><a href="home.php?pac=114&del=<?php echo $jornada[$i]['idjornada'] ?>" onclick="return confirm('¿Desea eliminar la sede?');"><span class="glyphicon glyphicon-trash"></span></a></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>

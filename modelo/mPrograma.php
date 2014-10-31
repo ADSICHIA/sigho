@@ -18,7 +18,7 @@ class mPrograma{
 	}
 	
 	function delete ($idprograma){
-		$sql = "DELETE * FROM programa WHERE idprograma = '".$idprograma."';";
+		$sql = "DELETE FROM programa WHERE idprograma = '".$idprograma."'";
 		$this->cons($sql);
 	}
 	

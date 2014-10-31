@@ -17,7 +17,7 @@
           Jornada: 
         </div>
         <div class="form-group">
-            <input class="form-control" placeholder="Ingrese el tipo de jornada"  name="jornada" type="text" value="<?php if($in){ echo $selupd[0]['sede']; } ?>" autofocus>
+            <input class="form-control" placeholder="Ingrese el tipo de jornada"  name="jornada" type="text" value="<?php if($in){ echo $jornafilt[0]['jornada']; } ?>" autofocus>
           
         </div>
         <div class="form-group">
@@ -27,14 +27,14 @@
         </div>
      
         <div class="form-group">
-            <input class="form-control"  name="horaini" type="time" value="<?php if($in){ echo $selupd[0]['direccion']; } ?>" autofocus>
+            <input class="form-control"  name="horaini" type="time" value="<?php if($in){ echo $jornafilt[0]['hora_inicio']; } ?>" autofocus>
             <div class="form-group" >
                 <br>
           Hora de Fin:
  
          </div>
             <div class="form-group">
-             <input class="form-control"  width="30" name="horafin" type="time" value="<?php if($in){ echo $selupd[0]['telefono']; } ?>" autofocus>
+             <input class="form-control"  width="30" name="horafin" type="time" value="<?php if($in){ echo $jornafilt[0]['hora_fin']; } ?>" autofocus>
             
          
               </div>
@@ -46,7 +46,7 @@
  
          </div>
           <div class="form-group">
-              <input class="form-control"  width="30" name="canti" type="text" value="<?php if($in){ echo $selupd[0]['telefono']; } ?>" autofocus>
+              <input class="form-control"  width="30" name="canti" type="text" value="<?php if($in){ echo $jornafilt[0]['horas']; } ?>" autofocus>
             
          
               </div>    

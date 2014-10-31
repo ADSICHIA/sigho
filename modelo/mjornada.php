@@ -18,7 +18,7 @@ class mjornada{
     }
     
     function seljornada(){
-		$sql = "SELECT jornada, hora_inicio, hora_fin from jornada;";
+		$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin from jornada;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);

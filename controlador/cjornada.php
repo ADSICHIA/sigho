@@ -14,6 +14,9 @@ $in = isset($_POST['in']) ? $_POST['in']:NULL;
 $pr = isset($_POST['pr']) ? $_POST['pr']:NULL;
 
 
+echo $pr;
+
+
 if($jornada && $horaini && $horafin && $canti && !$actu){
     
     ?>
