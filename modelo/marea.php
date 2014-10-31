@@ -2,23 +2,22 @@
 
 //include("/controlador/conexion.php");
 
-class mPrograma{
-	function mPrograma(){
+class marea{
+	function marea(){
 	}
 	
 	function insert($area , $usuarioid){
-		$sql = "INSERT INTO  area ( idarea ,  area ,  usuarioid ) VALUES('".$area."', '".$usuarioid."');";
+		$sql = "INSERT INTO  area ( area ,  usuarioid ) VALUES('".$area."', '".$usuarioid."');";
 		$this->cons($sql);
 	}
 	
-	function update($idprograma, $programa, $version, $areaid){
-		$sql = "UPDATE programa SET idprograma = '".$idprograma."', programa = '".$programa."', version = '".$version."', areaid = '".$areaid."'";
-		$sql .=" WHERE idprograma = '".$idprograma."';";
+	function update($area , $usuarioid){
+		$sql = "UPDATE area SET area = '".$area."', usuarioid = '".$usuarioid."';";
 		$this->cons($sql);
 	}
 	
 	function delete ($idarea){
-		$sql = "DELETE * FROM area WHERE idarea = '".$idarea."';";
+		$sql = "DELETE FROM area WHERE idarea = '".$idarea."';";
 		$this->cons($sql);
 	}
 	
@@ -29,24 +28,22 @@ class mPrograma{
 	}
 
 	function selArea(){
-		$sql = "SELECT idarea, area FROM area;";
+		$sql = "SELECT a.idarea, a.area, a.usuarioid, u.nombres, u.apellidos FROM area as a inner join usuario as u on a.usuarioid = u.idusuario;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-
-	function select(){
-		$sql = "SELECT * FROM ficha;";
+	function validaArea($area){
+		$sql = "SELECT area FROM area WHERE area = '".$area."'";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-
 
 	function selUsuario( ){
-		$sql = "SELECT usuario.idusuario, usuario.nombres, usuario.apellidos, area.idarea, area.usuarioid FROM usuario INNER JOIN area on idusuario=usuarioid";
+		$sql = "SELECT usuario.idusuario, usuario.nombres, usuario.apellidos FROM usuario";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);

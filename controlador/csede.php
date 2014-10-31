@@ -25,8 +25,15 @@
 
 	$del=isset($_GET["del"]) ? $_GET["del"]:NULL;
 	if($del){
-		$ins->delsede($del);
-		echo "<script type='text/Javascript'> window.location='home.php?pac=114';</script>";
+		$am = $ins->selambiente($del);
+		if(!$am){
+			$ins->delsede($del);
+			echo "<script type='text/Javascript'> window.location='home.php?pac=114';</script>";
+		}else{
+			echo "<script language='Javascript'>  alert ('La sede no se puede eliminar porque le pertenecen ambientes.');</script>";
+			echo "<script type='text/Javascript'> window.location='home.php?pac=114';</script>";
+		}
+		
 	}
 	//Actualizar
 	if ($nomsede&& $direccion && $telefono &&$municipio && $pr && $actu){

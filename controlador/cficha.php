@@ -8,7 +8,9 @@ include ("modelo/mficha.php");
     }
 
     $mensaje="";
-    
+    $mensajeF="";
+    $pac = isset ($_GET["pac"]) ? $_GET["pac"]:NULL;
+    $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 	$idficha = isset ($_POST["idficha"]) ? $_POST["idficha"]:NULL;
 	$fecha_inicio = isset($_POST["fecha_inicio"]) ? $_POST["fecha_inicio"]:NULL;
 	$fecha_fin = isset($_POST["fecha_fin"]) ? $_POST["fecha_fin"]:NULL;
@@ -20,26 +22,34 @@ include ("modelo/mficha.php");
 
 	$programa =  $ins->selPrograma();
 	$jornada = $ins->selJornada();
-	
+	$editar = $ins ->selEditar($pr);
 	$selOferta = $ins ->selOferta();
+	
 	
 
 	if ($idficha && $actu){
-		$ins->update($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
+		if ($fecha_inicio >= $fecha_fin){
+			$mensajeF = "La Fecha de Inicio no puede ser menor a la Fecha de Fin"; 
+		}else{
+			$ins->update($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
+		}
 	}
 	
 	if ($idficha && $fecha_inicio && $fecha_fin && $oferta && !$actu){
-		$resultado = $ins->validaFicha($idficha);
-		if ($resultado){
-			$mensaje = "La Ficha que intenta crear ya existe";
+		if ($fecha_inicio >= $fecha_fin){
+			$mensajeF = "La Fecha de Inicio no puede ser menor a la Fecha de Fin"; 
 		}else{
-			 $ins->insert($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
+			$resultado = $ins->validaFicha($idficha);
+				if ($resultado){
+					$mensaje = "La Ficha que intenta crear ya existe";
+				}else{
+			 		$ins->insert($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
+				}
 		}
 	   
 		
 	}
 
 	$tabla = $ins->select();
-	$tabla1 = $ins->selJornadaid();
 
 ?>
