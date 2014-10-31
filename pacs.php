@@ -33,9 +33,9 @@
                         } else if ($Pac == "109") {
                            include("vista/vdisponi.php");
                         } else if ($Pac == "110") {
-                           include("vista/vcrearhorario.php");
+                           include("vista/vgrupo.php");
                         } else if ($Pac == "111") {
-                           include ("vista/vverhorario.php");
+                           include ("vista/vlistagrupo.php");
                         } else if ($Pac == "112") {
                             if (is_null($Up)){
                               include ("vista/vficha.php");
