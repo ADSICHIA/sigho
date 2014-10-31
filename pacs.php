@@ -37,7 +37,11 @@
                         } else if ($Pac == "111") {
                            include ("vista/vverhorario.php");
                         } else if ($Pac == "112") {
-                           include ("vista/vficha.php");
+                            if (is_null($Up)){
+                              include ("vista/vficha.php");
+                            }else{
+                              include ("vista/vficha1.php");
+                            }
                         } else if ($Pac == "113") {
                            include ("vista/vsede.php");
                         } else if ($Pac == "114") {

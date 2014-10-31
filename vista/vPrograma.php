@@ -15,10 +15,10 @@ if ($mensaje){
 <br/><label for="programa">Descripci&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>     
 <input class="form-control" type="text" name="programa" id="programa" required="required" ><br/>
 <label for="version">Versi&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
-<input class="form-control" type="text" name="version" id="version" required="required"><br/>
+<input class="form-control" type="text" name="version" id="version" required="required" pattern ="[0-9]+([\.|,][0-9]+)?" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')" /><br/>
 <label for="areaid">Area a la que pertenece el Programa</label>
 <select class="form-control" id="areaid" name="areaid" required="required">
-     <option value="0" selected="selected"> </option>
+     <option value="" selected="selected">Seleccione </option>
 <?php          for($i = 0; $i<count($area); $i++){  ?>     
 <option value="<?php echo $area[$i]['idarea']; ?>"> <?php echo $area[$i]['area']; ?></option>     
 <?php         }     ?>     
