@@ -9,15 +9,20 @@ $jornada = isset($_POST['jornada']) ? $_POST['jornada']:NULL;
 $horaini = isset($_POST['horaini']) ? $_POST['horaini']:NULL;
 $horafin = isset($_POST['horafin']) ? $_POST['horafin']:NULL;
 $canti = isset($_POST['canti']) ? $_POST['canti']:NULL;
-$actu = isset($_POST['actu']) ? $_POST['canti']:NULL;
-$in = isset($_POST['in']) ? $_POST['in']:NULL;
+$actua = isset($_POST['actua']) ? $_POST['actua']:NULL;
+$pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 
-if($jornada && $horaini && $horafin && $canti && !$actu){
+
+
+
+
+
+if($jornada && $horaini && $horafin && $canti && !$actua){
     
     ?>
 <script>
 alert("La jornada ha sido creada exitosamente");
-location.href = "";
+location.href = "home.php";
 
 </script>
     <?php
@@ -26,7 +31,28 @@ location.href = "";
     
 }
 
-$jornada = $ins->seljornada();
+$jornadas = $ins->seljornada();
 
+if($pr){
+$jornafilt = $ins->seledit($pr);
+}
+
+
+if($jornada && $horaini && $horafin && $canti && $actua){
+    
+    ?>
+    
+    <script>
+     alert("La jornada se ha actualizado exitosamente");
+     location.href = "home.php?pac=118";
+    </script>
+    
+
+    <?php
+
+    
+    $ins->updjor($jornada, $horaini, $horafin, $canti, $actua);
+    
+}
 
 ?>

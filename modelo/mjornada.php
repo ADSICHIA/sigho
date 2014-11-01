@@ -18,13 +18,25 @@ class mjornada{
     }
     
     function seljornada(){
-		$sql = "SELECT jornada, hora_inicio, hora_fin from jornada;";
+		$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin from jornada;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
     }
     
+    function seledit($pr){
+        $sql = "SELECT * from jornada where idjornada='".$pr."';";
+	$conexionBD = new conexion();
+	$conexionBD->conectarBD();
+	$data = $conexionBD->ejeCon($sql,0);
+	return $data;
+    }
+    
+    function updjor($jornada, $horaini, $horafin, $canti, $actua){
+        $sql= "update jornada set jornada='".$jornada."', hora_inicio='".$horaini."', hora_fin='".$horafin."', horas ='".$canti."' where idjornada ='".$actua."';";
+        $this->cons($sql);
+    }
 }
 
 

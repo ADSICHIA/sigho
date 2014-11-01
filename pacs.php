@@ -32,11 +32,15 @@
                         } else if ($Pac == "109") {
                            include("vista/vdisponi.php");
                         } else if ($Pac == "110") {
-                           include("vista/vcrearhorario.php");
+                           include("vista/vgrupo.php");
                         } else if ($Pac == "111") {
-                           include ("vista/vverhorario.php");
+                           include ("vista/vlistagrupo.php");
                         } else if ($Pac == "112") {
-                           include ("vista/vficha.php");
+                            if (is_null($Up)){
+                              include ("vista/vficha.php");
+                            }else{
+                              include ("vista/vficha1.php");
+                            }
                         } else if ($Pac == "113") {
                            include ("vista/vsede.php");
                         } else if ($Pac == "114") {
@@ -44,12 +48,16 @@
                         } else if ($Pac == "115") {
                           include("vista/vambiente.php");
                         } else if ($Pac == "116") {
-                          include("vista/vjornada.php");
+                          include("vista/vparametro.php"); 
                         } else if ($Pac == "117") {
+<<<<<<< HEAD
                           include("vista/v_parametro.php");
+=======
+                          include("vista/vjornada.php");
+>>>>>>> 0d6f3741682c307d981cca6ff54351d1afb7fb85
                         } else if ($Pac == "118") {
                            include("vista/vlistarjor.php");
-						            }	else if ($Pac == "119") {
+			} else if ($Pac == "119") {
                           include("vista/vsede.php");
                         }else if ($Pac == "120") {
                           include("vista/vlistagrupo.php");

@@ -3,11 +3,12 @@ include ("controlador/cPrograma.php");
 ?>
 
 <div>
-<h3>INGRESAR PROGRAMA</h3>
+<h3>EDITAR PROGRAMA</h3>
 
-<form name="programa" action="" method="post">
+<form name="programa" action="home.php?pac=106" method="post">
     <label for= "idprograma">Identificador del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input type="text" id="idprograma" class="form-control" name="idprograma" required="required" value = "<?php echo $editar[0]['idprograma']; ?>"/>
+    <input type="text" id="idprograma" class="form-control" name="idprograma" required="required" value = "<?php echo $editar[0]['idprograma']; ?>" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')"/>
+    <input type="hidden" id="actu" name="actu" value="actu"/>
         <?php
         if ($mensaje){
             echo "<span id='resultado' style='color:red'><strong>" .$mensaje."</strong></span><br/>";
@@ -16,10 +17,10 @@ include ("controlador/cPrograma.php");
     <br/><label for="programa">Descripci&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
     <input class="form-control" type="text" name="programa" id="programa" required="required" value = "<?php echo $editar[0]['programa']; ?>"/><br/>
     <label for="version">Versi&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input class="form-control" type="text" name="version" id="version" required="required" value = "<?php echo $editar[0]['version']; ?>"><br/>
+    <input class="form-control" type="text" name="version" id="version" required="required" value = "<?php echo $editar[0]['version']; ?>" pattern ="[0-9]+([\.|,][0-9]+)?" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')" /><br/>
     <label for="areaid">Area a la que pertenece el Programa</label>
     <select class="form-control" id="areaid" name="areaid" required="required" >
-    <option value="0" selected="selected"> </option>
+    <option value="" selected="selected">Seleccione </option>
     <?php 
         for($i = 0; $i<count($area); $i++){
     ?>
