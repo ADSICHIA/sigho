@@ -26,8 +26,7 @@
                               include("vista/vprograma1.php");
                             }
                         } else if ($Pac == "107") {
-                        	include("vista/v_parametro.php");
-                         	include("vista/vcambiarcontra.php");
+                        		include("vista/vcambiarcontra.php");
                         } else if ($Pac == "108") {
                            include("vista/vCompetencia.php");
                         } else if ($Pac == "109") {
@@ -51,7 +50,11 @@
                         } else if ($Pac == "116") {
                           include("vista/vparametro.php"); 
                         } else if ($Pac == "117") {
+<<<<<<< HEAD
+                          include("vista/v_parametro.php");
+=======
                           include("vista/vjornada.php");
+>>>>>>> 0d6f3741682c307d981cca6ff54351d1afb7fb85
                         } else if ($Pac == "118") {
                            include("vista/vlistarjor.php");
 			} else if ($Pac == "119") {
