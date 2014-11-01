@@ -26,8 +26,7 @@
                               include("vista/vprograma1.php");
                             }
                         } else if ($Pac == "107") {
-                        	include("vista/v_parametro.php");
-                         	include("vista/vcambiarcontra.php");
+                        		include("vista/vcambiarcontra.php");
                         } else if ($Pac == "108") {
                            include("vista/vCompetencia.php");
                         } else if ($Pac == "109") {
@@ -47,7 +46,7 @@
                         } else if ($Pac == "116") {
                           include("vista/vjornada.php");
                         } else if ($Pac == "117") {
-                          include("vista/vparametro.php");
+                          include("vista/v_parametro.php");
                         } else if ($Pac == "118") {
                            include("vista/vlistarjor.php");
 						            }	else if ($Pac == "119") {
