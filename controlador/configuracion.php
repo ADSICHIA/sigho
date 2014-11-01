@@ -12,7 +12,7 @@
 
 
 
-        $usu_db = "root";
+    $usu_db = "root";
 	$pass_db = "";
 	$serv_db = "localhost";
 	$db = "db_sigho";
