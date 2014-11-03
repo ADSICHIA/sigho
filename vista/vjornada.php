@@ -1,14 +1,17 @@
 <?php
 	include_once("controlador/cjornada.php");
 ?>
-
+<div style="width: 1000px; margin:0 auto; background-color: white;">
 <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
+            <div class="col-md-4 col-md-offset-4" style="margin-left: 40px; float: left;" >
+                <div class="login-panel panel panel-default" >
                     <div class="panel-heading">
                         
                         <h3 class="panel-title"><?php if($pr){ ?>EDITAR JORNADA <?php }else{ ?>JORNADAS<?php } ?><?php echo " "; ?><span class="glyphicon glyphicon-time"></span></h3>
                     </div>
+                  
+                    
+                  
                     
                     <div class="panel-body">
 <form name="form1" action="" method="post" id="frm_sedes" >
@@ -60,6 +63,66 @@
     </fieldset>
 </form>
 </div>
+                        
+                
 </div>
 </div>
+</div>
+
+
+
+<fieldset>
+ <div class="panel-body" style=" float: right; ">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="table-responsive">
+                                        <!--<table>
+                                            <tr><td>  <a href="home.php?pac=117" class="btn btn-success" >Crear nueva jornada</a></td></tr>
+                                        </table>-->
+                                        <br>
+                                        <table class="table table-bordered table-hover table-striped" style="width: 500px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Jornada</th>
+                                                    <th>Inicio</th>
+                                                    <th>Fin</th>
+                                                    <th>Editar</th>
+                                                    <th>Activo</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php for($i=0;$i<count($jornadas);$i++){ ?>
+                                                <tr>
+                                                    <td><?php echo $jornadas[$i]['jornada'] ?></td>
+                                                    <td><?php echo $jornadas[$i]['hora_inicio'] ?></td>
+                                                    <td><?php echo $jornadas[$i]['hora_fin'] ?></td>
+                                                    
+                                                    
+                                                    <td><a href="home.php?pac=116&pr=<?php echo $jornadas[$i]['idjornada'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                                    
+                                                    <td><a href="home.php?pac=116&codigo=<?php echo $jornadas[$i]['idjornada']; ?>&activo=<?php echo $jornadas[$i]['activo']; ?>">
+                                                            
+                                                    <?php if($jornadas[$i]['activo']==1){ ?><span class="glyphicon glyphicon-ok"></span><?php } ?>
+                                                    <?php if($jornadas[$i]['activo']==2){ ?><span class="glyphicon glyphicon-remove-sign"></span><?php } ?></a></td>
+                                                   
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    
+
+    </fieldset>
 </div>
