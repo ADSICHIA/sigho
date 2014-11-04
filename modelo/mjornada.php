@@ -55,7 +55,14 @@ class mjornada{
     }
     
     
-    
+    function selhorario($actua){
+        $sql = "SELECT jornadaid from horario where jornadaid = '".$actua."';";
+        $conexionBD = new conexion();
+        $conexionBD->conectarBD();
+	$data = $conexionBD->ejeCon($sql,0);
+	return $data;
+        
+    }
     
     
     

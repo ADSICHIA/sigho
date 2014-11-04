@@ -11,7 +11,7 @@
                                                 
                         } else if ($Pac == "101") {
                             include("vista/vlistagrupo.php");
-					              } else if ($Pac == "102") {
+                        } else if ($Pac == "102") {
                             include("vista/vvalor1.php");
                         } else if ($Pac == "103") {
                             include("vista/vcrearhorario.php");
@@ -48,14 +48,15 @@
                         } else if ($Pac == "115") {
                           include("vista/vambiente.php");
                         } else if ($Pac == "116") {
-                           include("vista/vparametro.php"); 
+                            include("vista/vjornada.php");
+                          // include("vista/vparametro.php"); 
                         } else if ($Pac == "117") {
                           include("vista/v_parametro.php");
                           include("vista/vjornada.php");
                         } else if ($Pac == "118") {
                            include("vista/vlistarjor.php");
-                   			} else if ($Pac == "119") {
-                            include("vista/vjornada.php");
+                            } else if ($Pac == "119") {
+                           // include("vista/vjornada.php");
                           //include("vista/vparametro.php"); 
                         } else if ($Pac == "117") {                          
                           //include("vista/vlistarjor.php");
