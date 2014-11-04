@@ -48,25 +48,20 @@
                         } else if ($Pac == "115") {
                           include("vista/vambiente.php");
                         } else if ($Pac == "116") {
-<<<<<<< HEAD
-                          include("vista/vparametro.php"); 
+                           include("vista/vparametro.php"); 
                         } else if ($Pac == "117") {
                           include("vista/v_parametro.php");
                           include("vista/vjornada.php");
                         } else if ($Pac == "118") {
                            include("vista/vlistarjor.php");
                    			} else if ($Pac == "119") {
-=======
-                            
                             include("vista/vjornada.php");
-                            
                           //include("vista/vparametro.php"); 
                         } else if ($Pac == "117") {                          
                           //include("vista/vlistarjor.php");
                         } else if ($Pac == "118") {
                            include("vista/v_parametro.php");
-			} else if ($Pac == "119") {
->>>>>>> f8210c4a05537df3e1880a5a9761ffb418c80ac7
+                  			} else if ($Pac == "119") {
                           include("vista/vsede.php");
                         }else if ($Pac == "120") {
                           include("vista/vlistagrupo.php");
