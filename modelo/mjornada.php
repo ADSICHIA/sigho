@@ -18,7 +18,7 @@ class mjornada{
     }
     
     function seljornada(){
-		$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin from jornada;";
+		$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, activo from jornada;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
@@ -37,6 +37,35 @@ class mjornada{
         $sql= "update jornada set jornada='".$jornada."', hora_inicio='".$horaini."', hora_fin='".$horafin."', horas ='".$canti."' where idjornada ='".$actua."';";
         $this->cons($sql);
     }
+    
+    
+     function seljoracti($codigo){
+		$sql = "SELECT activo from jornada where idjornada = '".$codigo."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+    }
+    
+    
+    
+     function updactivo($codigo, $resuacti){
+        $sql= "update jornada set activo='".$resuacti."' where idjornada='".$codigo."';";
+        $this->cons($sql);
+    }
+    
+    
+    function selhorario($actua){
+        $sql = "SELECT jornadaid from horario where jornadaid = '".$actua."';";
+        $conexionBD = new conexion();
+        $conexionBD->conectarBD();
+	$data = $conexionBD->ejeCon($sql,0);
+	return $data;
+        
+    }
+    
+    
+    
 }
 
 

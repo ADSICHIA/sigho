@@ -7,11 +7,8 @@ include ("controlador/cPrograma.php");
 
 <form name="programa" action="" method="post">     
 <label for="idprograma">Identificador del Programa&nbsp;&nbsp;&nbsp;</label>     
-<input type="text" id="idprograma" class="form-control" name="idprograma" required="required" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')">
-<?php         
-if ($mensaje){ 
-    echo "<span id='resultado' style='color:red'><strong>" .$mensaje."</strong></span><br/>";         }
-?>     
+<input type="text" id="idprograma" class="form-control" onblur="fnValidarPrograma(this.value)" name="idprograma" required="required" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')">
+<div id="divmsg" style = "display:none"><span id='resultado' style='color:red'><strong><?php echo is_null($mensaje)?'':$mensaje;?></strong></span><br/></div>
 <br/><label for="programa">Descripci&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>     
 <input class="form-control" type="text" name="programa" id="programa" required="required" ><br/>
 <label for="version">Versi&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>
@@ -19,7 +16,7 @@ if ($mensaje){
 <label for="areaid">Area a la que pertenece el Programa</label>
 <select class="form-control" id="areaid" name="areaid" required="required">
      <option value="" selected="selected">Seleccione </option>
-<?php          for($i = 0; $i<count($area); $i++){  ?>     
+<?php for($i = 0; $i<count($area); $i++){  ?>     
 <option value="<?php echo $area[$i]['idarea']; ?>"> <?php echo $area[$i]['area']; ?></option>     
 <?php         }     ?>     
 </select><br/>     
@@ -68,3 +65,31 @@ for($i = 0; $i<count($tabla); $i++){
 </table>
 </div>
 </form>
+<script>
+    function fnValidarPrograma(num_ficha){
+        var postForm = { //Fetch form data
+            'ficha'  : num_ficha
+
+        };
+        $.ajax({
+        url: "controlador/ajaxcPrograma.php",
+        type: "post",
+        data: postForm,
+        success: function(response){
+            //alert("success");
+            $("#resultado").html(response);
+            var val=$.trim(response);
+            if(val!= ""){
+                $("#divmsg").css({'display':'block',});
+                $("#idprograma").focus();
+                $("#idprograma").select();
+            }else
+                $("#divmsg").css({'display':'none',});
+        },
+        error:function(){
+            alert("failure");
+            $("#result").html('There is error while submit');
+        }
+    });
+    }
+</script>
