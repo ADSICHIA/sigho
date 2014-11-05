@@ -1,5 +1,5 @@
 <?php
-include ("modelo/m_Ambiente.php");
+include ("../modelo/mambiente.php");
 	$ins = new modeloAmbiente();
 
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
@@ -34,5 +34,5 @@ include ("modelo/m_Ambiente.php");
 		$ins->update($intIdAmbiente,$strAmbiente,$boolEspecializado,$strObservacion,$intIdSede);
 	}
 
-	$tabla = $ins->select();
+	//$tabla = $ins->select();
 ?>

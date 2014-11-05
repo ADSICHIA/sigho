@@ -1,5 +1,5 @@
 <?php
-
+include("../controlador/conexion.php");
 class modeloAmbiente{
 	function modeloAmbiente(){
 	}
@@ -33,25 +33,17 @@ class modeloAmbiente{
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-
-	function select(){
-		$sql = "SELECT  p.idprograma, p.programa, p.version, p.areaid, a.area FROM programa AS p LEFT JOIN area AS a ON a.idarea = p.areaid;";
-		$conexionBD = new conexion();
-		$conexionBD->conectarBD();
-		$data = $conexionBD->ejeCon($sql,0);
-		return $data;
-	}
 	
-	function validaPrograma($idprograma){
-		$valida = "SELECT idprograma from programa where idprograma = '".$idprograma."'";
+	function validaPrograma($intIdAmbiente){
+		$valida = "SELECT idambiente from ambiente where idambiente = '".$intIdAmbiente."'";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($valida, 0);
 		return $data;
 	}
 
-	function selEditar($idprograma){
-		$sql = "SELECT  idprograma, programa, version, areaid FROM programa WHERE idprograma = '".$idprograma."';";
+	function selEditar($intIdAmbiente){
+		$sql = "SELECT idambiente, ambiente, especializado, observacion, sedeid FROM ambiente WHERE idambiente = '".$intIdAmbiente."';";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
