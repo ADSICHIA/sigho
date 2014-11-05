@@ -44,11 +44,31 @@ location.href = "home.php";
 $jornadas = $ins->seljornada();
 
 if($pr){
-$jornafilt = $ins->seledit($pr);
+    
+    $horario = $ins->selhorario($pr);
+    
+    $disponi =$ins->seldisponi($pr);
+    
+    $ficha = $ins->selficha($pr);
+    
+   if($horario>=1||$disponi>=1||$ficha>=1){
+        
+        echo "<script>
+        alert('Ningun dato de la jornada se puede actualizar, debido a que hay informacion que depende la misma');
+        location.href = 'home.php?pac=116';
+        </script>";
+   }else{  
+    
+       $jornafilt = $ins->seledit($pr);
+
+
+   }
+
 }
 
 
 if($jornada && $horaini && $horafin && $canti && $actua){
+      
     
     ?>
     
@@ -75,14 +95,23 @@ $activo = isset($_GET['activo']) ? $_GET['activo']:NULL;
 if($codigo && $activo){
     
     /*$activo = 0;
-    
-    $resu = $ins->seljoracti($codigo);
-    
+    $resu = $ins->seljoracti($codigo);   
     $val= json_encode($resu);
-    
     echo $val;*/
     
+    $horarioa = $ins->selhorario($codigo);
     
+    $disponia =$ins->seldisponi($codigo);
+    
+    $fichaa = $ins->selficha($codigo);
+    
+   if($horarioa>=1||$disponia>=1||$fichaa>=1){
+        
+        echo "<script>
+        alert('La jornada no puede ser desactivada, debido a que hay informacion que depende la misma');
+        location.href = 'home.php?pac=116';
+        </script>";
+   }else{
     
     if($activo==1){
         
@@ -124,13 +153,13 @@ if($codigo && $activo){
     
     
     
+   }
     
     
     
-    
+
+
+
+
 }
-
-
-
-
 ?>

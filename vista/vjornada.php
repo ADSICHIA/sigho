@@ -3,11 +3,15 @@
 ?>
 
 <div class="row" >
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-4 col-md-offset-4" >
                 <div class="login-panel panel panel-default">
+                  
                     <div class="panel-heading">
                         
+                          
                         <h3 class="panel-title "><?php if($pr){ ?>EDITAR JORNADA <?php }else{ ?>JORNADAS<?php } ?><?php echo " "; ?><span class="glyphicon glyphicon-time"></span></h3>
+                           
+                        
                     </div>
                   
                     
@@ -32,7 +36,7 @@
 
         </div>
      
-        <div class="form-group">
+        
             <input class="form-control"  name="horaini" type="time" value="<?php if($pr){ echo $jornafilt[0]['hora_inicio']; } ?>" autofocus>
             <div class="form-group" >
                 <br>
@@ -44,7 +48,7 @@
             
          
               </div>
-        </div>
+        
 
          <div class="form-group" >
                 
@@ -80,8 +84,11 @@
                                             <tr><td>  <a href="home.php?pac=117" class="btn btn-success" >Crear nueva jornada</a></td></tr>
                                         </table>-->
                                         <br>
-                                        <table class="table table-bordered table-hover table-striped" style="width: 800px; left: 50%; position: absolute;">
+                                        
+                                        <table class="table table-bordered table-hover table-striped" style="width: 800px; left: 60%; position: absolute;">
+                                            
                                             <thead>
+                                                
                                                 <tr>
                                                     <th style="background-color: #428bca; color:white;">Jornada</th>
                                                     <th style="background-color: #428bca; color:white;">Inicio</th>
@@ -107,9 +114,12 @@
                                                     <?php if($jornadas[$i]['activo']==2){ ?><span class="glyphicon glyphicon-remove-sign"></span><?php } ?></a></td>
                                                    
                                                 </tr>
+                                                                                            
+
                                                 <?php } ?>
                                             </tbody>
                                         </table>
+                                        
                                     </div>
                                     <!-- /.table-responsive -->
                                 </div>
@@ -125,4 +135,3 @@
                     
 
     </fieldset>
-</div>

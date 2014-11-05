@@ -54,9 +54,9 @@ class mjornada{
         $this->cons($sql);
     }
     
-    
-    function selhorario($actua){
-        $sql = "SELECT jornadaid from horario where jornadaid = '".$actua."';";
+
+    function selhorario($pr){
+        $sql = "SELECT idhorario from horario where jornadaid = '".$pr."';";
         $conexionBD = new conexion();
         $conexionBD->conectarBD();
 	$data = $conexionBD->ejeCon($sql,0);
@@ -64,6 +64,28 @@ class mjornada{
         
     }
     
+    
+    function seldisponi($pr){
+        $sql = "SELECT iddisponiblidad from disponiblidad where jornadaid = '".$pr."';";
+        $conexionBD = new conexion();
+        $conexionBD->conectarBD();
+	$data = $conexionBD->ejeCon($sql,0);
+	return $data;
+        
+    }
+    
+    
+    
+    function selficha($pr){
+        $sql = "SELECT idficha from ficha where jornadaid = '".$pr."';";
+        $conexionBD = new conexion();
+        $conexionBD->conectarBD();
+	$data = $conexionBD->ejeCon($sql,0);
+	return $data;
+        
+    }
+    
+
     
     
 }
