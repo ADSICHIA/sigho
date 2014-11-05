@@ -1,5 +1,5 @@
 <?php
-include ("/controlador/cparametro.php");
+include ("controlador/cparametro.php");
 ?>
 <center>
 <form name="form1" action="" method="post" >

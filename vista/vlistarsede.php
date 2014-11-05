@@ -19,7 +19,7 @@
                                                     <th>Municipio</th>
                                                      <th>Estado</th>
                                                     <th>Editar</th>
-                                                    <th>Eliminar</th>
+                                                  <!--  <th>Eliminar</th> -->
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -31,7 +31,7 @@
                                                     <td><?php echo $sedes[$i]['municipioid'] ?></td>
                                                     <td><a href="home.php?pac=114&act=<?php echo $sedes[$i]['estado'] ?>&pr=<?php echo $sedes[$i]['idsede'] ?>"  onclick="return confirm('¿Desea cambiarle el estado de la sede?');"><span <?php if($sedes[$i]['estado']==1){?> class="glyphicon glyphicon-ok" <?php }else{ ?> class="glyphicon glyphicon-remove" <?php }?>></span></a></td>
                                                     <td><a href="home.php?pac=113&in=2&pr=<?php echo $sedes[$i]['idsede'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
-                                                    <td><a href="home.php?pac=114&del=<?php echo $sedes[$i]['idsede'] ?>" onclick="return confirm('¿Desea eliminar la sede?');"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                                   <!--<td><a href="home.php?pac=114&del=<?php echo $sedes[$i]['idsede'] ?>" onclick="return confirm('¿Desea eliminar la sede?');"><span class="glyphicon glyphicon-trash"></span></a></td> -->
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>

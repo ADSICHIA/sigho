@@ -159,6 +159,54 @@ ubicacion as ubi on ap.codubi=ubi.codubi
 		$sql = "INSERT INTO `grupo`(`grupo`, `director`, `ambienteid`) VALUES ('".$nombregr."','". $director."','". $ambiente."');";
 		$this->cons($sql);
 	}
-       
-} 
+      
+
+       //usuada
+        function selgrupo(){
+		 $sql = "SELECT gr.idgrupo,gr.grupo,gr.agendado,gr.vigente ,usu.nombres,usu.apellidos,am.ambiente FROM `grupo` as gr inner join usuario as usu on gr.director=usu.idusuario inner join ambiente as am on gr.ambienteid=am.idambiente order by gr.idgrupo desc";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+        //usada
+        function cambiar1($numero , $idgrupo){
+		$sql = "UPDATE grupo SET vigente='".$numero."'WHERE idgrupo ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+         //usada
+        function cambiar2($numero , $idgrupo){
+		$sql = "UPDATE grupo SET vigente='".$numero."'WHERE idgrupo ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+         //usuada
+        function  selgrupo1($idgrupo){
+		$sql = "SELECT * from grupo WHERE idgrupo='".$idgrupo."'; ";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+         //usada
+        function upgrupo($idgrupo,$nombregr ,$director , $ambiente){
+		$sql = "UPDATE grupo SET grupo='".$nombregr."',director='".$director."',ambienteid='".$ambiente."'   WHERE idgrupo ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+        //usada
+        function selhorario($idgrupo){
+		$sql = "SELECT * FROM `horario` WHERE grupoid ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+        //usada
+        function selficha($idgrupo){
+                $sql = "SELECT * FROM `ficha_grupo` WHERE grupoid ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+   
+        function  delgrupo($idgrupo){
+		$sql =  "DELETE FROM grupo WHERE idgrupo='".$idgrupo."';";
+		$this->cons($sql);
+	}
+     
+        } 
 ?>

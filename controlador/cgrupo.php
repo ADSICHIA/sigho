@@ -7,24 +7,26 @@
        
 	$del = isset($_GET["del"]) ? $_GET["del"]:NULL;
 	if ($del){
-             $existea=$ins->selalumno($del);
-             $countR = count($existea);
-             if ($countR >=1){
+            $existe1=$ins->selhorario($del);
+             $existe2=$ins->selficha($del);
+             $countR = count($existe1);
+             $countR1 = count($existe2);
+             if ($countR >=1 or $countR1 >=1 ){
                   ?>
             <script language="javascript">
-            alert ("Para poder eliminar esta ruta primero debe asignar a los alumnos que viajan en esta ruta a otra");
-            location.href='home.php?acceso=102';
+            alert ("El grupo no se puede eliminar porque tiene horarios o fichas asignadas");
+            location.href='home.php?pac=111';
             </script>
               <?php   
                  
                  
                  
              }else{
-                   $ins->delruta($del);         
+                   $ins->delgrupo($del);         
             ?>
             <script language="javascript">
-            alert ("Registro eliminado");
-           location.href='home.php?acceso=102';
+            alert ("Grupo eliminado");
+           location.href='home.php?pac=111';
             </script>
               <?php   
              }
@@ -35,10 +37,41 @@
 	
 	
 	}
+         $pr = isset($_GET["pr"]) ? $_GET["pr"]:NULL;
+        $act = isset($_GET["act"]) ? $_GET["act"]:NULL;
+        if ($act){
+             if ($act==2){
+                 $ins->cambiar1(0,$pr);
+                  ?>
+            <script language="javascript">
+          
+           location.href='home.php?pac=111';
+            </script>
+              <?php   
+                 
+                 
+                 
+             }else{
+                    $ins->cambiar2(1,$pr);
+                     ?>
+            <script language="javascript">
+          
+           location.href='home.php?pac=111';
+            </script>
+              <?php   
+                 
+                    
+                 
+             }
+            
+            
+            
+        }
+        
         
         //$pac=107;
         //$filtro=isset($_GET["filtro"]) ? $_GET["filtro"]:NULL;
-     $pr = isset($_GET["pr"]) ? $_GET["pr"]:NULL;
+     
         $idgrupo= isset($_POST["idgrupo"]) ? $_POST["idgrupo"]:NULL;
 	$nombregr = isset($_POST["nombre"]) ? $_POST["nombre"]:NULL;
 	$director = isset($_POST["director"]) ? $_POST["director"]:NULL;
@@ -57,21 +90,23 @@
 <?php
 		
 	}
-        if ($placa && $npuesto && $idconductor  && $idruta && $modelo && $idmarca && $actu ) {
+        if ( $idgrupo&&$nombregr && $director && $ambiente && $actu) {
            
-		$ins->upruta($placa,$npuesto,$idconductor ,$idruta ,$modelo,$idmarca);
+		$ins->upgrupo($idgrupo,$nombregr ,$director , $ambiente);
                 ?>
 		<script language="javascript">
-		 alert ("Ruta  actualizada ");
+		 alert ("Grupo Editado");
+                 location.href='home.php?pac=111';
                  
 	
 </script>
 <?php
         }
-
+         $datos1=$ins->selgrupo1($pr);
 	$seldirector=$ins->seldirector();
         
         $selambiente=$ins->selambiente();
+        $datos=$ins->selgrupo();
 	//$det = $ins->selper();
         //$datos =$ins->selruta();
         //$marca =$ins->selmarca();

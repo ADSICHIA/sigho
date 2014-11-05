@@ -1,77 +1,85 @@
 <?php
-include ("controlador/conexion.php");
+	//include ("controlador/conexion.php");
 
 
 class mparametro{
 	var $arr;
 	function mparametro(){}
 	
-	function inspar($nompar){
-		$sql = "INSERT INTO parametro (nompar) VALUES ('".$nompar."');";
+	function inspar($nompar, $edit)
+	{
+		$sql = "INSERT INTO parametro (parametro, editable) VALUES ('".$nompar."','".$edit."');";
 		$this->cons($sql);
 	}
-	
-	function insval($codval, $nomval, $codpar){
-		$sql = "INSERT INTO valor ( codval , nomval, codpar ) values ('".$codval."', '".$nomval."', '".$codpar."');";
+	function insval($nomval, $edit, $codpar)
+	{
+		$sql = "INSERT INTO valor ( valor , editable,  parametroid) values ('".$nomval."', '".$edit."', '".$codpar."');";
 		$this->cons($sql);
 	}
-	function delpar($codpar){
-		$sql = "DELETE FROM parametro WHERE codpar='".$codpar."';";
+	function delpar($codpar)
+	{
+		$sql = "DELETE FROM parametro WHERE idparametro='".$codpar."';";
 		$this->cons($sql);
 	}
-	
-	function delval($codval){
-		$sql = "DELETE FROM valor WHERE codval='".$codval."';";
+	function delval($codval)
+	{
+		$sql = "DELETE FROM valor WHERE idvalor='".$codval."';";
 		$this->cons($sql);
 	}
-	function updpar($codpar, $nompar){
-		$sql = "UPDATE parametro SET nompar='".$nompar."' WHERE codpar='".$codpar."';";
+	function updpar($codpar, $nompar, $edit)
+	{
+		$sql = "UPDATE parametro SET parametro='".$nompar."', editable='".$editable."' WHERE idparametro='".$codpar."';";
 		$this->cons($sql);
 	}
-	function cons($c){
+	function cons($c)
+	{
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$conexionBD->ejeCon($c,1);
 	}
-	
-	function selpar(){
-		$sql = "SELECT codpar, nompar FROM parametro;";
+	function selpar()
+	{
+		$sql = "SELECT idparametro, parametro, editable FROM parametro;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-		function selval(){
-		$sql = "SELECT valor.codval, valor.nomval, valor.codpar, parametro.nompar FROM valor, parametro;";
+	function selval(){
+		$sql = "SELECT valor.idvalor, valor.valor, valor.parametroid, parametro.parametro FROM valor, parametro;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-	function selpar1($codpar){
-		$sql = "SELECT codpar, nompar FROM parametro WHERE codpar='".$codpar."';";
+	function selpar1($codpar)
+	{
+		$sql = "SELECT idparametro, parametro, editable FROM parametro WHERE idparametro='".$codpar."';";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-		function selval2($codval){
-		$sql = "SELECT codval, nomval FROM valor WHERE codval='".$codval."';";
+	function selval2($codval)
+	{
+		$sql = "SELECT idvalor, valor, editable, parametroid FROM valor WHERE idvalor='".$codval."';";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-		function selval1(){
-		$sql = "SELECT valor.codval, valor.nomval, valor.codpar, parametro.nompar FROM valor, parametro WHERE valor.codpar= parametro.codpar;";
+	function selval1()
+	{
+		$sql = "SELECT valor.idvalor, valor.valor, valor.parametroid, parametro.parametro FROM valor, parametro WHERE valor.parametroid= parametro.idparametro;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
-		}
+	}
 		
-	function updval($codval, $nomval, $codpar){
-		$sql = "UPDATE valor SET codval='".$codval."' , nomval='".$nomval."' , codpar='".$codpar."' WHERE codval='".$codval."';";
+	function updval($codval, $nomval, $edit, $codpar)
+	{
+		$sql = "UPDATE valor SET valor='".$nomval."' , editable='".$edit."', parametroid='".$codpar."' WHERE idvalor='".$codval."';";
 		$this->cons($sql);
 	}
 }

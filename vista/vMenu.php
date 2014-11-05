@@ -17,7 +17,7 @@
                             foreach ($menus as $menu) {
                         ?>
                                 <li>
-                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <?php echo $menu["menu"];?><span class="fa arrow"></span></a>
+                                    <a href="<?php echo $menu["href"];?>"><i class="fa fa-bar-chart-o fa-fw"></i> <?php echo $menu["menu"];?><span class="fa arrow"></span></a>
                                     <!--<a class="active" href="<?php echo $menu["href"];?>"><i class="fa fa-dashboard fa-fw"></i><?php echo $menu["menu"];?><span class="fa arrow"></span></a>-->
                                     
                                     <?php 
@@ -38,7 +38,7 @@
                                         <!-- /.nav-second-level -->
                                         </ul>
                                     <?php
-                                        }
+                                      }
                                     ?>
                                     
 

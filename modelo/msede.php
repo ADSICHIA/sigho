@@ -33,6 +33,14 @@ class msede{
 		return $data;
 	}
 
+	function selambiente($del){
+		$sql = "SELECT * FROM ambiente WHERE sedeid='".$del."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
 	function selmuni(){
 		$sql = "SELECT * FROM municipio";
 		$conexionBD = new conexion();
