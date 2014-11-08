@@ -3,20 +3,15 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2014 a las 22:36:45
+-- Tiempo de generación: 01-11-2014 a las 17:49:26
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de datos: `db_sigho`
@@ -36,7 +31,14 @@ CREATE TABLE IF NOT EXISTS `ambiente` (
   `especializado` tinyint(1) NOT NULL DEFAULT '0',
   `observacion` varchar(255) DEFAULT NULL,
   `sedeid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `ambiente`
+--
+
+INSERT INTO `ambiente` (`idambiente`, `ambiente`, `especializado`, `observacion`, `sedeid`) VALUES
+(1, 'aula111', 1, 'ambiente de adsi', 2);
 
 -- --------------------------------------------------------
 
@@ -147,7 +149,18 @@ CREATE TABLE IF NOT EXISTS `grupo` (
   `vigente` tinyint(1) NOT NULL DEFAULT '1',
   `director` int(11) NOT NULL,
   `ambienteid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `grupo`
+--
+
+INSERT INTO `grupo` (`idgrupo`, `grupo`, `agendado`, `vigente`, `director`, `ambienteid`) VALUES
+(1, 'gdgdfgdfgfd', 0, 1, 1, 1),
+(2, 'gfdgfdgfdgfd', 0, 1, 1, 1),
+(3, 'pre-inicial', 0, 1, 1, 1),
+(4, 'segundo', 0, 1, 1, 1),
+(5, 'fdggfdfdg', 0, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -175,8 +188,18 @@ CREATE TABLE IF NOT EXISTS `jornada` (
   `jornada` varchar(45) NOT NULL,
   `hora_inicio` time NOT NULL,
   `hora_fin` time NOT NULL,
-  `horas` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `horas` int(11) NOT NULL,
+  `activo` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `jornada`
+--
+
+INSERT INTO `jornada` (`idjornada`, `jornada`, `hora_inicio`, `hora_fin`, `horas`, `activo`) VALUES
+(1, 'Manana', '07:00:00', '13:00:00', 6, 1),
+(4, 'Tarde', '13:00:00', '18:00:00', 5, 1),
+(5, 'Noche', '18:00:00', '22:00:00', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -191,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `href` varchar(255) NOT NULL DEFAULT '#',
   `icono` varchar(150) DEFAULT NULL,
   `visible` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Volcado de datos para la tabla `menu`
@@ -199,19 +222,24 @@ CREATE TABLE IF NOT EXISTS `menu` (
 
 INSERT INTO `menu` (`idmenu`, `menu`, `menuid`, `href`, `icono`, `visible`) VALUES
 (1, 'Inicio', NULL, 'home.php', NULL, 1),
-(2, 'Usuarios', NULL, 'home.php?pac=102', NULL, 1),
-(3, 'Roles', NULL, 'home.php?pac=103', NULL, 1),
-(4, 'Programas', NULL, 'home.php?pac=104', NULL, 1),
-(5, 'Listar', 2, 'home.php?pac=102', NULL, 1),
-(6, 'Crear', 2, 'vista/vFormRol.php', NULL, 1),
-(7, 'Parametros', NULL, '#', NULL, 1),
-(8, 'Crear', 7, 'home.php?pac=107', NULL, 1),
-(9, 'Listar', 7, 'home.php?pac=108', NULL, 1),
-(10, 'Grupos', NULL, '#', NULL, 1),
-(11, 'Crear', 10, 'home.php?pac=110', NULL, 1),
-(12, 'Sedes', NULL, '#', NULL, 1),
-(13, 'Crear', 12, 'home.php?pac=113', NULL, 1),
-(14, 'Listar', 12, 'home.php?pac=114', NULL, 1);
+(2, 'Usuario', NULL, 'home.php?pac=102', NULL, 1),
+(3, 'Horario', NULL, 'home.php?pac=103', NULL, 1),
+(4, 'Administrador', NULL, 'home.php?pac=104', NULL, 1),
+(5, 'Crear', 2, 'home.php?pac=102', NULL, 1),
+(6, 'Modificar', 2, 'home.php?pac=105', NULL, 1),
+(7, 'Cambiar Contraseña', 2, 'home.php?pac=107', NULL, 1),
+(8, 'Competencia', 2, 'home.php?pac=108', NULL, 1),
+(9, 'Disponibilidad', 2, 'home.php?pac=109', NULL, 1),
+(10, 'Crear', 3, 'home.php?pac=110', NULL, 1),
+(11, 'Ver', 3, 'home.php?pac=111', NULL, 1),
+(12, 'Area', 4, 'home.php?pac=104', NULL, 1),
+(13, 'Programa', 4, 'home.php?pac=106', NULL, 1),
+(14, 'Ficha', 4, 'home.php?pac=112', NULL, 1),
+(15, 'Grupo', 4, 'home.php?pac=113', NULL, 1),
+(16, 'Sede', 4, 'home.php?pac=119', NULL, 1),
+(17, 'Ambiente', 4, 'home.php?pac=115', NULL, 1),
+(18, 'Jornada', 4, 'home.php?pac=116', NULL, 1),
+(20, 'Parámetro - Valor', 4, 'home.php?pac=118', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -304,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `programa` (
 --
 
 INSERT INTO `programa` (`idprograma`, `programa`, `version`, `areaid`) VALUES
-(0, 'programa de prueba', 2, 1),
+(1, 'programa de prueba', 2, 1),
 (12345, 'programa 1', 0, 1),
 (520606, 'adsi', 1, 1),
 (987654, 'programa de prueba', 1, 1),
@@ -325,15 +353,15 @@ CREATE TABLE IF NOT EXISTS `sede` (
   `telefono` varchar(45) DEFAULT NULL,
   `municipioid` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `sede`
 --
 
 INSERT INTO `sede` (`idsede`, `sede`, `direccion`, `telefono`, `municipioid`, `estado`) VALUES
-(1, 'cd b', 'calle 32', '123546', 1, 0),
-(2, 'sede c', 'calle 45', '231455654', 1, 0);
+(2, 'sede b', 'calle 46 n 55 - 55', '123', 1, 1),
+(3, 'sede a', 'calle 45 n 12-45', '321456', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -521,7 +549,7 @@ ALTER TABLE `valor`
 -- AUTO_INCREMENT de la tabla `ambiente`
 --
 ALTER TABLE `ambiente`
-MODIFY `idambiente` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idambiente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `area`
 --
@@ -551,7 +579,7 @@ MODIFY `idficha_grupo` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
@@ -561,12 +589,12 @@ MODIFY `idhorario` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `jornada`
 --
 ALTER TABLE `jornada`
-MODIFY `idjornada` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idjornada` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `municipio`
 --
@@ -591,7 +619,7 @@ MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `sede`
 --
 ALTER TABLE `sede`
-MODIFY `idsede` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `idsede` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
@@ -703,8 +731,5 @@ ADD CONSTRAINT `fk_valor_tipo_documento` FOREIGN KEY (`tipo_documento`) REFERENC
 --
 ALTER TABLE `valor`
 ADD CONSTRAINT `fk_parametro_valor` FOREIGN KEY (`parametroid`) REFERENCES `parametro` (`idparametro`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

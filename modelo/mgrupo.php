@@ -179,5 +179,34 @@ ubicacion as ubi on ap.codubi=ubi.codubi
 		$sql = "UPDATE grupo SET vigente='".$numero."'WHERE idgrupo ='".$idgrupo."';";
 		$this->cons($sql);
 	}
+         //usuada
+        function  selgrupo1($idgrupo){
+		$sql = "SELECT * from grupo WHERE idgrupo='".$idgrupo."'; ";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+         //usada
+        function upgrupo($idgrupo,$nombregr ,$director , $ambiente){
+		$sql = "UPDATE grupo SET grupo='".$nombregr."',director='".$director."',ambienteid='".$ambiente."'   WHERE idgrupo ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+        //usada
+        function selhorario($idgrupo){
+		$sql = "SELECT * FROM `horario` WHERE grupoid ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+        //usada
+        function selficha($idgrupo){
+                $sql = "SELECT * FROM `ficha_grupo` WHERE grupoid ='".$idgrupo."';";
+		$this->cons($sql);
+	}
+   
+        function  delgrupo($idgrupo){
+		$sql =  "DELETE FROM grupo WHERE idgrupo='".$idgrupo."';";
+		$this->cons($sql);
+	}
+     
         } 
 ?>

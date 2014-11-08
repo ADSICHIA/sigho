@@ -31,8 +31,8 @@
                                                     <td><?php echo $datos[$i]['nombres'] ?> <?php echo $datos[$i]['apellidos'] ?></td>
                                                      <td><?php echo $datos[$i]['ambiente'] ?></td>
                                                 
-                                                    <td><a href="home.php?pac=113&in=2&pr=<?php echo $sedes[$i]['idsede'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
-                                                    <td><a href="home.php?pac=111&del=<?php echo $datos[$i]['idgrupo'] ?>" onclick="return confirm('¿Desea eliminar la sede?');"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                                    <td><a href="home.php?pac=110&pr=<?php echo$datos[$i]['idgrupo'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                                    <td><a href="home.php?pac=111&del=<?php echo $datos[$i]['idgrupo'] ?>" onclick="return confirm('¿Desea eliminar el grupo?');"><span class="glyphicon glyphicon-trash"></span></a></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>
