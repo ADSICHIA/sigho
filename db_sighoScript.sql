@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2014 a las 17:49:26
+-- Tiempo de generación: 08-11-2014 a las 18:43:46
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -12,6 +12,12 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de datos: `db_sigho`
@@ -34,6 +40,11 @@ CREATE TABLE IF NOT EXISTS `ambiente` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
+-- Truncar tablas antes de insertar `ambiente`
+--
+
+TRUNCATE TABLE `ambiente`;
+--
 -- Volcado de datos para la tabla `ambiente`
 --
 
@@ -52,6 +63,11 @@ CREATE TABLE IF NOT EXISTS `area` (
   `usuarioid` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- Truncar tablas antes de insertar `area`
+--
+
+TRUNCATE TABLE `area`;
 --
 -- Volcado de datos para la tabla `area`
 --
@@ -73,6 +89,11 @@ CREATE TABLE IF NOT EXISTS `competencia` (
   `calificado` tinyint(1) DEFAULT '0' COMMENT 'Si un instructor esta apto puede formar el 100% del programa.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+--
+-- Truncar tablas antes de insertar `competencia`
+--
+
+TRUNCATE TABLE `competencia`;
 -- --------------------------------------------------------
 
 --
@@ -84,6 +105,11 @@ CREATE TABLE IF NOT EXISTS `departamento` (
   `departamento` varchar(45) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- Truncar tablas antes de insertar `departamento`
+--
+
+TRUNCATE TABLE `departamento`;
 --
 -- Volcado de datos para la tabla `departamento`
 --
@@ -105,7 +131,19 @@ CREATE TABLE IF NOT EXISTS `disponiblidad` (
   `dia` int(11) NOT NULL,
   `disponible` tinyint(1) NOT NULL DEFAULT '1',
   `grupoid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Truncar tablas antes de insertar `disponiblidad`
+--
+
+TRUNCATE TABLE `disponiblidad`;
+--
+-- Volcado de datos para la tabla `disponiblidad`
+--
+
+INSERT INTO `disponiblidad` (`iddisponiblidad`, `jornadaid`, `usuarioid`, `dia`, `disponible`, `grupoid`) VALUES
+(1, 1, 1, 2, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -123,6 +161,18 @@ CREATE TABLE IF NOT EXISTS `ficha` (
   `cant_aprendices` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Truncar tablas antes de insertar `ficha`
+--
+
+TRUNCATE TABLE `ficha`;
+--
+-- Volcado de datos para la tabla `ficha`
+--
+
+INSERT INTO `ficha` (`idficha`, `fecha_inicio`, `fecha_fin`, `oferta`, `programaid`, `jornadaid`, `cant_aprendices`) VALUES
+(546000, '2014-11-02', '2015-11-02', 2, 12345, 1, 30);
+
 -- --------------------------------------------------------
 
 --
@@ -136,6 +186,11 @@ CREATE TABLE IF NOT EXISTS `ficha_grupo` (
   `cant_aprendices` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+--
+-- Truncar tablas antes de insertar `ficha_grupo`
+--
+
+TRUNCATE TABLE `ficha_grupo`;
 -- --------------------------------------------------------
 
 --
@@ -151,6 +206,11 @@ CREATE TABLE IF NOT EXISTS `grupo` (
   `ambienteid` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
+--
+-- Truncar tablas antes de insertar `grupo`
+--
+
+TRUNCATE TABLE `grupo`;
 --
 -- Volcado de datos para la tabla `grupo`
 --
@@ -175,7 +235,19 @@ CREATE TABLE IF NOT EXISTS `horario` (
   `jornadaid` int(11) NOT NULL,
   `usuarioid` int(11) DEFAULT NULL,
   `agendado` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Truncar tablas antes de insertar `horario`
+--
+
+TRUNCATE TABLE `horario`;
+--
+-- Volcado de datos para la tabla `horario`
+--
+
+INSERT INTO `horario` (`idhorario`, `grupoid`, `dia`, `jornadaid`, `usuarioid`, `agendado`) VALUES
+(1, 1, 2, 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -190,8 +262,13 @@ CREATE TABLE IF NOT EXISTS `jornada` (
   `hora_fin` time NOT NULL,
   `horas` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
+--
+-- Truncar tablas antes de insertar `jornada`
+--
+
+TRUNCATE TABLE `jornada`;
 --
 -- Volcado de datos para la tabla `jornada`
 --
@@ -199,7 +276,9 @@ CREATE TABLE IF NOT EXISTS `jornada` (
 INSERT INTO `jornada` (`idjornada`, `jornada`, `hora_inicio`, `hora_fin`, `horas`, `activo`) VALUES
 (1, 'Manana', '07:00:00', '13:00:00', 6, 1),
 (4, 'Tarde', '13:00:00', '18:00:00', 5, 1),
-(5, 'Noche', '18:00:00', '22:00:00', 4, 1);
+(5, 'Noche', '18:00:00', '22:00:00', 4, 1),
+(6, 'Madrugada', '22:00:00', '06:00:00', 8, 1),
+(7, 'Fin de semana', '07:00:00', '13:00:00', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -214,8 +293,13 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `href` varchar(255) NOT NULL DEFAULT '#',
   `icono` varchar(150) DEFAULT NULL,
   `visible` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
+--
+-- Truncar tablas antes de insertar `menu`
+--
+
+TRUNCATE TABLE `menu`;
 --
 -- Volcado de datos para la tabla `menu`
 --
@@ -239,7 +323,8 @@ INSERT INTO `menu` (`idmenu`, `menu`, `menuid`, `href`, `icono`, `visible`) VALU
 (16, 'Sede', 4, 'home.php?pac=119', NULL, 1),
 (17, 'Ambiente', 4, 'home.php?pac=115', NULL, 1),
 (18, 'Jornada', 4, 'home.php?pac=116', NULL, 1),
-(20, 'Parámetro - Valor', 4, 'home.php?pac=118', NULL, 1);
+(20, 'Parámetro - Valor', 4, 'home.php?pac=118', NULL, 1),
+(21, 'Competencias', NULL, 'home.php?pac=119', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -253,6 +338,11 @@ CREATE TABLE IF NOT EXISTS `municipio` (
   `departamentoid` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
+--
+-- Truncar tablas antes de insertar `municipio`
+--
+
+TRUNCATE TABLE `municipio`;
 --
 -- Volcado de datos para la tabla `municipio`
 --
@@ -272,6 +362,11 @@ CREATE TABLE IF NOT EXISTS `parametro` (
   `editable` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
+--
+-- Truncar tablas antes de insertar `parametro`
+--
+
+TRUNCATE TABLE `parametro`;
 --
 -- Volcado de datos para la tabla `parametro`
 --
@@ -294,6 +389,11 @@ CREATE TABLE IF NOT EXISTS `perfil` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
+-- Truncar tablas antes de insertar `perfil`
+--
+
+TRUNCATE TABLE `perfil`;
+--
 -- Volcado de datos para la tabla `perfil`
 --
 
@@ -314,6 +414,11 @@ CREATE TABLE IF NOT EXISTS `permiso` (
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+--
+-- Truncar tablas antes de insertar `permiso`
+--
+
+TRUNCATE TABLE `permiso`;
 -- --------------------------------------------------------
 
 --
@@ -327,6 +432,11 @@ CREATE TABLE IF NOT EXISTS `programa` (
   `areaid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Truncar tablas antes de insertar `programa`
+--
+
+TRUNCATE TABLE `programa`;
 --
 -- Volcado de datos para la tabla `programa`
 --
@@ -355,6 +465,11 @@ CREATE TABLE IF NOT EXISTS `sede` (
   `estado` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
+--
+-- Truncar tablas antes de insertar `sede`
+--
+
+TRUNCATE TABLE `sede`;
 --
 -- Volcado de datos para la tabla `sede`
 --
@@ -392,6 +507,11 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
+-- Truncar tablas antes de insertar `usuario`
+--
+
+TRUNCATE TABLE `usuario`;
+--
 -- Volcado de datos para la tabla `usuario`
 --
 
@@ -411,6 +531,11 @@ CREATE TABLE IF NOT EXISTS `valor` (
   `parametroid` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
+--
+-- Truncar tablas antes de insertar `valor`
+--
+
+TRUNCATE TABLE `valor`;
 --
 -- Volcado de datos para la tabla `valor`
 --
@@ -569,7 +694,7 @@ MODIFY `iddepartamento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `disponiblidad`
 --
 ALTER TABLE `disponiblidad`
-MODIFY `iddisponiblidad` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `iddisponiblidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `ficha_grupo`
 --
@@ -584,17 +709,17 @@ MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-MODIFY `idhorario` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idhorario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `jornada`
 --
 ALTER TABLE `jornada`
-MODIFY `idjornada` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `idjornada` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `municipio`
 --
@@ -733,3 +858,7 @@ ALTER TABLE `valor`
 ADD CONSTRAINT `fk_parametro_valor` FOREIGN KEY (`parametroid`) REFERENCES `parametro` (`idparametro`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
