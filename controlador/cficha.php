@@ -1,14 +1,18 @@
 <?php
 include ("modelo/mficha.php");
+include ("modelo/mpagina.php");	
 	$ins = new mficha();
 	
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
     if ($delete){
-      $ins->delete($delete);
+    	$validaGrupo = $ins -> validaFichaGrupo($delete);
+    	if (!is_null($validaGrupo) || count($validaGrupo) != 0){
+    		echo "<script>alert('No es posible eliminar la ficha ya que tiene un grupo relacionado'); window.location='home.php?pac=112';</script>";
+    	}else
+    		$ins->delete($delete);
     }
 
-    $mensaje="";
-    $mensajeF="";
+    $filtro=isset($_GET["filtro"]) ? $_GET["filtro"]:NULL;
     $pac = isset ($_GET["pac"]) ? $_GET["pac"]:NULL;
     $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 	$idficha = isset ($_POST["idficha"]) ? $_POST["idficha"]:NULL;
@@ -28,27 +32,20 @@ include ("modelo/mficha.php");
 	
 
 	if ($idficha && $actu){
-		if ($fecha_inicio >= $fecha_fin){
-			$mensajeF = "La Fecha de Inicio no puede ser menor a la Fecha de Fin"; 
-		}else{
-			$ins->update($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
-		}
+		$ins->update($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
 	}
 	
 	if ($idficha && $fecha_inicio && $fecha_fin && $oferta && !$actu){
-		if ($fecha_inicio >= $fecha_fin){
-			$mensajeF = "La Fecha de Inicio no puede ser menor a la Fecha de Fin"; 
-		}else{
-			$resultado = $ins->validaFicha($idficha);
-				if ($resultado){
-					$mensaje = "La Ficha que intenta crear ya existe";
-				}else{
-			 		$ins->insert($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
-				}
-		}
-	   
-		
+ 		$ins->insert($idficha ,  $fecha_inicio ,  $fecha_fin , $oferta ,  $programaid ,  $jornadaid , $cant_aprendices);
 	}
+	   
+
+	//Paginar
+	$bo = "";
+	$nreg = 10;//numero de registros a mostrar
+	$pag = new mpagina($nreg);
+	$conp ="SELECT count(idficha)as Npe FROM ficha";  
+	if($filtro) $conp.= " WHERE ficha.idficha LIKE '%".$filtro."%'";
 
 	$tabla = $ins->select();
 

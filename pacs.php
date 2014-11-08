@@ -16,7 +16,11 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 } else if ($Pac == "103") {
                     include("vista/vcrearhorario.php");
                 } else if ($Pac == "104") {
-                    include("vista/varea.php");
+                    if (is_null($Up)) {
+                        include("vista/varea.php");
+                    } else {
+                        include("vista/varea1.php");
+                    }
                 } else if ($Pac == "105") {
                     include("vista/vFormRol.php");
                 } else if ($Pac == "106") {

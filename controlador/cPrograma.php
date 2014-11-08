@@ -1,16 +1,26 @@
 <?php
 include ("modelo/mPrograma.php");
+include ("modelo/mpagina.php");	
+	
 	$ins = new mPrograma();
 
 
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
+
     if ($delete){
-      $ins->delete($delete);
+    	$validaFicha = $ins->validaFicha($delete);
+    	$validaCompetencia = $ins->validaCompetencia($delete);
+    	if ($validaCompetencia[0]['resultado'] != 0 || $validaFicha[0]['resultado'] != 0){
+    		echo "<script>alert('No es posible eliminar el programa ya que tiene fichas o competencias relacionadas'); window.location='home.php?pac=106';</script>";
+    	}else{
+      		$ins->delete($delete);
+      	}
     }
 
 	$mensaje="";
 
     $pac = 106;
+    $filtro=isset($_GET["filtro"]) ? $_GET["filtro"]:NULL;
     $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 	$idprograma = isset ($_POST["idprograma"]) ? $_POST["idprograma"]:NULL;
 	$programa = isset($_POST["programa"]) ? $_POST["programa"]:NULL;
@@ -34,6 +44,13 @@ include ("modelo/mPrograma.php");
 			$ins->insert($idprograma,$programa,$version,$areaid);
 		}
 	}
+
+	//Paginar
+	$bo = "";
+	$nreg = 10;//numero de registros a mostrar
+	$pag = new mpagina($nreg);
+	$conp ="SELECT count(idprograma)as Npe FROM programa";  
+	if($filtro) $conp.= " WHERE programa.idprograma LIKE '%".$filtro."%'";
 
 	$tabla = $ins->select();
 ?>
