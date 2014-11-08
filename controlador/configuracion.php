@@ -28,6 +28,7 @@
 	$pass_db = "";
 	$serv_db = "localhost";
 	$db = "Sigho";*/
+	
 	/*
 	$usu_db = "adsi";
 	$pass_db = "123456";
