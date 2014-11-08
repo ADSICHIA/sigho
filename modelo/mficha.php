@@ -76,4 +76,24 @@ class mFicha{
 		return $data;
 	}
 
+	function selFicha($filtro,$rvalini,$rvalfin){
+		$sql = "SELECT ficha.*, jornada.jornada as jornada, valor.valor as oferta, programa.programa as programa FROM ficha Left join jornada on ficha.jornadaid = jornada.idjornada";
+		$sql .= " Left join valor on ficha.oferta = valor.idvalor left join programa on programa.idprograma = ficha.programaid";
+		if($filtro)
+				$sql.= " WHERE idficha LIKE '%".$filtro."%'";
+		$sql.= " ORDER BY idficha LIMIT ".$rvalini.", ".$rvalfin;
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
+	function validaFichaGrupo($idficha){
+		$sql = "SELECT  fichaid FROM ficha_grupo WHERE fichaid = '".$idficha."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
 }
