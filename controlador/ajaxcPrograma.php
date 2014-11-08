@@ -3,22 +3,24 @@ include_once("conexion.php");
 $datos=$_POST["datos"];
 $funcion = $_POST['funcion'];
 
-if ($funcion = "programa"){
+if ($funcion == "programa"){
 	$validar=validaPrograma($datos);
 	if(!is_null($validar) && count($validar)!=0)
 		echo "El programa con n&uacute;mero ".$datos." ya existe";
 		//echo json_encode($result);
 }
-if ($funcion = "ficha"){
+
+if ($funcion == "ficha"){
 	$validar=validaFicha($datos);
 	if(!is_null($validar) && count($validar)!=0)
 		echo "La ficha con n&uacute;mero ".$datos." ya existe";
 }
-if ($funcion = "area"){
+if ($funcion == "area"){
 	$validar=validaArea($datos);
 	if(!is_null($validar) && count($validar)!=0)
 		echo "El &Aacute;rea ".$datos." ya existe";
 }
+
 
 function validaPrograma($idprograma){
 	$valida = "SELECT idprograma from programa where idprograma = '".$idprograma."'";

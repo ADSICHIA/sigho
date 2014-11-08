@@ -1,5 +1,7 @@
 <?php
 include ("modelo/mPrograma.php");
+include ("modelo/mpagina.php");	
+	
 	$ins = new mPrograma();
 
 
@@ -18,6 +20,7 @@ include ("modelo/mPrograma.php");
 	$mensaje="";
 
     $pac = 106;
+    $filtro=isset($_GET["filtro"]) ? $_GET["filtro"]:NULL;
     $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 	$idprograma = isset ($_POST["idprograma"]) ? $_POST["idprograma"]:NULL;
 	$programa = isset($_POST["programa"]) ? $_POST["programa"]:NULL;
@@ -41,6 +44,13 @@ include ("modelo/mPrograma.php");
 			$ins->insert($idprograma,$programa,$version,$areaid);
 		}
 	}
+
+	//Paginar
+	$bo = "";
+	$nreg = 10;//numero de registros a mostrar
+	$pag = new mpagina($nreg);
+	$conp ="SELECT count(idprograma)as Npe FROM programa";  
+	if($filtro) $conp.= " WHERE programa.idprograma LIKE '%".$filtro."%'";
 
 	$tabla = $ins->select();
 ?>

@@ -74,17 +74,15 @@ class mPrograma{
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-	/*
-	function InsertaTipo($pago){
-		$sql = "INSERT INTO valor (descripcion, idparametro) VALUES ('".$pago."', 1);";
-		$this->cons($sql);
-	}
-	function selTipo (){
-		$sql = "SELECT idValor, descripcion FROM valor where idParametro = 1;";
+
+	function selpro2($filtro,$rvalini,$rvalfin){
+		$sql = "SELECT idprograma, programa, version, areaid FROM programa";
+		if($filtro)
+				$sql.= " WHERE idprograma LIKE '%".$filtro."%'";
+		$sql.= " ORDER BY idprograma LIMIT ".$rvalini.", ".$rvalfin;
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
-	*/
 }

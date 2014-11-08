@@ -65,4 +65,15 @@ class marea{
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
+
+	function selArea2($filtro,$rvalini,$rvalfin){
+		$sql = "SELECT a.idarea, a.area, a.usuarioid, u.nombres, u.apellidos FROM area as a inner join usuario as u on a.usuarioid = u.idusuario";
+		if($filtro)
+				$sql.= " WHERE a.area LIKE '%".$filtro."%'";
+		$sql.= " ORDER BY a.idarea LIMIT ".$rvalini.", ".$rvalfin;
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
 }
