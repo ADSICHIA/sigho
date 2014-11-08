@@ -11,8 +11,8 @@ class marea{
 		$this->cons($sql);
 	}
 	
-	function update($area , $usuarioid){
-		$sql = "UPDATE area SET area = '".$area."', usuarioid = '".$usuarioid."';";
+	function update($idarea, $area , $usuarioid){
+		$sql = "UPDATE area SET area = '".$area."', usuarioid = '".$usuarioid."' where idarea = '".$idarea."';";
 		$this->cons($sql);
 	}
 	
@@ -27,6 +27,14 @@ class marea{
 		$conexionBD->ejeCon($c,1);
 	}
 
+	function selEditar($idarea){
+		$sql = "SELECT  idarea, area, usuarioid FROM area WHERE idarea = '".$idarea."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
 	function selArea(){
 		$sql = "SELECT a.idarea, a.area, a.usuarioid, u.nombres, u.apellidos FROM area as a inner join usuario as u on a.usuarioid = u.idusuario;";
 		$conexionBD = new conexion();
@@ -36,6 +44,14 @@ class marea{
 	}
 	function validaArea($area){
 		$sql = "SELECT area FROM area WHERE area = '".$area."'";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
+	function validaPrograma($areaid){
+		$sql = "SELECT idprograma FROM programa WHERE areaid = '".$areaid."'";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);

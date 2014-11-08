@@ -58,6 +58,22 @@ class mPrograma{
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
+
+	function validaFicha($idprograma){
+		$sql = "SELECT count(programaid) as resultado from ficha where programaid = '".$idprograma."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
+	function validaCompetencia($idprograma){
+		$sql = "SELECT count(programaid) as resultado from competencia where programaid = '".$idprograma."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
 	/*
 	function InsertaTipo($pago){
 		$sql = "INSERT INTO valor (descripcion, idparametro) VALUES ('".$pago."', 1);";

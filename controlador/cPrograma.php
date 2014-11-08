@@ -4,8 +4,15 @@ include ("modelo/mPrograma.php");
 
 
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
+
     if ($delete){
-      $ins->delete($delete);
+    	$validaFicha = $ins->validaFicha($delete);
+    	$validaCompetencia = $ins->validaCompetencia($delete);
+    	if ($validaCompetencia[0]['resultado'] != 0 || $validaFicha[0]['resultado'] != 0){
+    		echo "<script>alert('No es posible eliminar el programa ya que tiene fichas o competencias relacionadas'); window.location='home.php?pac=106';</script>";
+    	}else{
+      		$ins->delete($delete);
+      	}
     }
 
 	$mensaje="";

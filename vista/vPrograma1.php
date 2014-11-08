@@ -31,7 +31,7 @@ include ("controlador/cPrograma.php");
     </select><br/>
     <input type="submit" value="Guardar" class="btn btn-default">
     <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <input type="button" value="Cancelar" class="btn btn-default">
+    <a href="home.php?pac=106"><input type="button" value="Cancelar" class="btn btn-default"></a>
 
     
 </form>
@@ -47,7 +47,7 @@ include ("controlador/cPrograma.php");
 <th>Descripci&oacute;n</th>
 <th>Versi&oacute;n</th>
 <th>Area</th>
-<th align="center">Operaci&oacute;n</th>
+<th align="center">Acciones</th>
 </tr>
 </thead>
 <tbody>
@@ -61,7 +61,8 @@ for($i = 0; $i<count($tabla); $i++){
     <td><?php echo $tabla[$i]['version']?></td>
     <td><?php echo $tabla[$i]['area']?></td>
     <td align = "center"><a href = "home.php?pr=<?php echo $tabla[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>&up=11"><input type="button" name="del" value="Editar"/></a>
-    <a href = "home.php?del=<?php echo $tabla[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>"><input type="submit" name="eliminar" value="Eliminar"/></a></td>
+    <a href = "home.php?del=<?php echo $tabla[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>"><button value="<?php echo $tabla[$i]['idprograma'] ?>" name="del">Eliminar</button></a></td>
+
 </tr>
     <?php
         }

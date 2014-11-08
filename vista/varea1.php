@@ -5,19 +5,23 @@ include ("controlador/carea.php");
 <div>
 <br/>
 <br/>
-<h3>INGRESAR &Aacute;REA</h3>
+<h3>EDITAR &Aacute;REA</h3>
 
-<form name="area" action="" method="post">
+<form name="area" action="home.php?pac=104" method="post">
 	<label for= "area">&Aacute;rea &nbsp;&nbsp;&nbsp;</label>
-    <input type="text" id="area" class="form-control" name="area" required="required" onblur="fnValidarPrograma(this.value)">
+    <input type="text" id="area" class="form-control" name="area" required="required" value = "<?php echo $editar[0]['area']; ?>" onblur="fnValidarPrograma(this.value)">
     <div id="divmsg" style = "display:none"><span id='resultado' style='color:red'><strong><?php echo is_null($mensaje)?'':$mensaje;?></strong></span><br/></div>
+    <input type="hidden" id="idarea" name="idarea" value="<?php echo $editar[0]['idarea']; ?>"/>
+    <input type="hidden" id="actu" name="actu" value="actu"/>
     <br/><label for="usuarioid">Usuario a Cargo&nbsp;&nbsp;&nbsp;</label>
      <select class="form-control" id="usuarioid" name="usuarioid" required="required">
     <option value="0" selected="selected"> </option>
     <?php 
         for($i = 0; $i<count($usuario); $i++){
     ?>
-    <option value="<?php echo $usuario[$i]['idusuario']; ?>"> <?php echo $usuario[$i]['nombres'];?>&nbsp;<?php echo $usuario[$i]['apellidos'];?> </option>
+    <option value="<?php echo $area[$i]['idarea']; ?>" <?php if($editar[0]['areaid']==$area[$i]['idarea']) echo 'selected'; ?>> <?php echo $area[$i]['area']; ?> </option>
+    <option value="<?php echo $usuario[$i]['idusuario']; ?>"<?php if($editar[0]['usuarioid']==$usuario[$i]['idusuario']
+    ) echo 'selected'; ?>> <?php echo $usuario[$i]['nombres'];?>&nbsp;<?php echo $usuario[$i]['apellidos'];?> </option>
     <?php
         }
     ?>
@@ -25,7 +29,7 @@ include ("controlador/carea.php");
  
     <input type="submit" value="Guardar" class="btn btn-default">
     <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <input type="button" value="Cancelar" class="btn btn-default">
+    <a href="home.php?pac=104"><input type="button" value="Cancelar" class="btn btn-default"></a>
 
     
 </form>
@@ -44,7 +48,7 @@ include ("controlador/carea.php");
 </tr>
 </thead>
 <tbody>
-<input name="pac" type="hidden" id="pac" value="104"/>  
+<input name="pac" type="hidden" id="pac" value="104"/>
 <?php 
 for($i = 0; $i<count($area); $i++){
  ?>
@@ -65,31 +69,3 @@ for($i = 0; $i<count($area); $i++){
 </table>
 </form>
 </div>
-<script>
-    function fnValidarPrograma(area){
-        var postForm = { //Fetch form data
-            'datos'  : area,
-            'funcion' : 'area'
-        };
-        $.ajax({
-        url: "controlador/ajaxcPrograma.php",
-        type: "post",
-        data: postForm,
-        success: function(response){
-            //alert("success");
-            $("#resultado").html(response);
-            var val=$.trim(response);
-            if(val!= ""){
-                $("#divmsg").css({'display':'block',});
-                $("#area").focus();
-                $("#area").select();
-            }else
-                $("#divmsg").css({'display':'none',});
-        },
-        error:function(){
-            alert("failure");
-            $("#result").html('There is error while submit');
-        }
-    });
-    }
-</script>

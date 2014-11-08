@@ -38,7 +38,7 @@ include ("controlador/cPrograma.php");
 <th>Descripci&oacute;n</th>
 <th>Versi&oacute;n</th>
 <th>Area</th>
-<th>Editar</th>
+<th>Acciones</th>
 </tr>
 </thead>
 <tbody>
@@ -47,29 +47,27 @@ include ("controlador/cPrograma.php");
 for($i = 0; $i<count($tabla); $i++){
  ?>
  <tr>
-    <td align = "left"><input type="submit" name="del" value="<?php echo $tabla[$i]['idprograma'] ?>"/></td>
+    <td align = "left"><?php echo $tabla[$i]['idprograma'] ?></td>
     <td><?php echo $tabla[$i]['programa']?></td>
     <td><?php echo $tabla[$i]['version']?></td>
     <td><?php echo $tabla[$i]['area']?></td>
-    <td align = "center"><a href = "home.php?pr=<?php echo $tabla[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>&up=11"><img src="vista/imagenes/editar.png"/></a></td>
+    <td align = "center"><a href = "home.php?pr=<?php echo $tabla[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>&up=11"><input type="button" name="del" value="Editar"/></a>
+    <a href = "home.php?del=<?php echo $tabla[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>"><button value="<?php echo $tabla[$i]['idprograma'] ?>" name="del">Eliminar</button></a></td>
 </tr>
     <?php
         }
     ?>
 <tr>
- <tr>
-            <td colspan=8 class="style2">Para eliminar presione el n&uacute;mero del c&oacute;digo.</td>
-        </tr>
 </tr>
 </tbody>
 </table>
 </div>
 </form>
 <script>
-    function fnValidarPrograma(num_ficha){
+    function fnValidarPrograma(num_programa){
         var postForm = { //Fetch form data
-            'ficha'  : num_ficha
-
+            'datos'  : num_programa,
+            'funcion' : 'programa'
         };
         $.ajax({
         url: "controlador/ajaxcPrograma.php",
