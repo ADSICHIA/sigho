@@ -1,5 +1,5 @@
 <?php
-include ("../modelo/mambiente.php");
+include ("modelo/mambiente.php");
 	$ins = new modeloAmbiente();
 
 	$delete = isset($_GET["del"]) ? $_GET["del"]:NULL;
@@ -9,30 +9,28 @@ include ("../modelo/mambiente.php");
 
 	$mensaje="";
 
-    $pac = 115;
+    $pac = 116;
     $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
-	$intIdAmbiente = isset ($_POST["idambiente"]) ? $_POST["idambiente"]:NULL;
 	$strAmbiente = isset($_POST["ambiente"]) ? $_POST["ambiente"]:NULL;
-	$boolEspecializado = isset($_POST["especializado"]) ? $_POST["especializado"]:NULL;
+	$boolEspecializado = isset($_POST["especializado"]) ? 1 : 0;
 	$strObservacion = isset($_POST["observacion"]) ? $_POST["observacion"]:NULL;
 	$intIdSede = isset($_POST["sedeid"]) ? $_POST["sedeid"]:NULL;
 	$update = isset($_POST["update"]) ? $_POST["update"]:NULL;
-	$area =  $ins->selArea();
-	$editar = $ins->selEditar($pr);
+	$arraySede = $ins->selSede();
 	
-	if ($intIdAmbiente && $strAmbiente && $boolEspecializado && $strObservacion && $intIdSede && $update){
-		$resultado = $ins->validateAmbiente($intIdAmbiente);
-		if ($resultado){
+	if ($strAmbiente && $strObservacion && $intIdSede){
+		$resultado = $ins->validateAmbiente($strAmbiente);
+		if (!$resultado){
+			$ins->insert($strAmbiente,$boolEspecializado,$strObservacion,$intIdSede);
+		}else {
 			$mensaje = "El Ambiente ingresado ya existe";
-		}else{
-			$ins->insert($intIdAmbiente,$strAmbiente,$boolEspecializado,$strObservacion,$intIdSede);
 		}
-	}
+	} 
 
-
-	if ($intIdAmbiente && $strAmbiente && $boolEspecializado && $strObservacion && $intIdSede && $update){
+	if ($strAmbiente && $boolEspecializado && $strObservacion && $intIdSede && $update){
 		$ins->update($intIdAmbiente,$strAmbiente,$boolEspecializado,$strObservacion,$intIdSede);
 	}
 
-	//$tabla = $ins->select();
+	$tabla = $ins->select();
+
 ?>
