@@ -62,7 +62,7 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 } else if ($Pac == "118") {
                     include("vista/vlistarjor.php");
                 } else if ($Pac == "119") {
-                    // include("vista/vjornada.php");
+                    include("vista/vCompetencia.php");
                     //include("vista/vparametro.php"); 
                 } else if ($Pac == "117") {
                     //include("vista/vlistarjor.php");
