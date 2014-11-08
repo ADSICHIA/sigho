@@ -12,13 +12,13 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 } else if ($Pac == "101") {
                     include("vista/vlistagrupo.php");
                 } else if ($Pac == "102") {
-                    include("vista/vvalor1.php");
+                    include("vista/vregistrarusuario.php");
                 } else if ($Pac == "103") {
                     include("vista/vcrearhorario.php");
                 } else if ($Pac == "104") {
                     include("vista/varea.php");
                 } else if ($Pac == "105") {
-                    include("vista/vFormRol.php");
+                    include("vista/veditarusuario.php");
                 } else if ($Pac == "106") {
                     if (is_null($Up)) {
                         include("vista/vprograma.php");

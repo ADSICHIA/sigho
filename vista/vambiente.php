@@ -10,7 +10,7 @@ include ("../controlador/cambiente.php");
         <input type="text" id="idambiente" class="form-control" name="idambiente" required="required" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')" >
         <?php         
             if ($mensaje){ 
-                echo "<span id='resultado' style='color:red'><strong>" .$mensaje."</strong></span><br/>";         }
+                echo "<span id='resultado' style='color:red'><strong>".$mensaje."</strong></span><br/>";         }
         ?>     
         <br/>
         <label for="ambiente">Descripci&oacute;n del Ambiente&nbsp;&nbsp;&nbsp;</label>     
@@ -60,7 +60,7 @@ include ("../controlador/cambiente.php");
                     <td><?php// echo $tabla[$i]['especializado']?></td>
                     <td><?php// echo $tabla[$i]['observacion']?></td>
                     <td><?php// echo $tabla[$i]['sede']?></td>
-                    <td align = "center"><a href = "home.php?pr=<?php// echo $tabla[$i]['idambiente'] ?>&pac=<?php echo $pac; ?>&up=11"><img src="vista/imagenes/editar.png"/></a></td>
+                    <td align = "center"><a href = "home.php?pr=<?php// echo $tabla[$i]['idambiente'] ?>&pac=<?php //echo $pac; ?>&up=11"><img src="vista/imagenes/editar.png"/></a></td>
                 </tr>
                 <?php
                     //}
