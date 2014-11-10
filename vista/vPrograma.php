@@ -22,7 +22,7 @@ include ("controlador/cPrograma.php");
 </select><br/>     
 <input type="submit" value="Guardar" class="btn btn-default">
 <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>     
-<input type="button" value="Cancelar" class="btn btn-default">
+<a href="home.php"><input type="button" value="Cancelar" class="btn btn-default"></a>
 
     
 </form>
@@ -31,7 +31,7 @@ include ("controlador/cPrograma.php");
 <br/>
 <br/>
 
-<form name="tablaPrograma" action="" method="GET" onSubmit="return confirm('¿Desea eliminar?')">
+
 <div class="table-responsive">
 <h3>PROGRAMAS ACTIVOS</h3>
 
@@ -55,6 +55,7 @@ include ("controlador/cPrograma.php");
 </tr></table></div>
 <br/>
 <br/>
+<form name="tablaPrograma" action="" method="GET" onSubmit="return confirm('¿Desea eliminar?')">
 <table class="table table-bordered table-hover table-striped">
 <thead>
 <tr>

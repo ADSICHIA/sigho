@@ -9,6 +9,7 @@ $usuario = isset($_SESSION["idUser"]) ? $_SESSION["idUser"]:NULL;
 
 <form name= "competencia" action="" method = "POST">
 <br/>
+    <input type= "hidden" name="usuario" value="<?php echo $usuario ?>">
     <label for="programaid">Programa</label>
     <select class="form-control" id="programaid" name="programaid" required="required">
     <option value="" selected="selected">Seleccione </option>
@@ -22,8 +23,8 @@ $usuario = isset($_SESSION["idUser"]) ? $_SESSION["idUser"]:NULL;
     ?>
     </select><br/>
 Totalmente Calificado&nbsp;&nbsp;&nbsp;
-<input type="radio" name="calificado" value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" value="0">	<br/>
+<input type="radio" name="calificado" value=1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" value=0>	<br/>
 <br/>     
 <input type="submit" value="Guardar" class="btn btn-default">
 <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>     
@@ -31,4 +32,3 @@ Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" v
 </form>
 </div>
 
-<?php echo $usuario ?>

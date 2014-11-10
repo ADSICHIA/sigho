@@ -40,6 +40,8 @@ include ("controlador/cPrograma.php");
 
 <br/>
 <br/>
+<div class="table-responsive">
+<h3>PROGRAMAS ACTIVOS</h3>
 <br/>
 <div align="right"><table width="650"><tr>
     <td>
@@ -62,8 +64,7 @@ include ("controlador/cPrograma.php");
 <br/>
 
 <form name="tablaPrograma" action="" method="GET" onSubmit="return confirm('¿Desea eliminar?')">
-<div class="table-responsive">
-<h3>PROGRAMAS ACTIVOS</h3>
+
 <table class="table table-bordered table-hover table-striped">
 <thead>
 <tr>
