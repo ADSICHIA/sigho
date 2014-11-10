@@ -9,7 +9,7 @@ include ("modelo/mambiente.php");
 
 	$mensaje="";
 
-    $pac = 116;
+    $pac = 115;
     $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 	$strAmbiente = isset($_POST["ambiente"]) ? $_POST["ambiente"]:NULL;
 	$boolEspecializado = isset($_POST["especializado"]) ? 1 : 0;
