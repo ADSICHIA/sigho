@@ -31,11 +31,35 @@ include ("controlador/cPrograma.php");
     </select><br/>
     <input type="submit" value="Guardar" class="btn btn-default">
     <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <input type="button" value="Cancelar" class="btn btn-default">
+    <a href="home.php?pac=106"><input type="button" value="Cancelar" class="btn btn-default"></a>
 
     
 </form>
 </div>
+
+
+<br/>
+<br/>
+<br/>
+<div align="right"><table width="650"><tr>
+    <td>
+        <form id="formfil" name="formfil" method="GET" action="home.php">
+            <input name="pac" type="hidden" value="<?php echo $pac; ?>" />
+            No. Programa
+            <input type="text" name="filtro" value="<?php echo $filtro;?>" onChange="this.form.submit();">
+            <input id="boton2" type="submit" name="busca" value="Buscar" />
+        </form>
+    </td>
+    <td align="right" valign="bottom">
+        <?php
+            $bo = "<input type='hidden' name='filtro' value='".$filtro."' />";
+            $pag->spag($conp,$nreg,$pac,$bo); 
+            $dat=$ins->selpro2($filtro, $pag->rvalini(), $pag->rvalfin());
+        ?>
+    </td>
+</tr></table></div>
+<br/>
+<br/>
 
 <form name="tablaPrograma" action="" method="GET" onSubmit="return confirm('¿Desea eliminar?')">
 <div class="table-responsive">
@@ -47,21 +71,21 @@ include ("controlador/cPrograma.php");
 <th>Descripci&oacute;n</th>
 <th>Versi&oacute;n</th>
 <th>Area</th>
-<th align="center">Operaci&oacute;n</th>
+<th>Acciones</th>
 </tr>
 </thead>
 <tbody>
 <input name="pac" type="hidden" id="pac" value="106"/>
 <?php 
-for($i = 0; $i<count($tabla); $i++){
+for($i = 0; $i<count($dat); $i++){
  ?>
  <tr>
-    <td align = "left"><?php echo $tabla[$i]['idprograma'] ?></td>
-    <td><?php echo $tabla[$i]['programa']?></td>
-    <td><?php echo $tabla[$i]['version']?></td>
+    <td align = "left"><?php echo $dat[$i]['idprograma'] ?></td>
+    <td><?php echo $dat[$i]['programa']?></td>
+    <td><?php echo $dat[$i]['version']?></td>
     <td><?php echo $tabla[$i]['area']?></td>
-    <td align = "center"><a href = "home.php?pr=<?php echo $tabla[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>&up=11"><input type="button" name="del" value="Editar"/></a>
-    <a href = "home.php?del=<?php echo $tabla[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>"><input type="submit" name="eliminar" value="Eliminar"/></a></td>
+    <td align = "center"><a href = "home.php?pr=<?php echo $dat[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>&up=11"><input type="button" name="del" value="Editar"/></a>
+    <a href = "home.php?del=<?php echo $dat[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>"><button value="<?php echo $dat[$i]['idprograma'] ?>" name="del">Eliminar</button></a></td>
 </tr>
     <?php
         }

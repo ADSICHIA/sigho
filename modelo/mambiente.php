@@ -1,11 +1,11 @@
 <?php
-include("../controlador/conexion.php");
+//include("../controlador/conexion.php");
 class modeloAmbiente{
 	function modeloAmbiente(){
 	}
 	
-	function insert ($intIdAmbiente,$strAmbiente,$boolEspecializado,$strObservacion,$intIdSede){
-		$sql = "INSERT INTO programa(idambiente, ambiente, especializado, observacion, areaid) VALUES ('".$intIdAmbiente."', '".$strAmbiente."', '".$boolEspecializado."', '".$strObservacion."','".$intIdSede."');";
+	function insert ($strAmbiente,$boolEspecializado,$strObservacion,$intIdSede){
+		$sql = "INSERT INTO ambiente(ambiente, especializado, observacion, sedeid) VALUES ('".$strAmbiente."', '".$boolEspecializado."', '".$strObservacion."','".$intIdSede."');";
 		$this->cons($sql);
 	}
 	
@@ -26,16 +26,16 @@ class modeloAmbiente{
 		$conexionBD->ejeCon($c,1);
 	}
 
-	function selArea(){
-		$sql = "SELECT idarea, area FROM area;";
+	function selSede(){
+		$sql = "SELECT idsede, sede FROM sede;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data;
 	}
 	
-	function validaPrograma($intIdAmbiente){
-		$valida = "SELECT idambiente from ambiente where idambiente = '".$intIdAmbiente."'";
+	function validateAmbiente($strAmbiente){
+		$valida = "SELECT * from ambiente where ambiente = '".$strAmbiente."'";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($valida, 0);
@@ -44,6 +44,13 @@ class modeloAmbiente{
 
 	function selEditar($intIdAmbiente){
 		$sql = "SELECT idambiente, ambiente, especializado, observacion, sedeid FROM ambiente WHERE idambiente = '".$intIdAmbiente."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+	function select(){
+		$sql = "SELECT ambiente.idambiente, ambiente.ambiente, CASE WHEN ambiente.especializado = 1 THEN 'SI' ELSE 'NO' END AS especializado, ambiente.observacion, sede.sede FROM ambiente INNER JOIN sede ON ambiente.sedeid = sede.idsede ORDER BY idambiente";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);

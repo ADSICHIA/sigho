@@ -1,31 +1,36 @@
 <?php
-include ("../controlador/cambiente.php");
+include ("controlador/cambiente.php");
 ?>
 
 <div>
     <h3>INGRESAR AMBIENTE</h3>
 
     <form name="ambiente" action="" method="post">     
-        <label for="idambiente">Identificador del Ambiente&nbsp;&nbsp;&nbsp;</label>     
-        <input type="text" id="idambiente" class="form-control" name="idambiente" required="required" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')" >
-        <?php         
+           
+        <label for="ambiente">Ambiente&nbsp;&nbsp;&nbsp;</label>     
+        <input class="form-control" type="text" name="ambiente" id="ambiente" required="required" >
+         <?php         
             if ($mensaje){ 
-                echo "<span id='resultado' style='color:red'><strong>" .$mensaje."</strong></span><br/>";         }
+
+                echo "<span id='resultado' style='color:red'><strong>".$mensaje."</strong></span><br/>";         }
         ?>     
+
+                //echo "<span id='resultado' style='color:red'><strong>".$mensaje."</strong></span><br/>";         
+            }
+        ?>
+
         <br/>
-        <label for="ambiente">Descripci&oacute;n del Ambiente&nbsp;&nbsp;&nbsp;</label>     
-        <input class="form-control" type="text" name="ambiente" id="ambiente" required="required" ><br/>
         <label for="especializado">Especializado del Ambiente&nbsp;&nbsp;&nbsp;</label>     
-        <input class="form-control" type="text" name="especializado" id="especializado" required="required" ><br/>
+        <input class="form-control" type="checkbox" name="especializado" id="especializado" style = "width: 10px;"><br/>
         <label for="observacion">Observaci&oacute;n del Ambiente&nbsp;&nbsp;&nbsp;</label>     
         <input class="form-control" type="text" name="observacion" id="observacion" required="required" ><br/>
         <label for="sedeid">Sede a la que pertenece el Ambiente</label>
         <select class="form-control" id="sedeid" name="sedeid" required="required">
              <option value="" selected="selected">Seleccione </option>
                 <?php
-                    for($i = 0; $i<count($area); $i++){  
+                    for($i = 0; $i<count($arraySede); $i++){  
                 ?>     
-                        <option value="<?php echo $area[$i]['sedeid']; ?>"> <?php echo $area[$i]['sede']; ?></option>     
+                        <option value="<?php echo $arraySede[$i]['idsede']; ?>"> <?php echo $arraySede[$i]['sede']; ?></option>     
                 <?php
                     }     
                 ?>     
@@ -36,7 +41,7 @@ include ("../controlador/cambiente.php");
     </form>
 </div>
 
-<!--<form name="tablaPrograma" action="" method="GET" onSubmit="return confirm('¿Desea eliminar?')">
+<form name="tablaAmbiente" action="" method="GET" onSubmit="return confirm('¿Desea eliminar?')">
     <div class="table-responsive">
         <h3>AMBIENTES</h3>
         <table class="table table-bordered table-hover table-striped">
@@ -49,21 +54,31 @@ include ("../controlador/cambiente.php");
             <th>Editar</th>
             </tr>
             </thead>
+
             <tbody>
-            <input name="pac" type="hidden" id="pac" value="106"/>
+            <input name="pac" type="hidden" id="pac" value="115"/>
                 <?php 
-                    //for($i = 0; $i<count($tabla); $i++){
+                    for($i = 0; $i<count($tabla); $i++){
                 ?>
                  <tr>
+
                     <td align = "left"><input type="submit" name="del" value="<?php// echo $tabla[$i]['idambiente'] ?>"/></td>
                     <td><?php// echo $tabla[$i]['ambiente']?></td>
                     <td><?php// echo $tabla[$i]['especializado']?></td>
                     <td><?php// echo $tabla[$i]['observacion']?></td>
                     <td><?php// echo $tabla[$i]['sede']?></td>
-                    <td align = "center"><a href = "home.php?pr=<?php// echo $tabla[$i]['idambiente'] ?>&pac=<?php echo $pac; ?>&up=11"><img src="vista/imagenes/editar.png"/></a></td>
+                    <td align = "center"><a href = "home.php?pr=<?php// echo $tabla[$i]['idambiente'] ?>&pac=<?php //echo $pac; ?>&up=11"><img src="vista/imagenes/editar.png"/></a></td>
+
+                    <td align = "left"><input type="submit" name="del" value="<?php echo $tabla[$i]['idambiente'] ?>"/></td>
+                    <td><?php echo $tabla[$i]['ambiente']?></td>
+                    <td><?php echo $tabla[$i]['especializado']?></td>
+                    <td><?php echo $tabla[$i]['observacion']?></td>
+                    <td><?php echo $tabla[$i]['sede']?></td>
+                    <td align = "center"><a href = "home.php?pr=<?php echo $tabla[$i]['idambiente'] ?>&pac=<?php echo $pac; ?>&up=15"><img src="vista/imagenes/editar.png"/></a></td>
+
                 </tr>
                 <?php
-                    //}
+                    }
                 ?>
             <tr>
              <tr>
@@ -73,4 +88,4 @@ include ("../controlador/cambiente.php");
             </tbody>
         </table>
     </div>
-</form>-->
+</form>
