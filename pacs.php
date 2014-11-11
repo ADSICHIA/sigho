@@ -33,6 +33,11 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                     include("vista/vcambiarcontra.php");
                 } else if ($Pac == "108") {
                     include("vista/vCompetencia.php");
+                     if (is_null($Up)) {
+                        include("vista/vCompetencia.php");
+                    } else {
+                        include("vista/vCompetencia1.php");
+                    }
                 } else if ($Pac == "109") {
                     include("vista/vdisponi.php");
                 } else if ($Pac == "113") {

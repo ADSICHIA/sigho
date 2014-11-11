@@ -19,7 +19,7 @@ include ("modelo/mpagina.php");
 
 	$mensaje="";
 
-    $pac = 106;
+	$pac = isset ($_GET["pac"]) ? $_GET["pac"]:NULL;
     $filtro=isset($_GET["filtro"]) ? $_GET["filtro"]:NULL;
     $pr = isset($_GET['pr']) ? $_GET['pr']:NULL;
 	$idprograma = isset ($_POST["idprograma"]) ? $_POST["idprograma"]:NULL;

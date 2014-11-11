@@ -9,9 +9,15 @@ class mCompetencia{
 		$this->cons($sql);
 	}
 
-	function update(){}
+	function update($idcompetencia, $usuarioid, $programaid, $calificado){
+		$sql = "UPDATE competencia SET calificado = '".$calificado."' WHERE idcompetencia = '".$idcompetencia."';";
+		$this->cons($sql);
+	}
 
-	function delete(){}
+	function delete($idcompetencia){
+		$sql = "DELETE FROM competencia WHERE idcompetencia = '".$idcompetencia."';";
+		$this->cons($sql);
+	}
 
 	function SelPrograma(){
 		$sql = "SELECT idprograma, programa from programa";
@@ -35,6 +41,31 @@ class mCompetencia{
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$conexionBD->ejeCon($c,1);
+	}
+
+	function selCom($filtro,$rvalini,$rvalfin){
+			$sql = "SELECT c.idcompetencia, c.usuarioid, c.programaid, c.calificado, u.nombres, u.apellidos, p.programa from competencia as c ";
+			$sql .="inner join usuario as u on c.usuarioid = u.idusuario ";
+			$sql .= "inner join programa as p on c.programaid = p.idprograma ";
+			if($filtro)
+					$sql .= " WHERE programa LIKE '%".$filtro."%'";
+			$sql.= " ORDER BY idcompetencia LIMIT ".$rvalini.", ".$rvalfin;
+
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$data = $conexionBD->ejeCon($sql,0);
+			return $data;
+	}
+
+	function selEditar($idcompetencia){
+		$sql = "SELECT c.idcompetencia, c.usuarioid, c.programaid, c.calificado, u.nombres, u.apellidos, p.programa from competencia as c ";
+		$sql .="inner join usuario as u on c.usuarioid = u.idusuario ";
+		$sql .= "inner join programa as p on c.programaid = p.idprograma ";
+		$sql .=	" WHERE idcompetencia = '".$idcompetencia."';";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
 	}
 
 }
