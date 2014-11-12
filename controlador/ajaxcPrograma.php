@@ -20,7 +20,11 @@ if ($funcion == "area"){
 	if(!is_null($validar) && count($validar)!=0)
 		echo "El &Aacute;rea ".$datos." ya existe";
 }
-
+if ($funcion == "competencia"){
+	$validar = validaCompetencia($datos);
+	if(!is_null($validar) && count($validar)!=0)
+		echo "El Programa seleccionado (".$datos.") ya fue agregado a sus competencias";
+}
 
 function validaPrograma($idprograma){
 	$valida = "SELECT idprograma from programa where idprograma = '".$idprograma."'";
@@ -46,6 +50,13 @@ function validaArea($area){
 	return $data;
 }
 
+function validaCompetencia($idprograma){
+	$valida = "SELECT idcompetencia from competencia WHERE programaid = '".$idprograma."'";
+	$conexionBD = new conexion();
+	$conexionBD->conectarBD();
+	$data = $conexionBD->ejeCon($valida, 0);
+	return $data;
+}
 function cons($c){
 	$conexionBD = new conexion();
 	$conexionBD->conectarBD();

@@ -9,7 +9,7 @@ class mCompetencia{
 		$this->cons($sql);
 	}
 
-	function update($idcompetencia, $usuarioid, $programaid, $calificado){
+	function update($idcompetencia, $calificado){
 		$sql = "UPDATE competencia SET calificado = '".$calificado."' WHERE idcompetencia = '".$idcompetencia."';";
 		$this->cons($sql);
 	}
@@ -20,7 +20,7 @@ class mCompetencia{
 	}
 
 	function SelPrograma(){
-		$sql = "SELECT idprograma, programa from programa";
+		$sql = "SELECT p.idprograma, p.programa from programa as p left join competencia as c on p.idprograma = c.programaid where c.programaid is null";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);

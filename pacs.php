@@ -32,8 +32,7 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 } else if ($Pac == "107") {
                     include("vista/vcambiarcontra.php");
                 } else if ($Pac == "108") {
-                    include("vista/vCompetencia.php");
-                     if (is_null($Up)) {
+                    if (is_null($Up)) {
                         include("vista/vCompetencia.php");
                     } else {
                         include("vista/vCompetencia1.php");
@@ -67,7 +66,7 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 } else if ($Pac == "118") {
                     include("vista/vlistarjor.php");
                 } else if ($Pac == "119") {
-                    include("vista/vCompetencia.php");
+                    //include("vista/vCompetencia.php");
                     //include("vista/vparametro.php"); 
                 } else if ($Pac == "117") {
                     //include("vista/vlistarjor.php");

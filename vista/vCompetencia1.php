@@ -7,24 +7,25 @@ $usuario = isset($_SESSION["idUser"]) ? $_SESSION["idUser"]:NULL;
 <div>
 <h3>AGREGAR COMPETENCIA</h3>
 
-<form name= "competencia" action="" method = "POST">
+<form name= "competencia" action="home.php?pac=108" method = "POST">
 <br/>
     <input type= "hidden" name="usuario" value="<?php echo $usuario ?>">
+       <input type="hidden" id="actu" name="actu" value="actu"/>
+       <input type="hidden" id="idcompetencia" name="idcompetencia" value="<?php echo $editar[0]['idcompetencia'];?>" >
     <label for="programaid">Programa</label>
     <select class="form-control" id="programaid" name="programaid" required="required">
     <option value="" selected="selected">Seleccione </option>
     <?php 
         for($i = 0; $i<count($programa); $i++){
     ?>
- 
-    <option value="<?php echo $programa[$i]['idprograma']; ?>"> <?php echo $programa[$i]['programa'];?> </option>
+    <option value="<?php echo $editar[0]['programaid']; ?>" selected><?php echo $editar[0]['programa'];?> </option>
     <?php
        }
     ?>
     </select><br/>
 Totalmente Calificado&nbsp;&nbsp;&nbsp;
-<input type="radio" name="calificado" value=1 required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" value=0 required="required">	<br/>
+<input type="radio" name="calificado" value=1 <?php if ($editar[0]['calificado']==1) echo 'checked'; ?> required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" value=0 required="required" <?php if ($editar[0]['calificado']==0) echo 'checked'; ?>>	<br/>
 <br/>    
 <input type="submit" id="Guardar" value="Guardar" class="btn btn-default" >
 <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>     
