@@ -22,7 +22,7 @@ include ("modelo/mambiente.php");
 		$resultado = $ins->validateAmbiente($strAmbiente);
 		if (!$resultado){
 			$ins->insert($strAmbiente,$boolEspecializado,$strObservacion,$intIdSede);
-		}else {
+		}else{
 			$mensaje = "El Ambiente ingresado ya existe";
 		}
 	} 

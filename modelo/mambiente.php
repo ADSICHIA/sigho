@@ -27,7 +27,7 @@ class modeloAmbiente{
 	}
 
 	function selSede(){
-		$sql = "SELECT idsede, sede FROM sede;";
+		$sql = "SELECT idsede, sede FROM sede order by sede;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
