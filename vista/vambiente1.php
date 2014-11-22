@@ -3,32 +3,34 @@ include ("controlador/cambiente.php");
 ?>
 
 <div>
-    <h3>INGRESAR AMBIENTE</h3>
+    <h3>EDITAR AMBIENTE</h3>
 
-    <form name="ambiente" action="" method="post">     
+    <form name="ambiente" action="home.php?pac=115" method="post">     
            
         <label for="ambiente">Ambiente&nbsp;&nbsp;&nbsp;</label>     
-        <input class="form-control" type="text" name="ambiente" id="ambiente" required="required" >
+        <input class="form-control" type="text" name="ambiente" id="ambiente" required="required" value = "<?php echo $editar[0]['ambiente']; ?>">
         <div id="divmsg" style = "display:none"><span id='resultado' style='color:red'><strong><?php echo is_null($mensaje)?'':$mensaje;?></strong></span><br/></div>
-        <br/>
+        <input type="hidden" id="idambiente" name="idambiente" value="<?php echo $editar[0]['idambiente']; ?>"/>
+    	<input type="hidden" id="actu" name="actu" value="actu"/>
+    	<br/>
         <label for="especializado">Especializado del Ambiente&nbsp;&nbsp;&nbsp;</label>     
-        <input class="form-control" type="checkbox" name="especializado" id="especializado" style = "width: 15px;"><br/>
+        <input class="form-control" type="checkbox" name="especializado" id="especializado" style = "width: 15px;" <?php if($editar[0]['especializado']==1) echo 'checked'; ?>><br/>
         <label for="observacion">Observaci&oacute;n del Ambiente&nbsp;&nbsp;&nbsp;</label>     
-        <input class="form-control" type="text" name="observacion" id="observacion" required="required" ><br/>
+        <input class="form-control" type="text" name="observacion" id="observacion" required="required" value = "<?php echo $editar[0]['observacion']; ?>"><br/>
         <label for="sedeid">Sede a la que pertenece el Ambiente</label>
         <select class="form-control" id="sedeid" name="sedeid" required="required">
-             <option value="" selected="selected">Seleccione </option>
+             <option value="0" selected="selected">Seleccione </option>
                 <?php
                     for($i = 0; $i<count($arraySede); $i++){  
                 ?>     
-                        <option value="<?php echo $arraySede[$i]['idsede']; ?>"> <?php echo $arraySede[$i]['sede']; ?></option>     
+                    <option value="<?php echo $arraySede[$i]['idsede']; ?>" <?php if($editar[0]['sedeid']==$arraySede[$i]['idsede']) echo 'selected'?>> <?php  echo $arraySede[$i]['sede']; ?></option>  
                 <?php
                     }     
                 ?>     
         </select><br/>     
         <input type="submit" value="Guardar" class="btn btn-default">
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>     
-        <input type="button" value="Cancelar" class="btn btn-default">
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+        <a href="home.php?pac=115"><input type="button" value="Cancelar" class="btn btn-default"></a>
     </form>
 </div>
 <div class="table-responsive">
