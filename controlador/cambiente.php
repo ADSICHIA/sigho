@@ -15,19 +15,19 @@ include ("modelo/mambiente.php");
 	$boolEspecializado = isset($_POST["especializado"]) ? 1 : 0;
 	$strObservacion = isset($_POST["observacion"]) ? $_POST["observacion"]:NULL;
 	$intIdSede = isset($_POST["sedeid"]) ? $_POST["sedeid"]:NULL;
-	$update = isset($_POST["update"]) ? $_POST["update"]:NULL;
+	$intIdAmbiente = isset($_POST["idambiente"]) ? $_POST["idambiente"]:NULL;
+	$actu = isset($_POST["actu"]) ? $_POST["actu"]:NULL;
 	$arraySede = $ins->selSede();
-	
-	if ($strAmbiente && $strObservacion && $intIdSede){
+	$editar = $ins->selEditar($pr);
+
+	if ($strAmbiente && $strObservacion && $intIdSede && !$actu){
 		$resultado = $ins->validateAmbiente($strAmbiente);
 		if (!$resultado){
 			$ins->insert($strAmbiente,$boolEspecializado,$strObservacion,$intIdSede);
 		}else{
 			$mensaje = "El Ambiente ingresado ya existe";
 		}
-	} 
-
-	if ($strAmbiente && $boolEspecializado && $strObservacion && $intIdSede && $update){
+	} else if ($strAmbiente && $strObservacion && $intIdSede && $actu){
 		$ins->update($intIdAmbiente,$strAmbiente,$boolEspecializado,$strObservacion,$intIdSede);
 	}
 

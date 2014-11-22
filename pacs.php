@@ -58,7 +58,11 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 } else if ($Pac == "114") {
                     include("vista/vlistarsede.php");
                 } else if ($Pac == "115") {
-                    include("vista/vambiente.php");
+                    if (is_null($Up)) {
+                        include("vista/vambiente.php");
+                    } else {
+                        include("vista/vambiente1.php");
+                    }
                 } else if ($Pac == "116") {
 
                     include("vista/vjornada.php");
