@@ -24,9 +24,6 @@
 			session_destroy();
 			$msg="Identificacion ó contraseña invalidos!";
 		}
-	}else{
-		session_destroy();
-		$msg=is_null($identificacion)?null:"Identificacion ó contraseña invalidos!";
 	}
 
 

@@ -16,21 +16,21 @@
         </div>
         <div class="form-group">
         
-            <input class="form-control"  placeholder="Ingrese el nombre de la sede"  name="nomsede" type="text" value="<?php if($in){ echo $selupd[0]['sede']; } ?>" autofocus>
+            <input class="form-control"  placeholder="Ingrese el nombre de la sede" required  name="nomsede" type="text" value="<?php if($in){ echo $selupd[0]['sede']; } ?>" autofocus>
          
         </div>
         <div class="form-group">
           <span class="glyphicon glyphicon-send"> </span> Direccion:
         </div>
         <div class="form-group">
-            <input class="form-control" placeholder="Ingrese la direccion de la sede" name="direccion" type="text" value="<?php if($in){ echo $selupd[0]['direccion']; } ?>" autofocus>
+            <input class="form-control" placeholder="Ingrese la direccion de la sede" required name="direccion" type="text" value="<?php if($in){ echo $selupd[0]['direccion']; } ?>" autofocus>
          
         </div>
           <div class="form-group">
          <span class="glyphicon glyphicon-earphone"> </span> Telefono: 
         </div>
         <div class="form-group">
-        <input class="form-control"  placeholder="Ingrese un telefono de la sede" name="telefono" type="text" value="<?php if($in){ echo $selupd[0]['telefono']; } ?>" autofocus>
+        <input class="form-control"  placeholder="Ingrese un telefono de la sede" required name="telefono" type="text" value="<?php if($in){ echo $selupd[0]['telefono']; } ?>" autofocus>
             <?php if($in){  ?>  <input class="form-control"  placeholder="Ingrese un telefono de la sede" name="actu" type="hidden" value="actu" autofocus> <?php } ?>
         
          
@@ -45,10 +45,10 @@
             <?php } ?>
                 </select>
         </div> 
-      
+        <input type="submit" value="enviar" name="enviar" id="btn_submit_frm" style="display:none">
         
         <!-- Change this to a button or input when using this as a form -->
-        <a href="#" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block"><?php if($in){ ?> Actualizar <?php }else{  ?> Enviar <?php } ?></a>
+        <a href="#" onclick="document.getElementById('btn_submit_frm').click();" class="btn btn-lg btn-success btn-block"><?php if($in){ ?> Actualizar <?php }else{  ?> Enviar <?php } ?></a>
          <a href="home.php?pac=114"  class="btn btn-warning btn-block">Volver</a>
     </fieldset>
 </form>

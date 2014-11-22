@@ -7,7 +7,7 @@ include ("controlador/cPrograma.php");
 
 <form name="programa" action="" method="post">     
 <label for="idprograma">Identificador del Programa&nbsp;&nbsp;&nbsp;</label>     
-<input type="text" id="idprograma" class="form-control" onblur="fnValidarPrograma(this.value)" name="idprograma" required="required" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')">
+<input type="text" id="idprograma" class="form-control medium" onblur="fnValidarPrograma(this.value)" name="idprograma" required="required" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')">
 <div id="divmsg" style = "display:none"><span id='resultado' style='color:red'><strong><?php echo is_null($mensaje)?'':$mensaje;?></strong></span><br/></div>
 <br/><label for="programa">Descripci&oacute;n del Programa&nbsp;&nbsp;&nbsp;</label>     
 <input class="form-control" type="text" name="programa" id="programa" required="required" ><br/>
