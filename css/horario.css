@@ -1,0 +1,250 @@
+.selec
+{
+	width: 120px;
+}
+div.espacio{
+	height: 30px;
+}
+
+table.kanzen{
+	opacity: 0;
+	border: 1px solid #943;
+}
+
+div.taka{
+	margin-left: 140px;
+	width: 1350px;
+}
+div.ver{
+	opacity: 1;
+	-webkit-transition: all 5s ease-in-out ;
+	-moz-transition: all 5s ease-in-out;
+}
+
+div.coll{
+	width: 1350px; 
+	float: left;
+}
+div.call{
+	width: 1350px; 
+	float: left;
+}
+.tablee:hover {
+  background-color: #4A50FF;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: #3F43C6 -1px 1px, #3F43C6 -2px 2px, #3F43C6 -3px 3px, #3F43C6 -4px 4px, #3F43C6 -5px 5px, #3F43C6 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------VER--HORARIOS-----------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------*/
+div#cont{
+	height: 143px;
+	background-color: rgba(200,200,200,0.3);
+	float: left;
+}
+div#cont1{
+	height: 143px;
+	background-color: rgba(200,200,200,0.3);
+	float: left;
+
+}
+div#cont2{
+	height: 143px;
+	background-color: rgba(200,200,200,0.3);
+	float: left;
+
+}
+div#cont3{
+	height: 143px;
+	background-color: rgba(200,200,200,0.3);
+	float: left;
+
+}
+div#cont4{
+	height: 143px;
+	background-color: rgba(200,200,200,0.3);
+	float: left;
+
+}
+div#cont5{
+	height: 143px;
+	background-color: rgba(200,200,200,0.3);
+	float: left;
+
+}
+div#cont6{
+	height: 143px;
+	background-color: rgba(200,200,200,0.3);
+	float: left;
+}
+div#day{
+	background-color: #457CF2;
+	color: white;
+	font: 13px verdana;
+	float: left;
+}
+div#day1{
+	background-color: #457CF2;
+	color: white;
+	font: 13px verdana;
+	float: left;
+}
+div#day2{
+	background-color: #457CF2;
+	color: white;
+	font: 13px verdana;
+	float: left;
+}
+div#day3{
+	background-color: #457CF2;
+	color: white;
+	font: 13px verdana;
+	float: left;
+}
+div#day4{
+	background-color: #457CF2;
+	color: white;
+	font: 13px verdana;
+	float: left;
+}
+div#day5{
+	background-color: #457CF2;
+	color: white;
+	font: 13px verdana;
+	float: left;
+}
+div#day6{
+	background-color: #457CF2;
+	color: white;
+	font: 13px verdana;
+	float: left;
+}
+
+.lily{
+	width: 0px;
+	opacity: 0;
+}
+.lai{
+	width: 0px;
+	opacity: 0;
+}
+
+a.enlaces{
+	color:rgba(0,0,0,0.8);
+}
+a.enlaces:hover{
+	color:rgba(255,255,255,0.9);
+	transition-duration: color 0.4s;
+}
+
+
+div.lunes{
+	width: 0px;
+	opacity: 0;
+}
+div.martes{
+	width: 0px;
+	opacity: 0;
+}
+div.miercoles{
+	width: 0px;
+	opacity: 0;
+}
+div.jueves{
+	width: 0px;
+	opacity: 0;
+}
+div.viernes{
+	width: 0px;
+	opacity: 0;
+}
+div.sabado{
+	width: 0px;
+	opacity: 0;
+}
+div.domingo{
+	width: 0px;
+	opacity: 0;
+}
+div.tail{
+	opacity: 0;
+	background-color: black;
+}
+div#boton-a{
+	margin-top: 150px;
+	margin-left: 660px;
+}
+input.voto{
+	visibility: hidden;
+	height: 0px;
+	
+}
+/*cambio*/
+.dias{
+	height: 17px;
+	width: 166px;
+	opacity: 1;
+	-webkit-transition: all 2s ease-in-out ;
+	-moz-transition: all 2s ease-in-out;
+}
+.tardema{
+	height: 17px;
+	width: 196px;
+	opacity: 1;
+	-webkit-transition: all 2s ease-in-out ;
+	-moz-transition: all 2s ease-in-out;
+}
+.reis{
+	opacity: 1;
+	width: 166px;
+	border: 1px solid #ffffff;
+	-webkit-transition: all 2s ease-in-out ;
+	-moz-transition: all 2s ease-in-out;
+}
+.matarde{
+	opacity: 1;
+	width: 196px;
+	border: 1px solid #ffffff;
+	-webkit-transition: all 2s ease-in-out ;
+	-moz-transition: all 2s ease-in-out;
+}
+.reis{
+	opacity: 1;
+	width: 166px;
+	border: 1px solid #ffffff;
+	-webkit-transition: all 2s ease-in-out ;
+	-moz-transition: all 2s ease-in-out;
+}
+input.voto1{
+	visibility: visible;
+	width: 150px;
+	height: 40px;
+	border-radius: 3px;
+	border-color: #0089FF;
+	opacity: .5;
+	background: -webkit-linear-gradient(#8FCDF3, #1893E0); 
+    background: -o-linear-gradient(#8FCDF3, #1893E0); 
+    background: -moz-linear-gradient(#8FCDF3, #1893E0); 
+    background: linear-gradient(#8FCDF3, #1893E0); 
+	-webkit-transition: height 2s ease-in-out ;
+	-moz-transition: height 2s ease-in-out;
+}
+input.voto1:hover{
+	opacity: 1;
+	background: -webkit-linear-gradient(#1893E5, #8FCDF3); 
+    background: -o-linear-gradient(#1893E5, #8FCDF3); 
+    background: -moz-linear-gradient(#1893E5, #8FCDF3); 
+    background: linear-gradient(#1893E5, #8FCDF3);
+    text-shadow: 1px 1px #505356;
+}

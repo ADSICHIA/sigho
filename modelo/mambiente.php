@@ -10,7 +10,7 @@ class modeloAmbiente{
 	}
 	
 	function update ($intIdAmbiente,$strAmbiente,$boolEspecializado,$strObservacion,$intIdSede){
-		$sql = "UPDATE ambiente SET idambiente = '".$intIdAmbiente."', ambiente = '".$strAmbiente."', especializado = '".$boolEspecializado."', observacion = '".$strObservacion."', sedeid = ".$intIdSede."'";
+		$sql = "UPDATE ambiente SET ambiente = '".$strAmbiente."', especializado = '".$boolEspecializado."', observacion = '".$strObservacion."', sedeid = '".$intIdSede."'";
 		$sql .= " WHERE idambiente = '".$intIdAmbiente."';";
 		$this->cons($sql);
 	}

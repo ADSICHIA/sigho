@@ -18,6 +18,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/estilo.css" rel="stylesheet">
+    <link href="css/horario.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -267,7 +268,9 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
+
                         <li><a href="home.php?pac=logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
