@@ -13,7 +13,13 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 } else if ($Pac == "101") {
                     include("vista/vlistagrupo.php");
                 } else if ($Pac == "102") {
-                    include("vista/vregistrarusuario.php");
+                     if (is_null($Up)) {
+                        include("vista/vregistrarusuario.php");
+                    } else {
+                        include("vista/veditarusuario.php");
+
+                    }
+                    
                 } else if ($Pac == "103") {
                     include("vista/vcrearhorario.php");
                 } else if ($Pac == "104") {
@@ -23,8 +29,7 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                         include("vista/varea1.php");
                     }
                 } else if ($Pac == "105") {
-                    include("vista/veditarusuario.php");
-                } else if ($Pac == "106") {
+                                    } else if ($Pac == "106") {
                     if (is_null($Up)) {
                         include("vista/vprograma.php");
                     } else {
@@ -44,7 +49,7 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                     include("vista/vhorario.php");
                 }else if ($Pac == "111") {
                     include("vista/vverhorario.php");
-                } else if ($Pac == "113") {
+                } else if ($Pac == "803") {
                     include("vista/vgrupo.php");
                 } else if ($Pac == "113") {
                     include ("vista/vlistagrupo.php");
@@ -54,9 +59,9 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                     } else {
                         include ("vista/vficha1.php");
                     }
-                } else if ($Pac == "119") {
+                } else if ($Pac == "801") {
                     include ("vista/vsede.php");
-                } else if ($Pac == "127") {
+                } else if ($Pac == "802") {
                     include("vista/vlistarsede.php");
                 } else if ($Pac == "115") {
                     if (is_null($Up)) {
@@ -85,7 +90,11 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 } else if ($Pac == "119") {
 
                     include("vista/vsede.php");
-                } else if ($Pac == "120") {
+                }
+                 else if ($Pac == "150") {
+                    include("vista/vpromas.php");
+                }
+                 else if ($Pac == "804") {
                     include("vista/vlistagrupo.php");
                 }
 ?>

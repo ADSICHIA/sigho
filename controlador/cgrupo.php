@@ -11,22 +11,20 @@
              $existe2=$ins->selficha($del);
              $countR = count($existe1);
              $countR1 = count($existe2);
-             if ($countR >=1 or $countR1 >=1 ){
-                  ?>
-            <script language="javascript">
-            alert ("El grupo no se puede eliminar porque tiene horarios o fichas asignadas");
-            location.href='home.php?pac=111';
-            </script>
-              <?php   
-                 
-                 
-                 
+             
+             if ($countR >=1 or $countR1 >=1 ){ 
+              ?>
+                    <script language="javascript">
+                    alert ("El grupo no se puede eliminar porque tiene horarios o fichas asignadas");
+                    location.href='home.php?pac=804';
+                    </script>
+                  <?php       
              }else{
                    $ins->delgrupo($del);         
             ?>
             <script language="javascript">
             alert ("Grupo eliminado");
-           location.href='home.php?pac=111';
+           location.href='home.php?pac=804';
             </script>
               <?php   
              }
@@ -44,8 +42,7 @@
                  $ins->cambiar1(0,$pr);
                   ?>
             <script language="javascript">
-          
-           location.href='home.php?pac=111';
+           location.href='home.php?pac=804';
             </script>
               <?php   
                  
@@ -55,8 +52,7 @@
                     $ins->cambiar2(1,$pr);
                      ?>
             <script language="javascript">
-          
-           location.href='home.php?pac=111';
+           location.href='home.php?pac=804';
             </script>
               <?php   
                  
@@ -96,7 +92,7 @@
                 ?>
 		<script language="javascript">
 		 alert ("Grupo Editado");
-                 location.href='home.php?pac=111';
+                 location.href='home.php?pac=804';
                  
 	
 </script>
