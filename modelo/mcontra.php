@@ -21,7 +21,7 @@ class mcontra{
 
 	function UpDate($clave, $identificacion){
 		$sql = "UPDATE usuario SET clave='".$clave."' WHERE identificacion='".$identificacion."';";
-		//echo $sql;
+		// echo $sql;
 		$this->cons($sql);
 	}
 
