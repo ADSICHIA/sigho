@@ -9,22 +9,23 @@
     //Eliminar
    
     $documento = isset($_SESSION["documento"]) ? $_SESSION["documento"]:NULL;
-    $del = isset($_GET["del"]) ? $_GET["del"]:NULL;
-    if ($del){
-        $ins->delapre($del);
-    }
-    
-    $identificacion = isset($_POST["identificacion"]) ? $_POST["identificacion"]:NULL;
-    $clave = isset($_POST["identificacion"]) ? $_POST["identificacion"]:NULL;
-    $pass = isset ($_POST["pass"]) ? $_POST["pass"]:NULL;
+     $dat1 = $ins->selContra($documento);
+    // $del = isset($_GET["del"]) ? $_GET["del"]:NULL;
+    // if ($del){
+    //     $ins->delapre($del);
+    // }
+
+    $pas1 = isset ($_POST["pas1"]) ? $_POST["pas1"]:NULL;
     $actu = isset($_POST["actu"]) ? $_POST["actu"]:NULL;
   
-    //echo $actu;
+    // echo $documento;
 
-    $dat1 = $ins->selContra($documento);
+   
         //Actualizar
-    if ($documento && $actu) {
-       $ins->UpDate($clave, $documento);
+    echo $documento,$pas1;
+    if ($documento && $pas1) {
+     
+       $ins->UpDate($pas1, $documento);
        echo "<script type='text/javascript'>alert('Sus contraseña se ha cambiado exitosamente.');window.location='home.php';</script>";
     }
          
