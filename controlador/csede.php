@@ -28,10 +28,10 @@
 		$am = $ins->selambiente($del);
 		if(!$am){
 			$ins->delsede($del);
-			echo "<script type='text/Javascript'> window.location='home.php?pac=114';</script>";
+			echo "<script type='text/Javascript'> window.location='home.php?pac=802';</script>";
 		}else{
 			echo "<script language='Javascript'>  alert ('La sede no se puede eliminar porque le pertenecen ambientes.');</script>";
-			echo "<script type='text/Javascript'> window.location='home.php?pac=114';</script>";
+			echo "<script type='text/Javascript'> window.location='home.php?pac=802';</script>";
 		}
 		
 	}
@@ -39,7 +39,7 @@
 	if ($nomsede&& $direccion && $telefono &&$municipio && $pr && $actu){
 		$ins->upsede($nomsede, $direccion , $telefono,$municipio,$pr);
 		echo "<script language='Javascript'>  alert ('La sede se actualizo correctamente.');</script>";
-		echo "<script type='text/Javascript'> window.location='home.php?pac=114';</script>";
+		echo "<script type='text/Javascript'> window.location='home.php?pac=802';</script>";
 	}
 	
 	//Insertar
@@ -47,7 +47,7 @@
 	if ($nomsede&& $direccion && $telefono &&$municipio &&!$actu){
 		$ins->insede($nomsede, $direccion , $telefono,$municipio);
 		echo "<script language='Javascript'>  alert ('La sede se creo correctamente...');</script>";
-		echo "<script type='text/Javascript'> window.location='home.php?pac=114';</script>";
+		echo "<script type='text/Javascript'> window.location='home.php?pac=802';</script>";
 	}
 	$mu=$ins->selmuni();
 	$sedes=$ins->selesedes();

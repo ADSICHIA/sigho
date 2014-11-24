@@ -7,7 +7,7 @@
                                 <div class="col-lg-4">
                                     <div class="table-responsive">
                                         <table>
-                                            <tr><td>  <a href="home.php?pac=110" class="btn btn-warning" >Crear nuevo grupo</a></td></tr>
+                                            <tr><td>  <a href="home.php?pac=803" class="btn btn-warning" >Crear nuevo grupo</a></td></tr>
                                         </table>
                                         <br>
                                         <table class="table table-bordered table-hover table-striped">
@@ -27,12 +27,12 @@
                                                 <tr>
                                                     <td><?php echo $datos[$i]['grupo'] ?></td>
                                                   <td><a <span <?php if($datos[$i]['agendado']==1){?> class="glyphicon glyphicon-ok" <?php }else{ ?> class="glyphicon glyphicon-remove" <?php }?>></a></td>
-                                                   <td><a href="home.php?pac=111&act=<?php echo $datos[$i]['vigente']+1 ?>&pr=<?php echo $datos[$i]['idgrupo'] ?>"  onclick="return confirm('¿Desea cambiar el estado?');"><span <?php if($datos[$i]['vigente']==1){?> class="glyphicon glyphicon-ok" <?php }else{ ?> class="glyphicon glyphicon-remove" <?php }?>></span></a></td>
+                                                   <td><a href="home.php?pac=804&act=<?php echo $datos[$i]['vigente']+1 ?>&pr=<?php echo $datos[$i]['idgrupo'] ?>"  onclick="return confirm('¿Desea cambiar el estado?');"><span <?php if($datos[$i]['vigente']==1){?> class="glyphicon glyphicon-ok" <?php }else{ ?> class="glyphicon glyphicon-remove" <?php }?>></span></a></td>
                                                     <td><?php echo $datos[$i]['nombres'] ?> <?php echo $datos[$i]['apellidos'] ?></td>
                                                      <td><?php echo $datos[$i]['ambiente'] ?></td>
                                                 
-                                                    <td><a href="home.php?pac=110&pr=<?php echo$datos[$i]['idgrupo'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
-                                                    <td><a href="home.php?pac=111&del=<?php echo $datos[$i]['idgrupo'] ?>" onclick="return confirm('¿Desea eliminar el grupo?');"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                                    <td><a href="home.php?pac=803&pr=<?php echo$datos[$i]['idgrupo'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                                    <td><a href="home.php?pac=804&del=<?php echo $datos[$i]['idgrupo'] ?>" onclick="return confirm('¿Desea eliminar el grupo?');"><span class="glyphicon glyphicon-trash"></span></a></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>
