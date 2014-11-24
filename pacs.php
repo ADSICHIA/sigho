@@ -43,7 +43,7 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 }else if ($Pac == "110") {
                     include("vista/vhorario.php");
                 }else if ($Pac == "111") {
-                    include("vista/vverhorario.php");
+                    include("vista/vhorario_programa.php");
                 } else if ($Pac == "113") {
                     include("vista/vgrupo.php");
                 } else if ($Pac == "113") {
