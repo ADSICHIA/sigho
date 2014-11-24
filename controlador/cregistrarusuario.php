@@ -28,7 +28,7 @@
     $nivel_formacion = isset ($_POST["nivel_formacion"]) ? $_POST["nivel_formacion"]:NULL;
     $pr = isset($_GET["pr"]) ? $_GET["pr"]:NULL;
 
-
+    $nivel=$ins->getValor(1);
 	$dat = $ins->parametro();
 	$dat1 = $ins->genero();
 	$dat2 = $ins->perfil();

@@ -14,6 +14,13 @@ class mregistrarusuario{
 		
 
 	}
+	function getValor($parametroId){
+		$sql = "SELECT idvalor, valor, editable, parametroid FROM valor WHERE parametroid='$parametroId'";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
 	function actua($idusuario,$tipo_documento,$identificacion,$nivel_formacion,$horas_formacion,$email_sena,$email_misena,$email,$celular,$telefono,$direccion,$municipioid,$nombres,$apellidos,$clave,$fecha_documento,$fecha_expiracion,$perfilid,$genero ){
 		$sql = "UPDATE usuario SET tipo_documento='".$tipo_documento."',identificacion='".$identificacion."',nivel_formacion='".$nivel_formacion."',horas_formacion='".$horas_formacion."',email_sena='".$email_sena."',email_misena='".$email_misena."',email='".$email."',celular='".$celular."',telefono='".$telefono."',direccion='".$direccion."',municipioid='".$municipioid."',nombres='".$nombres."',apellidos='".$apellidos."',clave='".$clave."',fecha_documento='".$fecha_documento."',fecha_expiracion='".$fecha_expiracion."',perfilid='".$perfilid."',genero='".$genero."' WHERE idusuario='".$idusuario."';";
 		$this->cons($sql);

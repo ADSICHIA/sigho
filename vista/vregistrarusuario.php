@@ -151,9 +151,20 @@
             </tr>
             <tr>
                 <td>
+                        Nivel de Formacion
+                            <select name="nivel_formacion"style="width: 195px;" >
+                                <option value="0" >Seleccione</option>
+                                    <?php 
+                                        for ($i=0; $i < count($nivel); $i++){
+                                     ?>
+                                        <option value="<?php echo $nivel[$i]['idvalor'] ?>"><?php echo $nivel[$i]['valor'] ?></option>
+                                    <?php } ?>
+                            </select>
+                    </td>
+                <!--<td>
                 Nivel de Formacion
                 <input type="text" name="nivel_formacion" style="width: 200px;" required="required" />
-                </td>
+                </td>-->
                
             </tr>
 
