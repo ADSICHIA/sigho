@@ -18,8 +18,8 @@
                   
                     
                     <div class="panel-body" >
-<form name="form1" action="" method="post" id="frm_sedes">
-<fieldset>
+<form name="form1" action="" method="post" id="frm_sedes" >
+<fieldset >
          
        <div class="form" >
            Jornada: 
@@ -63,7 +63,7 @@
     
         
         <!-- Change this to a button or input when using this as a form -->
-        <a href="#" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block" style="background-color: #428bca; border-color: #ADD8E6;"><?php if($pr){ ?> Actualizar <input type="hidden" name="actua" value="<?php echo $jornafilt[0]['idjornada']?>"><?php }else{  ?> Enviar <?php } ?></a>
+        <a href="#" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block" style="background-color: #428bca; border-color: #ADD8E6;"><?php if($pr){ ?> Actualizar <input type="hidden" name="actua" value="<?php echo $jornafilt[0]['idjornada']?>"><?php }else{  ?> Crear <?php } ?></a>
         <br>
         <a href="home.php" onclick="frm_sedes.submit();" class="btn btn-lg btn-warning btn-success btn-block" style="background-color: #428bca; border-color: #ADD8E6;"><?php if($pr){ ?> Cancelar <?php }else{  ?> Cancelar <?php } ?></a>
        
@@ -73,21 +73,32 @@
                         
        </div>         
 </div>
+    
+    
 </div>
     
+
+
+<div id="page-wrapper" style="margin-left: -31px; margin-top: 100px">
 <fieldset >
- <div class="panel-body">
+ <div class="table-responsive">
                             <div class="row" >
                                 <div class="col-lg-4">
-                                    <div class="table-responsive" align="center">
+                                    <div class="table-responsive" align="center" >
                                         <!--<table>
                                             <tr><td>  <a href="home.php?pac=117" class="btn btn-success" >Crear nueva jornada</a></td></tr>
                                         </table>-->
                                         <br>
                                         
+                                        
+                                        
                                         <table class="table table-bordered table-hover table-striped" style="width: 800px; left: 60%; position: absolute;">
                                             
                                             <thead>
+                                                <tr>
+                                                    <td colspan="5"><h4>LISTA DE JORNADAS</h4></td>
+                                                </tr>
+                                                
                                                 
                                                 <tr>
                                                     <th style="background-color: #428bca; color:white;">Jornada</th>
@@ -134,4 +145,6 @@
                         <!-- /.panel-body -->
                     
 
-    </fieldset>
+    </fieldset> 
+ 
+</div>
