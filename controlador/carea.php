@@ -27,6 +27,7 @@ include ("modelo/mpagina.php");
 	$usuario = $ins->selUsuario();
 	$resultado = $ins ->validaArea($area);
 	$editar = $ins->selEditar($pr);
+        
 
 	if ($resultado){
 					$mensaje = "El &Aacute;rea que intenta crear ya existe";

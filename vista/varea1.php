@@ -15,11 +15,11 @@ include ("controlador/carea.php");
     <input type="hidden" id="actu" name="actu" value="actu"/>
     <br/><label for="usuarioid">Usuario a Cargo&nbsp;&nbsp;&nbsp;</label>
      <select class="form-control" id="usuarioid" name="usuarioid" required="required">
-    <option value="0" selected="selected"> </option>
+    
     <?php 
         for($i = 0; $i<count($usuario); $i++){
     ?>
-    <option value="<?php echo $area[$i]['idarea']; ?>" <?php if($editar[0]['areaid']==$area[$i]['idarea']) echo 'selected'; ?>> <?php echo $area[$i]['area']; ?> </option>
+
     <option value="<?php echo $usuario[$i]['idusuario']; ?>"<?php if($editar[0]['usuarioid']==$usuario[$i]['idusuario']
     ) echo 'selected'; ?>> <?php echo $usuario[$i]['nombres'];?>&nbsp;<?php echo $usuario[$i]['apellidos'];?> </option>
     <?php

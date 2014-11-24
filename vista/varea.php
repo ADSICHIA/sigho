@@ -13,7 +13,7 @@ include ("controlador/carea.php");
     <div id="divmsg" style = "display:none"><span id='resultado' style='color:red'><strong><?php echo is_null($mensaje)?'':$mensaje;?></strong></span><br/></div>
     <br/><label for="usuarioid">Usuario a Cargo&nbsp;&nbsp;&nbsp;</label>
      <select class="form-control" id="usuarioid" name="usuarioid" required="required">
-    <option value="0" selected="selected"> </option>
+    <option value="0" selected="selected"> Seleccione </option>
     <?php 
         for($i = 0; $i<count($usuario); $i++){
     ?>
