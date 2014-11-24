@@ -5,7 +5,7 @@
 	if ($del){
 		$ins->eliminar($del);
 	}
-	$pac=105;
+	$pac=102;
 	$idusuario = isset($_POST["idusuario"]) ? $_POST["idusuario"]:NULL;
     $tipo_documento = isset($_POST["tipo_documento"]) ? $_POST["tipo_documento"]:NULL;
     $identificacion = isset($_POST["identificacion"]) ? $_POST["identificacion"]:NULL;

@@ -32,7 +32,7 @@ class mregistrarusuario{
 	
 	}
 	function parametro(){
-		$sql = "SELECT idvalor, valor, editable, parametroid FROM valor WHERE parametroid=1";
+		$sql = "SELECT idvalor, valor, editable, parametroid FROM valor WHERE parametroid=2";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
@@ -58,7 +58,7 @@ class mregistrarusuario{
 		return $data;
 	}
 	function genero(){
-		$sql = "SELECT idvalor, valor, editable, parametroid FROM valor WHERE parametroid=2";
+		$sql = "SELECT idvalor, valor, editable, parametroid FROM valor WHERE parametroid=3";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
