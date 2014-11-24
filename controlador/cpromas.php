@@ -65,6 +65,16 @@ if (($action == "upload" || $actionS == "upload")) {
 			}else{
 				$ins->updpro($datos[24],$datos[26],$datos[25],1);
 			}
+			
+			$data9 = $ins->selfic($datos[4]);
+			$fini = substr($datos[12],6,4)."-".substr($datos[12],3,2)."-".substr($datos[12],0,2);
+			$ffin = substr($datos[13],6,4)."-".substr($datos[13],3,2)."-".substr($datos[13],0,2);
+			if($data9[0]["cp"]==0){
+				//$ins->insfic($idficha, $fecha_inicio, $fecha_fin, $oferta, $programaid, $jornadaid, $cant_aprendices);
+				$ins->insfic($datos[4], $fini, $ffin, 1, $datos[24], $datos[9], $datos[41]);
+			}else{
+				$ins->updfic($datos[4], $fini, $ffin, 1, $datos[24], $datos[9], $datos[41]);
+			}
 		}
 		$np=$np+1;
 		if($action){
