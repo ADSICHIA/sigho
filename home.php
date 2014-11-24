@@ -19,6 +19,9 @@
 
     <link href="css/estilo.css" rel="stylesheet">
     <link href="css/horario.css" rel="stylesheet">
+    <link rel='stylesheet' href='lib/fullcalendar-2.2.2/fullcalendar.css' />
+
+
 
     <!-- MetisMenu CSS -->
     <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -42,6 +45,30 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="lib/fullcalendar-2.2.2/lib/moment.min.js"></script>
+    <script src="lib/fullcalendar-2.2.2/lib/lang-all.js"></script>
+    <!--<script src="lib/fullcalendar-2.2.2/lib/jquery.min.js"></script>-->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js1/plugins/morris/raphael.min.js"></script>
+    <script src="js1/plugins/morris/morris.min.js"></script>
+    <script src="js1/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+
+    <!-- Inclusion de libreria de calendario.-->
+    <script src='lib/fullcalendar-2.2.2/fullcalendar.js'></script>
 
 </head>
 
@@ -268,9 +295,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-
                         <li><a href="home.php?pac=logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        <li><a href="index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -843,22 +868,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="js/jquery-1.11.0.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js1/plugins/morris/raphael.min.js"></script>
-    <script src="js1/plugins/morris/morris.min.js"></script>
-    <script src="js1/plugins/morris/morris-data.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/sb-admin-2.js"></script>
+    
 
 </body>
 

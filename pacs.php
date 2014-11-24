@@ -3,7 +3,8 @@
 $Pac = isset($_GET["pac"]) ? $_GET["pac"] : NULL;
 $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 if (is_null($Pac)) {
-                    echo "Home usuario";
+                    //echo "Home usuario";
+                    include_once("vista/v_principal.php");
                     /* if($perusu==2){
                       include("vista/vcontes.php");
                       }else if($perusu==1){
