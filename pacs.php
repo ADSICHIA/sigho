@@ -48,6 +48,8 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 }else if ($Pac == "110") {
                     include("vista/vhorario.php");
                 }else if ($Pac == "111") {
+                    include("vista/vhorario_programa.php");
+                } else if ($Pac == "113") {
                     include("vista/vverhorario.php");
                 } else if ($Pac == "803") {
                     include("vista/vgrupo.php");
@@ -73,8 +75,6 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
 
                     include("vista/vjornada.php");
                     // include("vista/vparametro.php"); 
-
-                    
                 } else if ($Pac == "117") {
                     include("vista/v_parametro.php");
                 

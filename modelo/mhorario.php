@@ -160,6 +160,40 @@ class mhorario{
 			}
 		}
 	}
+	function getHorarioGrupo($id){
+		$sql = "SELECT idhorario, 
+						grupoid, 
+						(Select valor from valor where idValor=dia) as diaSemana,
+						dia, 
+						(select hora_inicio from jornada where idjornada=jornadaid) as inicio,
+						(select hora_fin from jornada where idjornada=jornadaid) as fin, 
+						(SELECT CONCAT(nombres, ' ', apellidos) FROM usuario WHERE identificacion=usuarioid) As instructor,
+						agendado 
+						FROM horario 
+						WHERE grupoid='$id'";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+	function getDiaSuma($diaSemana){
+		if($diaSemana=="Lunes"){
+			return 0;
+		}else if($diaSemana=="Martes"){
+			return 1;
+		}else if($diaSemana=="Miercoles"){
+			return 2;
+		}else if($diaSemana=="Jueves"){
+			return 3;
+		}else if($diaSemana=="Viernes"){
+			return 4;
+		}else if($diaSemana=="Sabado"){
+			return 5;
+		}else if($diaSemana=="Domingo"){
+			return 6;
+		}
+
+	}
 
 }
 ?>
