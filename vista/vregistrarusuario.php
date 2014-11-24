@@ -46,11 +46,11 @@
             </tr>
             <tr>
                 <td>
-                    Fecha de Documento
+                    Fecha de Nacimiento
                     <input type="date" name="fecha_documento" style="width: 200px;"required="required" />
                 </td>
                 <td>
-                    Fecha de Expiracion
+                    Fecha de Expedición
                     <input type="date" name="fecha_expiracion" style="width: 200px;"required="required" />
                 </td>
             </tr>

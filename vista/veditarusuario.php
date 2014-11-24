@@ -20,7 +20,7 @@ include ("/controlador/cregistrarusuario.php");
 </script>
 
 <center>
-    <form name="form1" action="vregistrarusuario.php" method="post" >
+    <form name="form1" action="" method="post" >
         <table class="table table-bordered table-hover table-striped">
             <tr>
              <input type="hidden" name="idusuario"value="<?php echo $dat5[0]['idusuario']?>"/>
@@ -54,11 +54,11 @@ include ("/controlador/cregistrarusuario.php");
             </tr>
             <tr>
                 <td>
-                    Fecha de Documento
+                    Fecha de Nacimiento
                     <input type="date" name="fecha_documento"  style="width: 200px;" required="required" value="<?php echo $dat5[0]['fecha_documento']?>" />
                 </td>
                 <td>
-                    Fecha de Expiracion
+                    Fecha de Expedición
                     <input type="date" name="fecha_expiracion"   style="width: 200px;"required="required" value="<?php echo $dat5[0]['fecha_expiracion']?>" />
                 </td>
             </tr>
@@ -76,7 +76,7 @@ include ("/controlador/cregistrarusuario.php");
             <tr>
                 <td>
                     Correo Sena
-                    <input type="email" name="email_sena"  style="width: 200px;"required="required" value="<?php echo $dat5[0]['email_sena']?>" />
+                    <input type="email" name="email_sena"  style="width: 200px;" value="<?php echo $dat5[0]['email_sena']?>" />
                 </td>
                 <td>
                     Correo Mi Sena
@@ -96,7 +96,7 @@ include ("/controlador/cregistrarusuario.php");
             <tr>
                 <td>
                     No. Telefono
-                    <input type="text" name="telefono"  style="width: 200px;" required="required" value="<?php echo $dat5[0]['telefono']?>" />
+                    <input type="text" name="telefono"  style="width: 200px;" value="<?php echo $dat5[0]['telefono']?>" />
                 </td>
                 <td>
                     Direccion

@@ -35,16 +35,18 @@
 	$dat3 = $ins->departamento();
 	
 	$dat5 = $ins->editar($pr);
+
 	$dat6 = $ins->municipio();
 
 	if ($tipo_documento && $identificacion && $nivel_formacion && $horas_formacion && $email_sena && $email_misena && $email && $celular && $telefono && $direccion && $municipioid && $nombres && $apellidos && $clave && $fecha_documento  && $fecha_expiracion && $perfilid  && $genero && !$actu){
 		$ins->insertar($tipo_documento, $nivel_formacion,$horas_formacion, $identificacion, $email_sena, $email_misena, $email, $celular, $telefono, $direccion, $municipioid, $nombres, $apellidos, $clave,$fecha_documento, $fecha_expiracion, $perfilid, $genero);
 
 	}
+	// echo $tipo_documento," , ",$identificacion," , ",$fecha_documento," , ",$fecha_expiracion," , ",$nombres," , ",$apellidos," , ",$email_sena," , ",$email_misena," , ",$email," , ",$celular," , ",$telefono," , ",$direccion," , ",$genero," , ",$perfilid," , ",$municipioid," , ",$clave," , ",$horas_formacion," , ",$nivel_formacion," , ",$idusuario;
  	
-	if ($tipo_documento && $identificacion && $nivel_formacion && $horas_formacion && $email_sena && $email_misena && $email && $celular && $telefono && $direccion && $municipioid && $nombres && $apellidos && $clave && $fecha_documento  && $fecha_expiracion && $perfilid  && $genero && $actu){
-		$ins->actua($idusuario,$tipo_documento,$identificacion,$nivel_formacion,$horas_formacion,$email_sena,$email_misena,$email,$celular,$telefono,$direccion,$municipioid,$nombres,$apellidos,$clave,$fecha_documento,$fecha_expiracion,$perfilid,$genero);
-
+	if ($tipo_documento && $identificacion && $nivel_formacion && $horas_formacion  && $email_misena && $email && $celular && $direccion && $municipioid && $nombres && $apellidos && $clave && $fecha_documento  && $fecha_expiracion && $perfilid  && $genero && $actu){
+		$ins->actua($tipo_documento,$identificacion,$fecha_documento,$fecha_expiracion,$nombres,$apellidos,$email_sena,$email_misena,$email,$celular,$telefono,$direccion,$genero,$perfilid,$municipioid,$clave,$horas_formacion,$nivel_formacion,$idusuario);
+		echo "<script language='Javascript'>  alert ('Se actualizao correctamente.');</script>";
 	} 
 		
 	
