@@ -10,7 +10,9 @@ include ("../controlador/conexion.php");
 
     }else if($valor){
     	if($num==1){
-		$sql2 = "SELECT programa.idprograma, programa.programa  AS pro, programa.areaid, area.idarea FROM programa INNER JOIN area ON programa.areaid = area.idarea WHERE area.idarea=".$valor." ";
+		$sql2 = "SELECT programa.idprograma, programa.programa  AS pro, 
+					programa.areaid, area.idarea 
+					FROM programa INNER JOIN area ON programa.areaid = area.idarea WHERE area.idarea=".$valor." order by pro ASC";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$estados = $conexionBD->ejeCon($sql2,0);
@@ -35,6 +37,7 @@ include ("../controlador/conexion.php");
 			INNER JOIN ficha_grupo as FG ON G.idgrupo = FG.grupoid
 			INNER JOIN ficha as F ON F.idficha = FG.fichaid
 			WHERE F.programaid=".$valor."  GROUP BY G.IDGRUPO";
+			//echo $sql;
 			$conexionBD = new conexion();
 			$conexionBD->conectarBD();
 			$estados = $conexionBD->ejeCon($sql,0);
@@ -84,6 +87,7 @@ include ("../controlador/conexion.php");
 			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
             INNER JOIN jornada as J ON D.jornadaid = J.idjornada
 			WHERE P.idprograma=".$valor." AND J.idjornada=".$hi." AND D.dia=".$num." ";
+			//echo $sql3;
 			$conexionBD = new conexion();
 			$conexionBD->conectarBD();
 			$estados = $conexionBD->ejeCon($sql3,0);
