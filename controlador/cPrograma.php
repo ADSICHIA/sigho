@@ -27,33 +27,11 @@ include ("modelo/mpagina.php");
 	$version = isset($_POST["version"]) ? $_POST["version"]:NULL;
 	$areaid = isset($_POST["areaid"]) ? $_POST["areaid"]:NULL;
 	$actu = isset($_POST["actu"]) ? $_POST["actu"]:NULL;
-	//$actu = isset($_POST["actu"]) ? $_POST["actu"]:NULL;
 	$area =  $ins->selArea();
 	$editar = $ins->selEditar($pr);
 	
-         
-        if($idprograma!=NULL && $programa!=NULL && $version!=NULL && $areaid != NULL && $actu!=NULL){
-            
-            
-            echo "No estan llegando las variables";
-            
-        }
-        
-        
-        echo $idprograma;
-        echo "<br>";
-        echo $programa;
-         echo "<br>";
-        echo $version;
-         echo "<br>";
-        echo $areaid;
-         echo "<br>";
-        echo $actu;
-        echo "Si estan llegando";
-        
+
 	if ($idprograma && $programa && $version && $areaid && $actu){
-            
-            
 		$ins->update($idprograma,$programa,$version,$areaid);
 	}
 	

@@ -3,14 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2014 a las 23:57:29
+-- Tiempo de generación: 25-11-2014 a las 17:26:37
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -38,11 +35,6 @@ CREATE TABLE IF NOT EXISTS `ambiente` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Truncar tablas antes de insertar `ambiente`
---
-
-TRUNCATE TABLE `ambiente`;
---
 -- Volcado de datos para la tabla `ambiente`
 --
 
@@ -61,11 +53,6 @@ CREATE TABLE IF NOT EXISTS `area` (
   `usuarioid` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Truncar tablas antes de insertar `area`
---
-
-TRUNCATE TABLE `area`;
 --
 -- Volcado de datos para la tabla `area`
 --
@@ -88,11 +75,6 @@ CREATE TABLE IF NOT EXISTS `competencia` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Truncar tablas antes de insertar `competencia`
---
-
-TRUNCATE TABLE `competencia`;
---
 -- Volcado de datos para la tabla `competencia`
 --
 
@@ -111,11 +93,6 @@ CREATE TABLE IF NOT EXISTS `departamento` (
   `departamento` varchar(45) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Truncar tablas antes de insertar `departamento`
---
-
-TRUNCATE TABLE `departamento`;
 --
 -- Volcado de datos para la tabla `departamento`
 --
@@ -139,11 +116,6 @@ CREATE TABLE IF NOT EXISTS `disponiblidad` (
   `grupoid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
---
--- Truncar tablas antes de insertar `disponiblidad`
---
-
-TRUNCATE TABLE `disponiblidad`;
 --
 -- Volcado de datos para la tabla `disponiblidad`
 --
@@ -181,17 +153,12 @@ CREATE TABLE IF NOT EXISTS `ficha` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncar tablas antes de insertar `ficha`
---
-
-TRUNCATE TABLE `ficha`;
---
 -- Volcado de datos para la tabla `ficha`
 --
 
 INSERT INTO `ficha` (`idficha`, `fecha_inicio`, `fecha_fin`, `oferta`, `programaid`, `jornadaid`, `cant_aprendices`) VALUES
-(49735, '2014-03-08', '2014-03-08', 1, 1413101017, 1, 45),
-(50397, '2014-03-22', '2014-03-22', 1, 1413101027, 1, 38),
+(49735, '2014-03-08', '2014-03-08', 14, 96151434, 1, 45),
+(50397, '2014-03-22', '2014-03-22', 14, 1413101027, 1, 38),
 (50502, '2014-03-22', '2014-03-22', 1, 1413101032, 1, 69),
 (50508, '2014-03-25', '2014-03-25', 1, 1413101033, 1, 188),
 (197232, '2013-12-24', '2014-01-15', 1, 21720171, 4, 31),
@@ -2100,11 +2067,6 @@ CREATE TABLE IF NOT EXISTS `ficha_grupo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Truncar tablas antes de insertar `ficha_grupo`
---
-
-TRUNCATE TABLE `ficha_grupo`;
---
 -- Volcado de datos para la tabla `ficha_grupo`
 --
 
@@ -2132,11 +2094,6 @@ CREATE TABLE IF NOT EXISTS `grupo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Truncar tablas antes de insertar `grupo`
---
-
-TRUNCATE TABLE `grupo`;
---
 -- Volcado de datos para la tabla `grupo`
 --
 
@@ -2160,11 +2117,6 @@ CREATE TABLE IF NOT EXISTS `horario` (
   `agendado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
 
---
--- Truncar tablas antes de insertar `horario`
---
-
-TRUNCATE TABLE `horario`;
 --
 -- Volcado de datos para la tabla `horario`
 --
@@ -2216,11 +2168,6 @@ CREATE TABLE IF NOT EXISTS `jornada` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Truncar tablas antes de insertar `jornada`
---
-
-TRUNCATE TABLE `jornada`;
---
 -- Volcado de datos para la tabla `jornada`
 --
 
@@ -2246,11 +2193,6 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `visible` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
---
--- Truncar tablas antes de insertar `menu`
---
-
-TRUNCATE TABLE `menu`;
 --
 -- Volcado de datos para la tabla `menu`
 --
@@ -2291,11 +2233,6 @@ CREATE TABLE IF NOT EXISTS `municipio` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Truncar tablas antes de insertar `municipio`
---
-
-TRUNCATE TABLE `municipio`;
---
 -- Volcado de datos para la tabla `municipio`
 --
 
@@ -2312,13 +2249,8 @@ CREATE TABLE IF NOT EXISTS `parametro` (
 `idparametro` int(11) NOT NULL,
   `parametro` varchar(45) NOT NULL,
   `editable` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
---
--- Truncar tablas antes de insertar `parametro`
---
-
-TRUNCATE TABLE `parametro`;
 --
 -- Volcado de datos para la tabla `parametro`
 --
@@ -2327,7 +2259,8 @@ INSERT INTO `parametro` (`idparametro`, `parametro`, `editable`) VALUES
 (1, 'Nivel Formación', 1),
 (2, 'Tipo Documento', 0),
 (3, 'Genero', 0),
-(4, 'Dia', 0);
+(4, 'Dia', 0),
+(5, 'Oferta', 1);
 
 -- --------------------------------------------------------
 
@@ -2341,11 +2274,6 @@ CREATE TABLE IF NOT EXISTS `perfil` (
   `activo` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Truncar tablas antes de insertar `perfil`
---
-
-TRUNCATE TABLE `perfil`;
 --
 -- Volcado de datos para la tabla `perfil`
 --
@@ -2367,11 +2295,6 @@ CREATE TABLE IF NOT EXISTS `permiso` (
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Truncar tablas antes de insertar `permiso`
---
-
-TRUNCATE TABLE `permiso`;
 -- --------------------------------------------------------
 
 --
@@ -2385,11 +2308,6 @@ CREATE TABLE IF NOT EXISTS `programa` (
   `areaid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncar tablas antes de insertar `programa`
---
-
-TRUNCATE TABLE `programa`;
 --
 -- Volcado de datos para la tabla `programa`
 --
@@ -3157,11 +3075,6 @@ CREATE TABLE IF NOT EXISTS `sede` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Truncar tablas antes de insertar `sede`
---
-
-TRUNCATE TABLE `sede`;
---
 -- Volcado de datos para la tabla `sede`
 --
 
@@ -3201,11 +3114,6 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Truncar tablas antes de insertar `usuario`
---
-
-TRUNCATE TABLE `usuario`;
---
 -- Volcado de datos para la tabla `usuario`
 --
 
@@ -3225,13 +3133,8 @@ CREATE TABLE IF NOT EXISTS `valor` (
   `valor` varchar(160) NOT NULL,
   `editable` tinyint(1) NOT NULL DEFAULT '1',
   `parametroid` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
---
--- Truncar tablas antes de insertar `valor`
---
-
-TRUNCATE TABLE `valor`;
 --
 -- Volcado de datos para la tabla `valor`
 --
@@ -3249,7 +3152,9 @@ INSERT INTO `valor` (`idvalor`, `valor`, `editable`, `parametroid`) VALUES
 (10, 'Jueves', 0, 4),
 (11, 'Viernes', 0, 4),
 (12, 'Sábado', 0, 4),
-(13, 'Domingo', 0, 4);
+(13, 'Domingo', 0, 4),
+(14, 'Abierta', 1, 5),
+(15, 'Virtual', 1, 5);
 
 --
 -- Índices para tablas volcadas
@@ -3432,7 +3337,7 @@ MODIFY `idmunicipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `parametro`
 --
 ALTER TABLE `parametro`
-MODIFY `idparametro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `idparametro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --
@@ -3457,7 +3362,7 @@ MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT de la tabla `valor`
 --
 ALTER TABLE `valor`
-MODIFY `idvalor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `idvalor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- Restricciones para tablas volcadas
 --
@@ -3558,8 +3463,6 @@ ADD CONSTRAINT `fk_valor_tipo_documento` FOREIGN KEY (`tipo_documento`) REFERENC
 --
 ALTER TABLE `valor`
 ADD CONSTRAINT `fk_parametro_valor` FOREIGN KEY (`parametroid`) REFERENCES `parametro` (`idparametro`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-SET FOREIGN_KEY_CHECKS=1;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

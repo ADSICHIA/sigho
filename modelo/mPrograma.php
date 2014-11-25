@@ -12,7 +12,7 @@ class mPrograma{
 	}
 	
 	function update($idprograma, $programa, $version, $areaid){
-		$sql = "UPDATE programa SET idprograma = '".$idprograma."', programa = '".$programa."', version = '".$version."', areaid = '".$areaid."'";
+		$sql = "UPDATE programa SET programa = '".$programa."', version = '".$version."', areaid = '".$areaid."'";
 		$sql .=" WHERE idprograma = '".$idprograma."';";
 		$this->cons($sql);
 	}

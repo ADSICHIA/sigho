@@ -7,7 +7,8 @@ include ("controlador/cPrograma.php");
 
 <form name="programa" action="home.php?pac=106" method="post">
     <label for= "idprograma">Identificador del Programa&nbsp;&nbsp;&nbsp;</label>
-    <input type="text" id="idprograma" class="form-control" name="idprograma" disabled="disabled" value = "<?php echo $editar[0]['idprograma']; ?>" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')"/>
+    <input type="text" id="idpro" class="form-control" name="idpro" disabled="disabled" value = "<?php echo $editar[0]['idprograma']; ?>" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')"/>
+    <input type="hidden" id="idprograma" name="idprograma" value = "<?php echo $editar[0]['idprograma']; ?>"/>
     <input type="hidden" id="actu" name="actu" value="actu"/>
         <?php
         if ($mensaje){
