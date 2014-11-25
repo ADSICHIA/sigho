@@ -7,11 +7,11 @@
 	*/
 
 	
-	$pass_db ="";
-	$serv_db ="localhost";
+	$pass_db ="123456";
+	$serv_db ="10.100.209.45";
 	$db = "db_sigho";
 	
-	$usu_db ="root";
+	$usu_db ="adsi";
 		/*$usu_db = "root";
 		$pass_db = "";
 		$serv_db = "localhost";
