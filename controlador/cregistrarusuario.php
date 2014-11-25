@@ -4,6 +4,9 @@
 	$del = isset($_GET["del"]) ? $_GET["del"]:NULL;
 	if ($del){
 		$ins->eliminar($del);
+		echo "<script type='text/javascript'>alert('Se elimino correctamente.');</script>";
+		echo "<script type='text/javascript'>window.location='home.php?pac=102';</script>";
+	
 	}
 	$pac=102;
 	$idusuario = isset($_POST["idusuario"]) ? $_POST["idusuario"]:NULL;
@@ -33,20 +36,22 @@
 	$dat1 = $ins->genero();
 	$dat2 = $ins->perfil();
 	$dat3 = $ins->departamento();
-	
+	if( !$email_sena){
+		 $email_sena="NA";
+	}
 	$dat5 = $ins->editar($pr);
 
 	$dat6 = $ins->municipio();
-
-	if ($tipo_documento && $identificacion && $nivel_formacion && $horas_formacion && $email_sena && $email_misena && $email && $celular && $telefono && $direccion && $municipioid && $nombres && $apellidos && $clave && $fecha_documento  && $fecha_expiracion && $perfilid  && $genero && !$actu){
-		$ins->insertar($tipo_documento, $nivel_formacion,$horas_formacion, $identificacion, $email_sena, $email_misena, $email, $celular, $telefono, $direccion, $municipioid, $nombres, $apellidos, $clave,$fecha_documento, $fecha_expiracion, $perfilid, $genero);
+	if ($tipo_documento && $identificacion && $nivel_formacion && $horas_formacion &&  $email_misena && $email && $celular  && $direccion && $municipioid && $nombres && $apellidos && $clave && $fecha_documento  && $fecha_expiracion && $perfilid  && $genero && !$actu){
+		$ins->insertar($tipo_documento,$identificacion, $fecha_documento,$fecha_expiracion,$nombres, $apellidos,$email_sena, $email_misena, $email, $celular, $telefono, $direccion, $genero,$perfilid, $municipioid, $clave,$horas_formacion ,$nivel_formacion );
 		echo "<script type='text/javascript'>alert('Sus Datos se han Registrado exitosamente.');</script>";
 	}
 	// echo $tipo_documento," , ",$identificacion," , ",$fecha_documento," , ",$fecha_expiracion," , ",$nombres," , ",$apellidos," , ",$email_sena," , ",$email_misena," , ",$email," , ",$celular," , ",$telefono," , ",$direccion," , ",$genero," , ",$perfilid," , ",$municipioid," , ",$clave," , ",$horas_formacion," , ",$nivel_formacion," , ",$idusuario;
  	
 	if ($tipo_documento && $identificacion && $nivel_formacion && $horas_formacion  && $email_misena && $email && $celular && $direccion && $municipioid && $nombres && $apellidos && $clave && $fecha_documento  && $fecha_expiracion && $perfilid  && $genero && $actu){
-		$ins->actua($tipo_documento,$identificacion,$fecha_documento,$fecha_expiracion,$nombres,$apellidos,$email_sena,$email_misena,$email,$celular,$telefono,$direccion,$genero,$perfilid,$municipioid,$clave,$horas_formacion,$nivel_formacion,$idusuario);
+		$ins->actua($tipo_documento,$identificacion,$fecha_documento,$fecha_expiracion,$nombres,$apellidos,$email_sena,$email_misena,$email,$celular,$telefono,$direccion,$genero,$perfilid,$municipioid,$clave,$horas_formacion,$nivel_formacion,$pr);
 		echo "<script type='text/javascript'>alert('Sus Datos se han Actualizado exitosamente.');</script>";
+		echo "<script type='text/javascript'>window.location='home.php?pac=102';</script>";
 	} 
 		
 	
