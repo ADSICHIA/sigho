@@ -53,7 +53,8 @@ Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" v
     <td align="right" valign="bottom">
         <?php
             $bo = "<input type='hidden' name='filtro' value='".$filtro."' />";
-            $pag->spag($conp,$nreg,$pac,$bo); 
+            $pag->spag($conp,$nreg,$pac,$bo);
+            echo $filtro; 
             $dat=$ins->selCom($filtro, $pag->rvalini(), $pag->rvalfin());
         ?>
     </td>

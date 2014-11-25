@@ -1,8 +1,11 @@
 <?php
 	include_once("controlador/chorario_programa.php");
 ?>
+<div id="filtro">
+	
+</div>
 <div id="horario">
-<?php echo $day." ".$week_lunes." ".$week_domingo; ?>
+
 </div>
 <script type="text/javascript">
 
@@ -40,8 +43,6 @@
 						}
 						$registros++;
 
-						
-								
 					}
 					?>
 			]
