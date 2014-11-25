@@ -26,7 +26,7 @@ if (isset($_POST['chequeo'])) {
             $jdaux = explode("_", $key);
 
             $ins->insertdispo($jdaux[0], $usuarioid, $jdaux[1], $value, $grupo = null);
-            print_r($jdaux);
+            //print_r($jdaux);
         }
     }
 }

@@ -2,7 +2,7 @@
 	include_once("controlador/cjornada.php");
 ?>
 
-<div class="row" >
+<div class="row" name="lala">
             <div class="col-md-4 col-md-offset-4" >
                 <div class="login-panel panel panel-default">
                   
@@ -63,7 +63,7 @@
     
         
         <!-- Change this to a button or input when using this as a form -->
-        <a href="#" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block" style="background-color: #428bca; border-color: #ADD8E6;"><?php if($pr){ ?> Actualizar <input type="hidden" name="actua" value="<?php echo $jornafilt[0]['idjornada']?>"><?php }else{  ?> Crear <?php } ?></a>
+        <a href="#lala" onclick="frm_sedes.submit();" class="btn btn-lg btn-success btn-block" style="background-color: #428bca; border-color: #ADD8E6;"><?php if($pr){ ?> Actualizar <input type="hidden" name="actua" value="<?php echo $jornafilt[0]['idjornada']?>"><?php }else{  ?> Crear <?php } ?></a>
         <br>
         <a href="home.php" onclick="frm_sedes.submit();" class="btn btn-lg btn-warning btn-success btn-block" style="background-color: #428bca; border-color: #ADD8E6;"><?php if($pr){ ?> Cancelar <?php }else{  ?> Cancelar <?php } ?></a>
        

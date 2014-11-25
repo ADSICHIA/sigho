@@ -67,17 +67,17 @@
 
             <tr>
                 <td>
-                    Correo Sena
+                    Correo Mi Sena
                     <input type="email" name="email_sena" style="width: 200px;"required="required" />
                 </td>
                 <td>
-                    Correo Mi Sena
+                    Confirme Correo Mi Sena
                     <input type="email" name="email_misena"style="width: 200px;" required="required" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Correo Electronico
+                    Correo Electronico Personal
                     <input type="email" name="email" style="width: 200px;"required="required" />
                 </td>
                 <td>
@@ -218,7 +218,7 @@
             <td><?php echo $dat4[$i]['telefono'] ?></td>
             <td><?php echo $dat4[$i]['municipio'] ?></td>
             <td><?php echo $dat4[$i]['perfil'] ?></td>
-            <td><a href = "home.php?pr=<?php echo $dat4[$i]['idusuario'] ?>&pac=<?php echo $pac; ?>&up=11"><img border=0 src="image/editar.png" width="16" height="16" /></a></td>
+            <td><a href = "home.php?pr=<?php echo $dat4[$i]['idusuario'] ?>&pac=102&up=11"><img border=0 src="image/editar.png" width="16" height="16" /></a></td>
                     <?php  }  ?>
             
         </tr>

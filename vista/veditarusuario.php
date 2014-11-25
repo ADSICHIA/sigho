@@ -20,7 +20,7 @@ include ("/controlador/cregistrarusuario.php");
 </script>
 
 <center>
-    <form name="form1" action="" method="post" >
+    <form name="form1" action="home.php?pac=102" method="post" >
         <table class="table table-bordered table-hover table-striped">
             <tr>
              <input type="hidden" name="idusuario"value="<?php echo $dat5[0]['idusuario']?>"/>
@@ -194,7 +194,7 @@ include ("/controlador/cregistrarusuario.php");
 
             <tr>
                 <td align="center" colspan="2" >
-                    <input  type="submit" value="Editar" />
+                    <input  type="submit" value="Editar" class="btn btn-default" />
                 </td>
             </tr>
         </table>

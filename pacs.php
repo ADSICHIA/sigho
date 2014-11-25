@@ -44,7 +44,7 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                         include("vista/vCompetencia1.php");
                     }
                 } else if ($Pac == "109") {
-                    include("vista/vdisponi.php");
+                    include("vista/Disponibilidad.php");
                 }else if ($Pac == "110") {
                     include("vista/vhorario.php");
                 }else if ($Pac == "111") {
