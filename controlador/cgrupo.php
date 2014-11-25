@@ -29,8 +29,7 @@
               <?php   
              }
           
-             
-             
+                      
           
 	
 	
@@ -79,7 +78,7 @@
                 ?>
 		<script language="javascript">
 		 alert ("Grupo Creado con \u00e9xito");
-                 //location.href='home.php?pac=107';
+                 //location.href='home.php?pac=804';
 	
 </script>
   

@@ -29,7 +29,8 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                         include("vista/varea1.php");
                     }
                 } else if ($Pac == "105") {
-                                    } else if ($Pac == "106") {
+                
+                } else if ($Pac == "106") {
                     if (is_null($Up)) {
                         include("vista/vprograma.php");
                     } else {

@@ -37,7 +37,7 @@ class mPrograma{
 	}
 
 	function select(){
-		$sql = "SELECT  p.idprograma, p.programa, p.version, p.areaid, a.area FROM programa AS p LEFT JOIN area AS a ON a.idarea = p.areaid;";
+		$sql = "SELECT p.idprograma, p.programa, p.version, p.areaid, a.area FROM programa AS p LEFT JOIN area AS a ON a.idarea = p.areaid;";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
