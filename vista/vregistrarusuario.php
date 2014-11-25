@@ -16,10 +16,29 @@
                 }
         });
      }
+
+      function vali(){
+          var pa1 = document.getElementById('clave').value; 
+          var pa2 = document.getElementById('clave1').value;   
+    
+          var cant = pa1.length; 
+            if(pa1!=pa2){
+                    alert("Las contraseñas no coinciden.");
+                     return false;
+            }else{
+                if(cant<8){
+                    alert("Las contraseña debe tener mas de 8 caracteres.");
+                     return false;
+                }
+            }
+
+                      
+    }
     
 </script>
+
 <center>
-    <form name="form1" action="" method="post" >
+    <form name="form1" action="" method="post" onsubmit="return vali();">
         <table class="table table-bordered table-hover table-striped">
             <tr>
                 <h1>
@@ -27,10 +46,10 @@
                 </h1>
             </tr>
             <tr>
-                <td>
-                    Tipo de Documento
-                        <select name="tipo_documento"style="width: 195px;" >
-                            <option value="0" >Seleccione</option>
+                
+                    <td>Tipo de Documento<FONT COLOR="RED">*</FONT></td>
+                      <td>  <select name="tipo_documento"style="width: 195px;" required>
+                            <option value="" >Seleccione</option>
                                 <?php 
                                     for ($i=0; $i < count($dat); $i++){
                                  ?>
@@ -40,66 +59,66 @@
                 </td>
 
                 <td>
-                    Identificacion
+                    Identificacion<FONT COLOR="RED">*</FONT></td><td>
                     <input type="text" name="identificacion" style="width: 200px;" required="required" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Fecha de Nacimiento
+                    Fecha de Expedición Documento<FONT COLOR="RED">*</FONT></td><td>
                     <input type="date" name="fecha_documento" style="width: 200px;"required="required" />
                 </td>
                 <td>
-                    Fecha de Expedición
+                    Fecha de Expiracion<FONT COLOR="RED">*</FONT></td><td>
                     <input type="date" name="fecha_expiracion" style="width: 200px;"required="required" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Nombres
+                    Nombres<FONT COLOR="RED">*</FONT></td><td>
                     <input type="text" name="nombres" style="width: 200px;"required="required" />
                 </td>
                 <td>
-                    Apellidos
+                    Apellidos<FONT COLOR="RED">*</FONT></td><td>
                     <input type="text" name="apellidos"style="width: 200px;" required="required" />
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    Correo Mi Sena
-                    <input type="email" name="email_sena" style="width: 200px;"required="required" />
+                    Correo Sena</td><td>
+                    <input type="email" name="email_sena" style="width: 200px;"/>
                 </td>
                 <td>
-                    Confirme Correo Mi Sena
+                    Confirme Correo Mi Sena<FONT COLOR="RED">*</FONT></td><td>
                     <input type="email" name="email_misena"style="width: 200px;" required="required" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Correo Electronico Personal
+                    Correo Electronico Personal<FONT COLOR="RED">*</FONT></td><td>
                     <input type="email" name="email" style="width: 200px;"required="required" />
                 </td>
                 <td>
-                    No. Celular
+                    No. Celular<FONT COLOR="RED">*</FONT></td><td>
                     <input type="text" name="celular"style="width: 200px;" required="required" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    No. Telefono
-                    <input type="text" name="telefono" style="width: 200px;"required="required" />
+                    No. Telefono</td><td>
+                    <input type="text" name="telefono" style="width: 200px;" />
                 </td>
                 <td>
-                    Direccion
+                    Direccion<FONT COLOR="RED">*</FONT></td><td>
                     <input type="text" name="direccion" style="width: 200px;"required="required" />
                 </td>
             </tr>
             <tr>
                 <td>
-                        Genero
-                        <select name="genero" style="width: 195px;">
-                            <option value="0">Seleccione</option>
+                        Genero<FONT COLOR="RED">*</FONT></td><td>
+                        <select name="genero" style="width: 195px;" required>
+                            <option value="">Seleccione</option>
                                 <?php 
                                     for ($i=0; $i < count($dat1); $i++){
                                  ?>
@@ -108,9 +127,9 @@
                         </select>
                 </td>
                  <td>
-                        Perfil
-                        <select name="perfilid" style="width: 195px;">
-                            <option value="0">Seleccione</option>
+                        Perfil<FONT COLOR="RED">*</FONT></td><td>
+                        <select name="perfilid" style="width: 195px;" required>
+                            <option value="">Seleccione</option>
                                 <?php 
                                     for ($i=0; $i < count($dat2); $i++){
                                  ?>
@@ -123,9 +142,9 @@
 
             <tr>
                 <td>
-                    <div >Departamento
-                            <select name="departamento" onchange="javascript:municipio(this.value);" style="width: 195px;">
-                                <option value="0" >Seleccione</option>
+                    <div >Departamento<FONT COLOR="RED">*</FONT></td><td>
+                            <select name="departamento" onchange="javascript:municipio(this.value);" style="width: 195px;" required>
+                                <option value="" >Seleccione</option>
                                 <?php 
                                     for ($i=0; $i < count($dat3); $i++){
                                  ?>
@@ -141,19 +160,24 @@
             </tr>
             <tr>
                 <td>
-                clave
-                <input type="password" name="clave"  style="width: 200px;"required="required" />
+                contraseña<FONT COLOR="RED">*</FONT></td><td>
+                <input type="password" name="clave" id="clave" style="width: 200px;"required="required" />
                 </td>
-                <td>
-                Horas de Formacion
-                <input type="text" name="horas_formacion" style="width: 200px;" required="required" />
+                 <td>
+                Repita Contraseña<FONT COLOR="RED">*</FONT></td><td>
+                <input type="password" name="clave1" id="clave1"  style="width: 200px;"required="required" />
                 </td>
+               
             </tr>
             <tr>
+             <td>
+                Horas de Formacion<FONT COLOR="RED">*</FONT></td><td>
+                <input type="text" name="horas_formacion" style="width: 200px;" required="required" />
+                </td>
                 <td>
-                        Nivel de Formacion
-                            <select name="nivel_formacion"style="width: 195px;" >
-                                <option value="0" >Seleccione</option>
+                        Nivel de Formacion<FONT COLOR="RED">*</FONT></td><td>
+                            <select name="nivel_formacion"style="width: 195px;" required>
+                                <option value="" >Seleccione</option>
                                     <?php 
                                         for ($i=0; $i < count($nivel); $i++){
                                      ?>
@@ -169,7 +193,7 @@
             </tr>
 
             <tr>
-                <td align="center" colspan="2" >
+                <td align="center" colspan="4" >
                     <input  type="submit" value="Guardar" class="btn btn-default" />
                 </td>
             </tr>

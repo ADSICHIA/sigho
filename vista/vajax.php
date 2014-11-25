@@ -14,7 +14,7 @@ include ("../controlador/conexion.php");
 			$result[$i]["nombre"]=$estado["municipio"];
 			$i++;
 			}
-		$html ='Municipio ';   
+		$html ='Municipio';   
 		$html.='<select name="municipioid" style="width: 195px;">';
 		$html.='<option value="">Seleccione</option>';
 		foreach($result as $res){

@@ -6,12 +6,10 @@ class mregistrarusuario{
 	function mregistrarusuario(){}
 
 
-	function insertar($tipo_documento,$horas_formacion,$nivel_formacion,$identificacion,$email_sena,$email_misena,$email,$celular,$telefono,$direccion,$municipioid,$nombres,$apellidos,$clave,$fecha_documento,$fecha_expiracion,$perfilid,$genero){
+	function insertar($tipo_documento,$identificacion, $fecha_documento,$fecha_expiracion,$nombres, $apellidos,$email_sena, $email_misena, $email, $celular, $telefono, $direccion, $genero,$perfilid, $municipioid, $clave,$horas_formacion ,$nivel_formacion ){
 		$sql = "INSERT INTO usuario (tipo_documento,identificacion,horas_formacion,nivel_formacion,email_sena,email_misena,email,celular,telefono,direccion,municipioid,nombres,apellidos,clave,fecha_documento,fecha_expiracion,perfilid,genero) values
-		('".$tipo_documento."','".$identificacion."','".$nivel_formacion."','".$horas_formacion."','".$email_sena."','".$email_misena."','".$email."','".$celular."','".$telefono."','".$direccion."','".$municipioid."','".$nombres."','".$apellidos."','".$clave."','".$fecha_documento."','".$fecha_expiracion."','".$perfilid."','".$genero."');";
-		$this->cons($sql);
-	
-		
+		('".$tipo_documento."','".$identificacion."','".$horas_formacion."','".$nivel_formacion."','".$email_sena."','".$email_misena."','".$email."','".$celular."','".$telefono."','".$direccion."','".$municipioid."','".$nombres."','".$apellidos."','".$clave."','".$fecha_documento."','".$fecha_expiracion."','".$perfilid."','".$genero."');";
+		$this->cons($sql);	
 
 	}
 	function getValor($parametroId){
@@ -66,6 +64,14 @@ class mregistrarusuario{
 	}
 	function genero(){
 		$sql = "SELECT idvalor, valor, editable, parametroid FROM valor WHERE parametroid=3";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
+	function nivel(){
+		$sql = "SELECT idvalor, valor, editable, parametroid FROM valor WHERE parametroid=1";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
