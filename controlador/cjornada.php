@@ -32,7 +32,7 @@ if($jornada && $horaini && $horafin && $canti && !$actua){
     ?>
 <script>
 alert("La jornada ha sido creada exitosamente");
-location.href = "home.php";
+location.href = "home.php?pac=116";
 
 </script>
     <?php

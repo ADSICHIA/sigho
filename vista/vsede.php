@@ -48,7 +48,7 @@
         <input type="submit" value="enviar" name="enviar" id="btn_submit_frm" style="display:none">
         
         <!-- Change this to a button or input when using this as a form -->
-        <a href="#" onclick="document.getElementById('btn_submit_frm').click();" class="btn btn-lg btn-success btn-block"><?php if($in){ ?> Actualizar <?php }else{  ?> Enviar <?php } ?></a>
+        <a href="#" onclick="document.getElementById('btn_submit_frm').click();" class="btn btn-lg btn-success btn-block"><?php if($in){ ?> Actualizar <?php }else{  ?> Guardar <?php } ?></a>
          <a href="home.php?pac=802"  class="btn btn-warning btn-block">Volver</a>
     </fieldset>
 </form>
