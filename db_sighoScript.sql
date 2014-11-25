@@ -3,11 +3,14 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2014 a las 17:26:37
+-- Tiempo de generación: 26-11-2014 a las 00:02:43
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -35,6 +38,11 @@ CREATE TABLE IF NOT EXISTS `ambiente` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
+-- Truncar tablas antes de insertar `ambiente`
+--
+
+TRUNCATE TABLE `ambiente`;
+--
 -- Volcado de datos para la tabla `ambiente`
 --
 
@@ -54,6 +62,11 @@ CREATE TABLE IF NOT EXISTS `area` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
+-- Truncar tablas antes de insertar `area`
+--
+
+TRUNCATE TABLE `area`;
+--
 -- Volcado de datos para la tabla `area`
 --
 
@@ -72,15 +85,23 @@ CREATE TABLE IF NOT EXISTS `competencia` (
   `usuarioid` int(11) NOT NULL,
   `programaid` int(11) NOT NULL,
   `calificado` tinyint(1) DEFAULT '0' COMMENT 'Si un instructor esta apto puede formar el 100% del programa.'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
+--
+-- Truncar tablas antes de insertar `competencia`
+--
+
+TRUNCATE TABLE `competencia`;
 --
 -- Volcado de datos para la tabla `competencia`
 --
 
 INSERT INTO `competencia` (`idcompetencia`, `usuarioid`, `programaid`, `calificado`) VALUES
-(1, 1, 520606, 0),
-(3, 1, 1, 1);
+(7, 7, 839312, 1),
+(9, 1, 217307, 0),
+(12, 1, 228106, 1),
+(13, 8, 228106, 0),
+(17, 1, 112005, 1);
 
 -- --------------------------------------------------------
 
@@ -94,12 +115,16 @@ CREATE TABLE IF NOT EXISTS `departamento` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
+-- Truncar tablas antes de insertar `departamento`
+--
+
+TRUNCATE TABLE `departamento`;
+--
 -- Volcado de datos para la tabla `departamento`
 --
 
 INSERT INTO `departamento` (`iddepartamento`, `departamento`) VALUES
-(1, 'Cundinamarca'),
-(2, 'Boyaca');
+(1, 'Cundinamarca');
 
 -- --------------------------------------------------------
 
@@ -114,27 +139,62 @@ CREATE TABLE IF NOT EXISTS `disponiblidad` (
   `dia` int(11) NOT NULL,
   `disponible` tinyint(1) NOT NULL DEFAULT '1',
   `grupoid` int(11) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=104 ;
 
+--
+-- Truncar tablas antes de insertar `disponiblidad`
+--
+
+TRUNCATE TABLE `disponiblidad`;
 --
 -- Volcado de datos para la tabla `disponiblidad`
 --
 
 INSERT INTO `disponiblidad` (`iddisponiblidad`, `jornadaid`, `usuarioid`, `dia`, `disponible`, `grupoid`) VALUES
-(2, 1, 1, 7, 1, NULL),
-(3, 1, 1, 8, 1, NULL),
-(4, 1, 1, 9, 1, NULL),
-(5, 1, 1, 10, 1, NULL),
-(6, 1, 1, 11, 1, NULL),
-(7, 1, 1, 12, 1, NULL),
-(8, 1, 1, 13, 1, NULL),
 (9, 1, 2, 7, 1, NULL),
 (10, 2, 2, 8, 1, NULL),
 (11, 3, 2, 9, 1, NULL),
 (12, 4, 2, 10, 1, NULL),
 (13, 4, 2, 11, 1, NULL),
 (14, 1, 2, 12, 1, NULL),
-(15, 2, 2, 13, 1, NULL);
+(15, 2, 2, 13, 1, NULL),
+(40, 3, 7, 7, 1, 0),
+(41, 3, 7, 8, 1, 0),
+(42, 3, 7, 9, 1, 0),
+(43, 3, 7, 10, 1, 0),
+(44, 3, 7, 11, 1, 0),
+(45, 3, 7, 12, 1, 0),
+(73, 1, 8, 7, 1, 0),
+(74, 1, 8, 8, 1, 0),
+(75, 1, 8, 9, 1, 0),
+(76, 1, 8, 10, 1, 0),
+(77, 1, 8, 11, 1, 0),
+(78, 2, 8, 7, 1, 0),
+(79, 2, 8, 8, 1, 0),
+(80, 2, 8, 9, 1, 0),
+(81, 2, 8, 10, 1, 0),
+(82, 2, 8, 11, 1, 0),
+(83, 3, 8, 7, 1, 0),
+(84, 3, 8, 8, 1, 0),
+(85, 3, 8, 9, 1, 0),
+(86, 3, 8, 10, 1, 0),
+(87, 3, 8, 11, 1, 0),
+(88, 1, 1, 7, 1, 0),
+(89, 1, 1, 8, 1, 0),
+(90, 1, 1, 9, 1, 0),
+(91, 1, 1, 10, 1, 0),
+(92, 1, 1, 11, 1, 0),
+(93, 1, 1, 12, 1, 0),
+(94, 2, 1, 7, 1, 0),
+(95, 2, 1, 8, 1, 0),
+(96, 2, 1, 9, 1, 0),
+(97, 2, 1, 10, 1, 0),
+(98, 2, 1, 11, 1, 0),
+(99, 3, 1, 7, 1, 0),
+(100, 3, 1, 8, 1, 0),
+(101, 3, 1, 9, 1, 0),
+(102, 3, 1, 10, 1, 0),
+(103, 3, 1, 11, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -153,12 +213,17 @@ CREATE TABLE IF NOT EXISTS `ficha` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Truncar tablas antes de insertar `ficha`
+--
+
+TRUNCATE TABLE `ficha`;
+--
 -- Volcado de datos para la tabla `ficha`
 --
 
 INSERT INTO `ficha` (`idficha`, `fecha_inicio`, `fecha_fin`, `oferta`, `programaid`, `jornadaid`, `cant_aprendices`) VALUES
-(49735, '2014-03-08', '2014-03-08', 14, 96151434, 1, 45),
-(50397, '2014-03-22', '2014-03-22', 14, 1413101027, 1, 38),
+(49735, '2014-03-08', '2014-03-08', 1, 1413101017, 1, 45),
+(50397, '2014-03-22', '2014-03-22', 1, 1413101027, 1, 38),
 (50502, '2014-03-22', '2014-03-22', 1, 1413101032, 1, 69),
 (50508, '2014-03-25', '2014-03-25', 1, 1413101033, 1, 188),
 (197232, '2013-12-24', '2014-01-15', 1, 21720171, 4, 31),
@@ -2064,19 +2129,20 @@ CREATE TABLE IF NOT EXISTS `ficha_grupo` (
   `grupoid` int(11) NOT NULL,
   `fichaid` int(11) NOT NULL,
   `cant_aprendices` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
+--
+-- Truncar tablas antes de insertar `ficha_grupo`
+--
+
+TRUNCATE TABLE `ficha_grupo`;
 --
 -- Volcado de datos para la tabla `ficha_grupo`
 --
 
 INSERT INTO `ficha_grupo` (`idficha_grupo`, `grupoid`, `fichaid`, `cant_aprendices`) VALUES
-(1, 1, 546000, 23),
-(2, 2, 520606, 76),
-(3, 1, 520606, 0),
-(4, 3, 520606, 0),
-(5, 1, 520606, 0),
-(6, 1, 520606, 12);
+(12, 5, 520487, 12),
+(14, 6, 520606, 35);
 
 -- --------------------------------------------------------
 
@@ -2091,16 +2157,20 @@ CREATE TABLE IF NOT EXISTS `grupo` (
   `vigente` tinyint(1) NOT NULL DEFAULT '1',
   `director` int(11) NOT NULL,
   `ambienteid` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
+--
+-- Truncar tablas antes de insertar `grupo`
+--
+
+TRUNCATE TABLE `grupo`;
 --
 -- Volcado de datos para la tabla `grupo`
 --
 
 INSERT INTO `grupo` (`idgrupo`, `grupo`, `agendado`, `vigente`, `director`, `ambienteid`) VALUES
-(1, 'grupos', 0, 1, 1, 1),
-(2, 'adsi', 1, 1, 1, 1),
-(3, 'pre-inicial', 1, 0, 1, 1);
+(5, 'ADSI tarde Sede A', 0, 1, 1, 1),
+(6, 'ADSI Noche Sede A', 0, 1, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -2115,42 +2185,30 @@ CREATE TABLE IF NOT EXISTS `horario` (
   `jornadaid` int(11) NOT NULL,
   `usuarioid` int(11) DEFAULT NULL,
   `agendado` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
+--
+-- Truncar tablas antes de insertar `horario`
+--
+
+TRUNCATE TABLE `horario`;
 --
 -- Volcado de datos para la tabla `horario`
 --
 
 INSERT INTO `horario` (`idhorario`, `grupoid`, `dia`, `jornadaid`, `usuarioid`, `agendado`) VALUES
-(32, 2, 7, 1, 123, 0),
-(33, 1, 7, 1, 123, 0),
-(34, 1, 8, 1, 123, 0),
-(35, 1, 9, 1, 123, 0),
-(36, 1, 10, 1, 123, 0),
-(37, 1, 11, 1, 0, 0),
-(38, 1, 12, 1, 1020802202, 0),
-(39, 1, 13, 1, 0, 0),
-(40, 1, 7, 2, 123, 0),
-(41, 1, 8, 2, 123, 0),
-(42, 1, 9, 2, 123, 0),
-(43, 1, 10, 2, 123, 0),
-(44, 1, 11, 2, 0, 0),
-(45, 1, 12, 2, 1020802202, 0),
-(46, 1, 13, 2, 0, 0),
-(47, 1, 7, 3, 123, 0),
-(48, 1, 8, 3, 123, 0),
-(49, 1, 9, 3, 123, 0),
-(50, 1, 10, 3, 123, 0),
-(51, 1, 11, 3, 0, 0),
-(52, 1, 12, 3, 1020802202, 0),
-(53, 1, 13, 3, 0, 0),
-(54, 1, 7, 4, 123, 0),
-(55, 1, 8, 4, 1020802202, 0),
-(56, 1, 9, 4, 1020802202, 0),
-(57, 1, 10, 4, 1020802202, 0),
-(58, 1, 11, 4, 123, 0),
-(59, 1, 12, 4, 123, 0),
-(60, 1, 13, 4, 1020802202, 0);
+(1, 5, 7, 3, 123, 0),
+(2, 5, 8, 3, 80546098, 0),
+(3, 5, 9, 3, 123, 0),
+(4, 5, 10, 3, 80546098, 0),
+(5, 5, 11, 3, 123, 0),
+(6, 5, 12, 3, 123, 0),
+(7, 6, 7, 1, 123, 0),
+(8, 6, 8, 1, 80546098, 0),
+(9, 6, 9, 1, 123, 0),
+(10, 6, 10, 1, 80546098, 0),
+(11, 6, 11, 1, 123, 0),
+(12, 6, 12, 1, 123, 0);
 
 -- --------------------------------------------------------
 
@@ -2165,8 +2223,13 @@ CREATE TABLE IF NOT EXISTS `jornada` (
   `hora_fin` time NOT NULL,
   `horas` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
+--
+-- Truncar tablas antes de insertar `jornada`
+--
+
+TRUNCATE TABLE `jornada`;
 --
 -- Volcado de datos para la tabla `jornada`
 --
@@ -2176,7 +2239,8 @@ INSERT INTO `jornada` (`idjornada`, `jornada`, `hora_inicio`, `hora_fin`, `horas
 (2, 'Tarde', '13:00:00', '18:00:00', 5, 1),
 (3, 'Noche', '18:00:00', '22:00:00', 4, 1),
 (4, 'Madrugada', '22:00:00', '06:00:00', 8, 1),
-(5, 'Fin de semana', '07:00:00', '13:00:00', 6, 1);
+(5, 'Fin de semana', '07:00:00', '13:00:00', 6, 1),
+(16, 'rrffsfsfs', '13:22:00', '20:55:00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2191,8 +2255,13 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `href` varchar(255) NOT NULL DEFAULT '#',
   `icono` varchar(150) DEFAULT NULL,
   `visible` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
+--
+-- Truncar tablas antes de insertar `menu`
+--
+
+TRUNCATE TABLE `menu`;
 --
 -- Volcado de datos para la tabla `menu`
 --
@@ -2202,8 +2271,8 @@ INSERT INTO `menu` (`idmenu`, `menu`, `menuid`, `href`, `icono`, `visible`) VALU
 (2, 'Usuario', NULL, 'home.php?pac=102', NULL, 1),
 (3, 'Horario', NULL, 'home.php?pac=103', NULL, 1),
 (4, 'Administrador', NULL, 'home.php?pac=104', NULL, 1),
-(5, 'Crear', 2, 'home.php?pac=102', NULL, 1),
-(6, 'Modificar', 2, 'home.php?pac=105', NULL, 1),
+(5, 'Crear Usuario', 4, 'home.php?pac=102', NULL, 1),
+(6, 'Modificar', 2, 'home.php?pac=105', NULL, 0),
 (7, 'Cambiar Contraseña', 2, 'home.php?pac=107', NULL, 1),
 (8, 'Competencia', 2, 'home.php?pac=108', NULL, 1),
 (9, 'Disponibilidad', 2, 'home.php?pac=109', NULL, 1),
@@ -2218,7 +2287,8 @@ INSERT INTO `menu` (`idmenu`, `menu`, `menuid`, `href`, `icono`, `visible`) VALU
 (18, 'Jornada', 4, 'home.php?pac=116', NULL, 1),
 (20, 'Parámetro - Valor', 4, 'home.php?pac=118', NULL, 1),
 (21, 'Competencias', NULL, 'home.php?pac=119', NULL, 1),
-(22, 'Programas Masivo', 4, 'home.php?pac=150', NULL, 1);
+(22, 'Programas Masivo', 4, 'home.php?pac=150', NULL, 1),
+(23, 'Fichas Grupo', 4, 'home.php?pac=805', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -2230,14 +2300,25 @@ CREATE TABLE IF NOT EXISTS `municipio` (
 `idmunicipio` int(11) NOT NULL,
   `municipio` varchar(45) NOT NULL,
   `departamentoid` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
+--
+-- Truncar tablas antes de insertar `municipio`
+--
+
+TRUNCATE TABLE `municipio`;
 --
 -- Volcado de datos para la tabla `municipio`
 --
 
 INSERT INTO `municipio` (`idmunicipio`, `municipio`, `departamentoid`) VALUES
-(1, 'Bogota', 1);
+(1, 'Bogota', 1),
+(2, 'Cajica', 1),
+(3, 'Chia', 1),
+(6, 'Cogua', 1),
+(7, 'Zipaquira', 1),
+(8, 'Tenjo', 1),
+(9, 'Tocancipa', 1);
 
 -- --------------------------------------------------------
 
@@ -2249,8 +2330,13 @@ CREATE TABLE IF NOT EXISTS `parametro` (
 `idparametro` int(11) NOT NULL,
   `parametro` varchar(45) NOT NULL,
   `editable` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
+--
+-- Truncar tablas antes de insertar `parametro`
+--
+
+TRUNCATE TABLE `parametro`;
 --
 -- Volcado de datos para la tabla `parametro`
 --
@@ -2259,8 +2345,7 @@ INSERT INTO `parametro` (`idparametro`, `parametro`, `editable`) VALUES
 (1, 'Nivel Formación', 1),
 (2, 'Tipo Documento', 0),
 (3, 'Genero', 0),
-(4, 'Dia', 0),
-(5, 'Oferta', 1);
+(4, 'Dia', 0);
 
 -- --------------------------------------------------------
 
@@ -2274,6 +2359,11 @@ CREATE TABLE IF NOT EXISTS `perfil` (
   `activo` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
+--
+-- Truncar tablas antes de insertar `perfil`
+--
+
+TRUNCATE TABLE `perfil`;
 --
 -- Volcado de datos para la tabla `perfil`
 --
@@ -2293,7 +2383,28 @@ CREATE TABLE IF NOT EXISTS `permiso` (
   `perfilid` int(11) NOT NULL,
   `menuid` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Truncar tablas antes de insertar `permiso`
+--
+
+TRUNCATE TABLE `permiso`;
+--
+-- Volcado de datos para la tabla `permiso`
+--
+
+INSERT INTO `permiso` (`idpermiso`, `perfilid`, `menuid`, `activo`) VALUES
+(1, 2, 1, 1),
+(2, 2, 2, 1),
+(3, 2, 1, 0),
+(4, 2, 2, 0),
+(5, 2, 6, 1),
+(6, 2, 7, 1),
+(7, 2, 8, 1),
+(8, 2, 9, 1),
+(9, 2, 3, 1),
+(10, 2, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -2309,10 +2420,16 @@ CREATE TABLE IF NOT EXISTS `programa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Truncar tablas antes de insertar `programa`
+--
+
+TRUNCATE TABLE `programa`;
+--
 -- Volcado de datos para la tabla `programa`
 --
 
 INSERT INTO `programa` (`idprograma`, `programa`, `version`, `areaid`) VALUES
+(0, 'por favor sirva', 2, 1),
 (1, 'programa de prueba', 2, 1),
 (12345, 'programa 1', 0, 1),
 (112005, 'GESTIÓN DEL TALENTO HUMANO', 101, 1),
@@ -3075,12 +3192,17 @@ CREATE TABLE IF NOT EXISTS `sede` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
+-- Truncar tablas antes de insertar `sede`
+--
+
+TRUNCATE TABLE `sede`;
+--
 -- Volcado de datos para la tabla `sede`
 --
 
 INSERT INTO `sede` (`idsede`, `sede`, `direccion`, `telefono`, `municipioid`, `estado`) VALUES
 (2, 'sede b', 'calle 46 n 55 - 55', '123', 1, 1),
-(3, 'sede a', 'calle 45 n 12-45', '321456', 1, 1),
+(3, 'sede a', 'calle 45 n 12-454', '321456', 1, 1),
 (4, 'Nueva Sede', '568', '567', 1, 1),
 (5, 'Sede L', 'Calle 23', '321456874', 1, 1),
 (6, 'Sede k', 'calle 43- 34', '32145687', 1, 1);
@@ -3111,16 +3233,24 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `perfilid` int(11) NOT NULL,
   `horas_formacion` int(11) NOT NULL,
   `genero` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
+--
+-- Truncar tablas antes de insertar `usuario`
+--
+
+TRUNCATE TABLE `usuario`;
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`idusuario`, `identificacion`, `email_sena`, `email_misena`, `email`, `celular`, `telefono`, `direccion`, `municipioid`, `nombres`, `apellidos`, `nivel_formacion`, `tipo_documento`, `clave`, `fecha_documento`, `fecha_expiracion`, `perfilid`, `horas_formacion`, `genero`) VALUES
-(1, 123, '', 'wamora22@misena.edu.co', 'alejandro_mora@outlook.com', '3002141460', '', 'Calle 89B # 116A-10 Int 57 Apt 103', 1, 'Alejandro', 'Mora Contreras', 1, 3, '123', '2003-04-13', '2014-12-13', 2, 76, 5),
-(2, 1020802202, 'jljimenez202@misena.edu.co', 'jljimenez202@misena.edu.co', 'yuliansennin101010@gmail.com', '31246874', '324869761', 'mi casa', 1, 'Julian Leonardo', 'Jimenez Jimenez', 2, 3, '12345', '2013-05-22', '2015-10-16', 1, 115, 5),
-(3, 1049797973, 'hspineros@misena.edu.co', 'hspineros@misena.edu.co', 'stiven-23@hotmail.com', '3214569874', '3214569874', 'calle 3', 1, 'Stiven ', 'piÃ±eros', 1, 3, '123456789', '2014-11-06', '2014-11-14', 2, 120, 5);
+(1, 123, 'NA', 'wamora22@misena.edu.co', 'alejandro_mora@outlook.com', '3002141460', '', 'Calle 89B # 116A-10 Int 57 Apt 103', 1, 'Alejandro', 'Mora Contreras', 1, 3, '123456789', '2003-04-13', '2014-12-13', 1, -30, 5),
+(2, 1020802202, 'jljimenez202@misena.edu.co', 'jljimenez202@misena.edu.co', 'yuliansennin101010@gmail.com', '31246874', '324869761', 'mi casa', 1, 'Julian', 'Jimenez ', 2, 3, '123456789 ', '2013-05-22', '2015-10-16', 1, 25, 5),
+(3, 1049797973, 'hspineros@misena.edu.co', 'hspineros@misena.edu.co', 'stiven-23@hotmail.com', '3214569874', '3214569874', 'calle 3', 1, 'Stiven ', 'piÃ±eros', 1, 3, '123456789', '2014-11-06', '2014-11-14', 2, 120, 5),
+(7, 112029831, 'prueva@misena.edu.co', 'prueva@misena.edu.co', 'prueva@yahoo.co', '1111111111', '11111111', '123', 1, 'prueva', 'pruevas', 1, 3, '123', '2014-11-12', '2014-11-12', 2, 120, 5),
+(8, 80546098, 'rinconrobix@misena.edu.co', 'rinconrobix@misena.edu.co', 'rinconrobix@gmail.com', '3108775481', '5555', 'Por ahi', 1, 'ROBINSON ENRIQUE', 'RINCON RAMIREZ', 1, 3, '123', '1982-01-19', '2000-01-25', 2, 85, 5),
+(12, 12345, 'NA', 'jdsfhdsf@misena.edu.co', 'stiven@fkgdfk.com', '3214569874', '', 'calle 45 n 12-45', 1, 'stiven', 'Perez', 1, 3, '123', '2014-01-01', '2014-01-01', 2, 14, 5);
 
 -- --------------------------------------------------------
 
@@ -3133,8 +3263,13 @@ CREATE TABLE IF NOT EXISTS `valor` (
   `valor` varchar(160) NOT NULL,
   `editable` tinyint(1) NOT NULL DEFAULT '1',
   `parametroid` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
+--
+-- Truncar tablas antes de insertar `valor`
+--
+
+TRUNCATE TABLE `valor`;
 --
 -- Volcado de datos para la tabla `valor`
 --
@@ -3148,13 +3283,11 @@ INSERT INTO `valor` (`idvalor`, `valor`, `editable`, `parametroid`) VALUES
 (6, 'Femenino', 0, 3),
 (7, 'Lunes', 0, 4),
 (8, 'Martes', 0, 4),
-(9, 'Miércoles', 0, 4),
+(9, 'Miercoles', 0, 4),
 (10, 'Jueves', 0, 4),
 (11, 'Viernes', 0, 4),
 (12, 'Sábado', 0, 4),
-(13, 'Domingo', 0, 4),
-(14, 'Abierta', 1, 5),
-(15, 'Virtual', 1, 5);
+(13, 'Domingo', 0, 4);
 
 --
 -- Índices para tablas volcadas
@@ -3292,7 +3425,7 @@ MODIFY `idarea` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `competencia`
 --
 ALTER TABLE `competencia`
-MODIFY `idcompetencia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `idcompetencia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `departamento`
 --
@@ -3302,42 +3435,42 @@ MODIFY `iddepartamento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `disponiblidad`
 --
 ALTER TABLE `disponiblidad`
-MODIFY `iddisponiblidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `iddisponiblidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=104;
 --
 -- AUTO_INCREMENT de la tabla `ficha_grupo`
 --
 ALTER TABLE `ficha_grupo`
-MODIFY `idficha_grupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `idficha_grupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-MODIFY `idhorario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+MODIFY `idhorario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `jornada`
 --
 ALTER TABLE `jornada`
-MODIFY `idjornada` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `idjornada` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `municipio`
 --
 ALTER TABLE `municipio`
-MODIFY `idmunicipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idmunicipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `parametro`
 --
 ALTER TABLE `parametro`
-MODIFY `idparametro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `idparametro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --
@@ -3347,7 +3480,7 @@ MODIFY `idperfil` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `permiso`
 --
 ALTER TABLE `permiso`
-MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `sede`
 --
@@ -3357,12 +3490,12 @@ MODIFY `idsede` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `valor`
 --
 ALTER TABLE `valor`
-MODIFY `idvalor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `idvalor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- Restricciones para tablas volcadas
 --
@@ -3463,6 +3596,8 @@ ADD CONSTRAINT `fk_valor_tipo_documento` FOREIGN KEY (`tipo_documento`) REFERENC
 --
 ALTER TABLE `valor`
 ADD CONSTRAINT `fk_parametro_valor` FOREIGN KEY (`parametroid`) REFERENCES `parametro` (`idparametro`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
