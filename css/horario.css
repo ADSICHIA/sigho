@@ -5,14 +5,25 @@
 div.espacio{
 	height: 30px;
 }
-
+.ir{
+	display:block; 
+	cursor:pointer;
+	border:3px solid #fff;
+}
+.ir:hover{
+	color:#223195;
+}
 table.kanzen{
 	opacity: 0;
 	border: 1px solid #943;
 }
 
 div.taka{
-	margin-left: 140px;
+	margin-left: 80px;
+	width: 1170px;
+}
+div.morita{
+	margin-left: -20px;
 	width: 1350px;
 }
 div.ver{
@@ -22,11 +33,11 @@ div.ver{
 }
 
 div.coll{
-	width: 1350px; 
+	width: 1170px; 
 	float: left;
 }
 div.call{
-	width: 1350px; 
+	width: 1170px; 
 	float: left;
 }
 .tablee:hover {
@@ -185,6 +196,10 @@ div#boton-a{
 	margin-top: 150px;
 	margin-left: 660px;
 }
+div#boton-ac{
+	margin-top: 150px;
+	margin-left: 260px;
+}
 input.voto{
 	visibility: hidden;
 	height: 0px;
@@ -219,13 +234,6 @@ input.voto{
 	-webkit-transition: all 2s ease-in-out ;
 	-moz-transition: all 2s ease-in-out;
 }
-.reis{
-	opacity: 1;
-	width: 166px;
-	border: 1px solid #ffffff;
-	-webkit-transition: all 2s ease-in-out ;
-	-moz-transition: all 2s ease-in-out;
-}
 input.voto1{
 	visibility: visible;
 	width: 150px;
@@ -233,18 +241,19 @@ input.voto1{
 	border-radius: 3px;
 	border-color: #0089FF;
 	opacity: .5;
-	background: -webkit-linear-gradient(#8FCDF3, #1893E0); 
-    background: -o-linear-gradient(#8FCDF3, #1893E0); 
-    background: -moz-linear-gradient(#8FCDF3, #1893E0); 
-    background: linear-gradient(#8FCDF3, #1893E0); 
+	background: -webkit-linear-gradient(#416EC8, #6890DF); 
+    background: -o-linear-gradient(#416EC8, #6890DF); 
+    background: -moz-linear-gradient(#416EC8, #6890DF); 
+    background: linear-gradient(#416EC8, #6890DF); 
 	-webkit-transition: height 2s ease-in-out ;
 	-moz-transition: height 2s ease-in-out;
 }
 input.voto1:hover{
 	opacity: 1;
-	background: -webkit-linear-gradient(#1893E5, #8FCDF3); 
-    background: -o-linear-gradient(#1893E5, #8FCDF3); 
-    background: -moz-linear-gradient(#1893E5, #8FCDF3); 
-    background: linear-gradient(#1893E5, #8FCDF3);
+	background: -webkit-linear-gradient(#6890DF, #416EC8); 
+    background: -o-linear-gradient(#6890DF, #416EC8); 
+    background: -moz-linear-gradient(#6890DF, #416EC8); 
+    background: linear-gradient(#6890DF, #416EC8);
     text-shadow: 1px 1px #505356;
+    color: white;
 }

@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
     include ("controlador/chorario.php");
 ?>
 
@@ -142,7 +142,7 @@
         <?php
             for ($i=0; $i <count($dat) ; $i++) {
         ?>
-        <option value='<?php echo $dat[$i]["idarea"] ?>'><?php echo $dat[$i]['area'] ?></option>
+        <option value='<?php echo $dat[$i]["idarea"] ?>'><?php echo utf8_encode($dat[$i]['area']) ?></option>
         <?php
             }
         ?>
