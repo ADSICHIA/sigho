@@ -53,7 +53,7 @@
                                 <?php 
                                     for ($i=0; $i < count($dat); $i++){
                                  ?>
-                                    <option value="<?php echo $dat[$i]['idvalor'] ?>"><?php echo $dat[$i]['valor'] ?></option>
+                                    <option value="<?php echo $dat[$i]['idvalor'] ?>"><?php echo utf8_encode($dat[$i]['valor']); ?></option>
                                 <?php } ?>
                         </select>
                 </td>
@@ -232,7 +232,7 @@
           <tr>
 
             <td><input type="submit" name="del" value=<?php echo $dat4[$i]['idusuario'] ?>></td>
-            <td><?php echo $dat4[$i]['cedula']  ?></td>
+            <td><?php echo utf8_encode($dat4[$i]['cedula']);  ?></td>
             <td><?php echo $dat4[$i]['identificacion'] ?></td>
             <td><?php echo $dat4[$i]['genero'] ?></td>
             <td><?php echo $dat4[$i]['nombres'] ?></td>

@@ -73,7 +73,7 @@ for($i = 0; $i<count($dat); $i++){
  ?>
  <tr>
     <td align = "left"><?php echo $dat[$i]['idprograma'] ?></td>
-    <td><?php echo $dat[$i]['programa']?></td>
+    <td><?php echo utf8_encode($dat[$i]['programa']);?></td>
     <td><?php echo $dat[$i]['version']?></td>
     <td><?php echo $tabla[$i]['area']?></td>
     <td align = "center"><a href = "home.php?pr=<?php echo $dat[$i]['idprograma'] ?>&pac=<?php echo $pac; ?>&up=11"><input type="button" name="del" value="Editar"/></a>

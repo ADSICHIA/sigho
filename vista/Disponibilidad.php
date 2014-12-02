@@ -26,7 +26,7 @@ include ("controlador/cdisponi.php");
                         $dia = $ins->seldias();
                         for ($i = 0; $i < count($dia); $i++) {
                             ?>
-                            <td align="center" width="100" style="border: 3px solid #EFF5FB "><?php echo $dia[$i]['valor']; ?></td>
+                            <td align="center" width="100" style="border: 3px solid #EFF5FB "><?php echo utf8_encode($dia[$i]['valor']); ?></td>
                         <?php } ?>
                     </tr>
 

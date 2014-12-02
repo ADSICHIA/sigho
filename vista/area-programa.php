@@ -64,11 +64,11 @@ include ("../controlador/conexion.php");
 			echo $html;
 			//echo $sql;
 		}else if ($num==3) {
-<<<<<<< HEAD
+
 			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
-=======
+
 			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas, activo, (Select jornadaid from horario where grupoid='$valor' and dia='$dia') as seleccionado FROM jornada  ";
->>>>>>> 2976bf032d508fab005bc268cbc85e3985014f55
+
 			$conexionBD = new conexion();
 			$conexionBD->conectarBD();
 			$estados = $conexionBD->ejeCon($sql,0);
@@ -82,11 +82,11 @@ include ("../controlador/conexion.php");
 			
 			$html='<option value=""  >Seleccione</option>';
 			foreach($resulta as $res){
-<<<<<<< HEAD
+
 					$html.='<option value="'.$res["value"].'">'.utf8_encode($res["nombre"]).'</option>';				
-=======
+
 					$html.='<option value="'.$res["value"].'" '.$res["select"].'>'.$res["nombre"].'</option>';				
->>>>>>> 2976bf032d508fab005bc268cbc85e3985014f55
+
 			}
 			echo $html;
 		}else if ($num==7) {

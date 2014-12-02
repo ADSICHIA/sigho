@@ -35,7 +35,7 @@ include ("controlador/cficha.php");
     <?php 
         for($i = 0; $i<count($programa); $i++){
     ?>
-    <option value="<?php echo $programa[$i]['idprograma']; ?>"> <?php echo $programa[$i]['programa'];?> </option>
+    <option value="<?php echo $programa[$i]['idprograma']; ?>"> <?php echo utf8_encode($programa[$i]['programa']);?> </option>
     <?php
         }
     ?>
@@ -111,7 +111,7 @@ for($i = 0; $i<count($dat); $i++){
     <td><?php echo $dat[$i]['fecha_fin']?></td>
     <td><?php echo $dat[$i]['oferta']?></td>
     <td><?php echo $dat[$i]['jornada']?></td>
-    <td><?php echo $dat[$i]['programa']?></td>
+    <td><?php echo utf8_encode($dat[$i]['programa']);?></td>
     <td><?php echo $dat[$i]['cant_aprendices']?></td>
     <td align = "center"><a href = "home.php?pr=<?php echo $dat[$i]['idficha'] ?>&pac=<?php echo $pac; ?>&up=12"><input type="button" name="del" value="Editar"/></a>
     <a href = "home.php?del=<?php echo $dat[$i]['idficha'] ?>&pac=<?php echo $pac; ?>"><button value="<?php echo $dat[$i]['idficha'] ?>" name="del">Eliminar</button></a></td>

@@ -37,7 +37,7 @@
 	?>	
     <tr>           
 		<td><?php echo $dat[$i]['idparametro']?><input type="hidden" name="del" value=<?php echo $dat[$i]['idparametro']?>></td>
-            <td><?php echo $dat[$i]['parametro'] ?></td>
+            <td><?php echo utf8_encode($dat[$i]['parametro']); ?></td>
             <td><a href="home.php?pr=<?php echo $dat[$i]['idparametro'] ?>&pac=102&up=11&ed=0"><img border=0 src="image/editar.png" width="16" height="16" /></a></td>    
 		</tr>
         
@@ -87,7 +87,7 @@
 		for ($i=0; $i < count($dat1); $i++){
 	  ?>
             
-            <option value="<?php echo $dat1[$i]['idparametro'] ?>" ><?php echo $dat1[$i]['parametro'] ?></option>
+            <option value="<?php echo $dat1[$i]['idparametro'] ?>" ><?php echo utf8_encode($dat1[$i]['parametro']); ?></option>
             <?php } ?>
             	</select>
             </td>
@@ -118,9 +118,9 @@
 	?>	
             <tr>           
     		    <td class="style2" align="center"><input type="submit" name="del2" value=<?php echo $dat2[$i]['idvalor']?>></td>
-                <td class="style2" align="left"><?php echo $dat2[$i]['valor'] ?></td>
-                <td class="style2" align="left"><?php echo $dat2[$i]['parametro'] ?></td>
-                <td align="center"><a href="home.php?pr=<?php echo $dat2[$i]['idvalor'] ?>&pac=102&up=11&ed=1&prr=<?php echo $dat2[$i]['parametro'] ?>"><img border=0 src="image/editar.png" width="16" height="16" /></a></td>    
+                <td class="style2" align="left"><?php echo utf8_encode($dat2[$i]['valor']); ?></td>
+                <td class="style2" align="left"><?php echo utf8_encode($dat2[$i]['parametro']); ?></td>
+                <td align="center"><a href="home.php?pr=<?php echo $dat2[$i]['idvalor'] ?>&pac=102&up=11&ed=1&prr=<?php echo utf8_encode($dat2[$i]['parametro']); ?>"><img border=0 src="image/editar.png" width="16" height="16" /></a></td>    
     		</tr>
         
 	<?php  }  ?>
