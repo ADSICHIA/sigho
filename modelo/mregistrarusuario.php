@@ -32,7 +32,7 @@ class mregistrarusuario{
 	
 	function mantenimiento($act,$pr){
 		$sql = "UPDATE usuario SET estado='".$act."' WHERE idusuario='".$pr."';";
-		echo $sql;
+		//echo $sql;
 		$this->cons($sql);
 	}
 	function cons($c){
