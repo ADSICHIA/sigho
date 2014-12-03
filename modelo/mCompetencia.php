@@ -20,7 +20,7 @@ class mCompetencia{
 	}
 
 	function SelPrograma(){
-		$sql = "SELECT p.idprograma, p.programa from programa as p left join competencia as c on p.idprograma = c.programaid where c.programaid is null";
+		$sql = "SELECT p.idprograma, p.programa from programa as p left join competencia as c on p.idprograma = c.programaid where c.programaid is null order by p.programa ASC";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
@@ -31,6 +31,7 @@ class mCompetencia{
 		$sql = "SELECT c.idcompetencia, c.usuarioid, c.programaid, c.calificado, u.nombres, u.apellidos, p.programa from competencia as c ";
 		$sql .="inner join usuario as u on c.usuarioid = u.idusuario";
 		$sql .= "inner join programa as p on c.programaid = p.programaid";
+
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
@@ -47,10 +48,11 @@ class mCompetencia{
 			$sql = "SELECT c.idcompetencia, c.usuarioid, c.programaid, c.calificado, u.nombres, u.apellidos, p.programa from competencia as c ";
 			$sql .="inner join usuario as u on c.usuarioid = u.idusuario ";
 			$sql .= "inner join programa as p on c.programaid = p.idprograma ";
+			$sql .= "where c.usuarioid=".$_SESSION["idUser"];
 			if($filtro)
-					$sql .= " WHERE programa LIKE '%".$filtro."%'";
+					$sql .= " and programa LIKE '%".$filtro."%'";
 			$sql.= " ORDER BY idcompetencia LIMIT ".$rvalini.", ".$rvalfin;
-
+			//echo $sql;
 			$conexionBD = new conexion();
 			$conexionBD->conectarBD();
 			$data = $conexionBD->ejeCon($sql,0);

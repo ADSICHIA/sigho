@@ -40,9 +40,9 @@
 <center>
     <form name="form1" action="" method="post" onsubmit="return vali();">
         <table class="table table-bordered table-hover table-striped">
-            <tr>
+            <tr colspan="4">
                 <h1>
-                    CREAR USUARIO
+                   Registrarse
                 </h1>
             </tr>
             <tr>
@@ -53,11 +53,11 @@
                                 <?php 
                                     for ($i=0; $i < count($dat); $i++){
                                  ?>
-                                    <option value="<?php echo $dat[$i]['idvalor'] ?>"><?php echo utf8_encode($dat[$i]['valor']); ?></option>
+                                    <option value="<?php echo $dat[$i]['idvalor'] ?>"><?php echo $dat[$i]['valor'] ?></option>
                                 <?php } ?>
                         </select>
                 </td>
-                    <input type="hidden" name="estado" value="1" >
+
                 <td>
                     Identificacion<FONT COLOR="RED">*</FONT></td><td>
                     <input type="text" name="identificacion" style="width: 200px;" required="required" />
@@ -126,18 +126,8 @@
                                 <?php } ?>
                         </select>
                 </td>
-                 <td>
-                        Perfil<FONT COLOR="RED">*</FONT></td><td>
-                        <select name="perfilid" style="width: 195px;" required>
-                            <option value="">Seleccione</option>
-                                <?php 
-                                    for ($i=0; $i < count($dat2); $i++){
-                                 ?>
-                                    <option value="<?php echo $dat2[$i]['idperfil'] ?>"><?php echo $dat2[$i]['perfil'] ?></option>
-                                <?php } ?>
-                        </select>
-                </td>
-
+                <input type="hidden" name="perfilid" value="2" >
+                 <input type="hidden" name="estado" value="1" >
             </tr>
 
             <tr>
@@ -195,67 +185,10 @@
             <tr>
                 <td align="center" colspan="4" >
                     <input  type="submit" value="Guardar" class="btn btn-default" />
+                    <a href="index.php"><input type="button" value="Volver" class="btn btn-default" ></a>
+                    
                 </td>
             </tr>
         </table>
     </form>
-
-<h2>Usuarios registrados</h2>
-<form  name="form2" method="get" action="" onSubmit="return confirm('¿Desea eliminar?')">
-  
-  <div align="center" class="table-responsive">
-    <table  class="table table-bordered table-hover table-striped">
-
-      <tr>
-        <td>No. Usuario<input name="pac" type="hidden" id="pac" value="<?php echo $pac; ?>"/></td>
-        <td>Documento</td>
-        <td>Identificacion</td>
-        <td>Genero</td>
-        <td>Nombres</td>
-        <td>Apellidos</td>
-        <td>Email</td>
-        <td>Email Misena</td>
-        <td>Telefono</td>
-        <td>Municipio</td>
-        <td>Perfil</td>
-        <td>Estado</td>
-        <td>Editar</td>
-       
-      </tr>
-         <?php 
-    //Select
-        
-        $dat4 = $ins->seleccionar();
-        for ($i=0; $i < count($dat4); $i++){
-            
-      ?>
-   
-          <tr>
-
-            <td><input type="submit" name="del" value=<?php echo $dat4[$i]['idusuario'] ?>></td>
-            <td><?php echo utf8_encode($dat4[$i]['cedula']);  ?></td>
-            <td><?php echo $dat4[$i]['identificacion'] ?></td>
-            <td><?php echo $dat4[$i]['genero'] ?></td>
-            <td><?php echo $dat4[$i]['nombres'] ?></td>
-            <td><?php echo $dat4[$i]['apellidos'] ?></td>
-            <td><?php echo $dat4[$i]['email'] ?></td>
-            <td><?php echo $dat4[$i]['email_misena'] ?></td>
-            <td><?php echo $dat4[$i]['telefono'] ?></td>
-            <td><?php echo $dat4[$i]['municipio'] ?></td>
-            <td><?php echo $dat4[$i]['perfil'] ?></td>
-             <td><a href="home.php?pac=102&act=<?php echo $dat4[$i]['estado'] ?>&pr=<?php echo $dat4[$i]['idusuario'] ?>"  onclick="return confirm('¿Desea cambiarle el estado a este usuario?');"><span <?php if($dat4[$i]['estado']==2){?> class="glyphicon glyphicon-ok" <?php }else{ ?> class="glyphicon glyphicon-remove" <?php }?>></span></a></td>
-            <td><a href = "home.php?pr=<?php echo $dat4[$i]['idusuario'] ?>&pac=102&up=11"><img border=0 src="image/editar.png" width="16" height="16" /></a></td>
-                    <?php  }  ?>
-            
-        </tr>
-      
- 
-         <tr>
-            <td colspan=8 class="style2">Para eliminar presione el n&uacute;mero del c&oacute;digo.</td>
-        </tr>
-    </table>
-    <p>&nbsp; </p>
-  </div>
-</form>
-
 </center>

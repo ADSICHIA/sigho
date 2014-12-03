@@ -1,3 +1,5 @@
+
+
 <?php
 include_once("controlador/conexion.php");
 class mhorario{
@@ -85,6 +87,14 @@ class mhorario{
 		$data = $conexionBD->ejeCon($sql,0);
 		return $data[0];
 	}
+	function selgrupo(){
+		$sql = "SELECT * FROM grupo ORDER BY grupo ASC;";
+		$conexionBD = new conexion();
+		$conexionBD->conectarBD();
+		$data = $conexionBD->ejeCon($sql,0);
+		return $data;
+	}
+
 
 	function QuitarHoras($profe, $jornada){
 		$sql = "SELECT horas_formacion FROM usuario WHERE identificacion='".$profe."' ";

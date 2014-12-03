@@ -15,7 +15,7 @@ class mSeguridad{
 						 direccion, municipioid, nombres, apellidos, 
 						 nivel_formacion, tipo_documento, clave, 
 						 fecha_documento, fecha_expiracion, perfilid, 
-						 horas_formacion, genero FROM usuario 
+						 horas_formacion, genero,estado FROM usuario 
 						 WHERE identificacion='$user'";
 
 		$this->cons($sql);

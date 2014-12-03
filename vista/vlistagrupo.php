@@ -20,6 +20,7 @@
                                                      <th>Ambiente</th>
                                                     <th>Editar</th>
                                                     <th>Eliminar</th>
+                                                     <th>fichas</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -33,6 +34,7 @@
                                                 
                                                     <td><a href="home.php?pac=803&pr=<?php echo$datos[$i]['idgrupo'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
                                                     <td><a href="home.php?pac=804&del=<?php echo $datos[$i]['idgrupo'] ?>" onclick="return confirm('¿Desea eliminar el grupo?');"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                                     <td><a href="home.php?pac=805&pr=<?php echo$datos[$i]['idgrupo'] ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>

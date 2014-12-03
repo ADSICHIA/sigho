@@ -8,7 +8,8 @@ include ("controlador/cficha.php");
 
 <form name="ficha" action="home.php?pac=112" method="post">
 	<label for= "idficha">No. Ficha &nbsp;&nbsp;&nbsp;</label>
-    <input type="text" id="idficha" disabled="disbled" class="form-control" name="idficha" required="required" value = "<?php echo $editar[0]['idficha']; ?>" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')"/>
+    <input type="text" id="ficha" disabled="disbled" class="form-control" name="ficha" required="required" value = "<?php echo $editar[0]['idficha']; ?>" pattern="[0-9][0-9]{1,10}" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Debe Ingresar Solo N&uacute;meros')"/>
+    <input type="hidden" id="idficha" name="idficha" value = "<?php echo $editar[0]['idficha']; ?>"/>
     <input type="hidden" id="actu" name="actu" value="actu"/>
     <br/><label for="fecha_inicio">Fecha Inicio&nbsp;&nbsp;&nbsp;</label>
     <input class="form-control" type="date" name="fecha_inicio" id="fecha_inicio" onblur="fnValidarFechas()" required="required" value = "<?php echo $editar[0]['fecha_inicio']; ?>"><br/>
@@ -16,7 +17,7 @@ include ("controlador/cficha.php");
     <input class="form-control" type="date" name="fecha_fin" id="fecha_fin" required="required" value = "<?php echo $editar[0]['fecha_fin']; ?>"><br/>
     <br/><label for="oferta">Oferta</label>
     <select class="form-control" id="oferta" name="oferta" required="required">
-    <option value="0" selected="selected"> </option>
+    <option value="0" selected="selected"></option>
     <?php 
         for($i = 0; $i<count($selOferta); $i++){
     ?>

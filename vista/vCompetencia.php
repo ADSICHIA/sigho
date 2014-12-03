@@ -17,7 +17,7 @@ $usuario = isset($_SESSION["idUser"]) ? $_SESSION["idUser"]:NULL;
         for($i = 0; $i<count($programa); $i++){
     ?>
  
-    <option value="<?php echo $programa[$i]['idprograma']; ?>"> <?php echo $programa[$i]['programa'];?> </option>
+    <option value="<?php echo $programa[$i]['idprograma']; ?>"> <?php echo utf8_encode($programa[$i]['programa']);?> </option>
     <?php
        }
     ?>
@@ -53,7 +53,8 @@ Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" v
     <td align="right" valign="bottom">
         <?php
             $bo = "<input type='hidden' name='filtro' value='".$filtro."' />";
-            $pag->spag($conp,$nreg,$pac,$bo); 
+            $pag->spag($conp,$nreg,$pac,$bo);
+            echo $filtro; 
             $dat=$ins->selCom($filtro, $pag->rvalini(), $pag->rvalfin());
         ?>
     </td>
@@ -77,7 +78,7 @@ Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" v
 for($i = 0; $i<count($dat); $i++){
  ?>
  <tr>
-    <td align = "left"><?php echo $dat[$i]['programa'] ?></td>
+    <td align = "left"><?php echo utf8_encode($dat[$i]['programa']); ?></td>
     <td align = "center"><?php if ($dat[$i]['calificado'] == 1) echo "<img src='image/activa.png'>"; else echo "" ?></td>
  <td align = "center"><?php if ($dat[$i]['calificado'] == 0) echo "<img src='image/activa.png'>"; else echo "" ?></td>
     <td align = "center"><a href = "home.php?pr=<?php echo $dat[$i]['idcompetencia'] ?>&pac=<?php echo $pac; ?>&up=15"><input type="button" name="del" value="Editar"/></a>

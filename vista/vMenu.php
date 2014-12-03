@@ -17,7 +17,7 @@
                             foreach ($menus as $menu) {
                         ?>
                                 <li>
-                                    <a href="<?php echo $menu["href"];?>"><i class="fa fa-bar-chart-o fa-fw"></i> <?php echo $menu["menu"];?><span class="fa arrow"></span></a>
+                                    <a href="<?php echo $menu["href"];?>"><i class="fa fa-bar-chart-o fa-fw"></i> <?php echo utf8_encode($menu["menu"]);?><span class="fa arrow"></span></a>
                                     <!--<a class="active" href="<?php echo $menu["href"];?>"><i class="fa fa-dashboard fa-fw"></i><?php echo $menu["menu"];?><span class="fa arrow"></span></a>-->
                                     
                                     <?php 
@@ -30,7 +30,7 @@
                                             foreach ($submenus as $submenu) {
                                     ?>
                                                 <li>
-                                                    <a href="<?php echo $submenu["href"];?>"><?php echo $submenu["menu"];?></a>
+                                                    <a href="<?php echo $submenu["href"];?>"><?php echo utf8_encode($submenu["menu"]);?></a>
                                                 </li>
                                     <?php 
                                             }

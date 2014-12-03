@@ -43,33 +43,19 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Iniciar Sesión</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="frm_login" action="#" id="frm_login" method="POST">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Identificación" name="identificacion" type="identificacion" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Recordarme
-                                    </label>
-                                </div>
-                                <div class="msg">
-                                    <label>
-                                        <span><?php echo is_null($msg)?"":$msg; ?></span>
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <a href="#" onclick="frm_login.submit();" class="btn btn-lg btn-success btn-block">Autenticarse</a>
-                            </fieldset>
-                        </form>
-                    </div>
+                   <?php
+                    $Pac = isset($_GET["pac"]) ? $_GET["pac"] : NULL;
+                    $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
+                    if (is_null($Pac)){
+                        include("vista/vingreso.php");
+                     } else if ($Pac=="2") {
+                            if (is_null($Up)){
+                                include("vista/vregiusu.php");
+                            }
+                    }
+                   ?>
+
+
                 </div>
             </div>
         </div>

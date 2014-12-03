@@ -5,7 +5,8 @@ include ("../controlador/conexion.php");
 	$valor = $_REQUEST["variables"];
 	$num = $_REQUEST["Numero"];
 	$varia = $_REQUEST["programa"];
-	echo "programa: ".$valor.", numero: ".$num.", jornada: ".$hi;
+	$grup = $_REQUEST["grupo"];
+	//echo "programa: ".$valor.", numero: ".$num.", jornada: ".$varia;
 	if ($valor==0) {
 
     }else if($valor){
@@ -46,7 +47,7 @@ include ("../controlador/conexion.php");
 					$resulta[$j]["agen"]=$estados[$j]["agendado"];
 			}		   
 			$div='<label>Grupo: </label>';
-			$html='<select name="grupo" id="grupo" required onchange="javascript:verCreados();RecargarProgramas(this.value,4,'.$varia.');vertable();" >';
+			$html='<select name="grupo" id="grupo" required onchange="javascript:verHorario(1);verEspacios(1);RecargarProgramas(this.value,7,'.$varia.');RecargarProgramas(this.value,8,'.$varia.');RecargarProgramas(this.value,9,'.$varia.');RecargarProgramas(this.value,10,'.$varia.');RecargarProgramas(this.value,11,'.$varia.');RecargarProgramas(this.value,12,'.$varia.');RecargarProgramas(this.value,13,'.$varia.');" >';
 			$html.='<option value=""  >Seleccione</option>';
 			foreach($resulta as $res){
 				if ($res["agen"]==1) {
@@ -59,382 +60,563 @@ include ("../controlador/conexion.php");
 			echo $div;
 			echo $html;
 			//echo $sql;
-		}else if ($num==4) {
-			$sql = "SELECT H.grupoid, H.dia, H.usuarioid, H.jornadaid, U.nombres, U.apellidos, U.identificacion, J.jornada, J.hora_inicio, J.hora_fin
-			FROM horario as H 
-			INNER JOIN usuario as U ON H.usuarioid = U.identificacion
-			INNER JOIN jornada as J ON H.jornadaid = J.idjornada
-			WHERE H.grupoid = ".$valor."  ";
+		}else if ($num==7) {
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
+			$sql1 = "SELECT grupoid, jornadaid FROM horario WHERE grupoid=".$valor." AND dia=7 ";
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["idjornada"];
+					$resulta[$j]["nombre"]=$jorna[$j]["jornada"];
+			}
 
-			$sql1 = "SELECT G.grupo, U.nombres, U.apellidos, U.idusuario, FG.fichaid, J.jornada, J.hora_inicio, J.hora_fin, G.idgrupo, J.idjornada
-			FROM grupo as G
-			INNER JOIN horario as H ON G.idgrupo = H.grupoid
-			INNER JOIN jornada as J ON H.jornadaid = J.idjornada
-			INNER JOIN ficha_grupo as FG ON G.idgrupo = FG.grupoid
-			INNER JOIN ficha as F ON FG.fichaid = F.idficha
-			INNER JOIN programa as P ON F.programaid = P.idprograma
-			INNER JOIN competencia as C ON C.programaid = P.idprograma
-			INNER JOIN usuario as U ON C.usuarioid = U.idusuario
-			WHERE G.idgrupo = ".$valor." GROUP BY G.IDGRUPO ";
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["jornadaid"];
+			}
+			$html='<option value="0">Seleccione</option>';				
+			foreach($resulta as $res){
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]).'</option>';				
+			}
+			echo $html;
+		}else if ($num==8) {
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
+			$sql1 = "SELECT grupoid, jornadaid FROM horario WHERE grupoid=".$valor." AND dia=8 ";
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["idjornada"];
+					$resulta[$j]["nombre"]=$jorna[$j]["jornada"];
+			}
 
-			$sql2 = "SELECT  P.programa, U.nombres, U.apellidos, U.idusuario, U.identificacion, D.jornadaid, J.jornada, D.dia, J.idjornada
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["jornadaid"];
+			}
+			
+			$html='<option value="0">Seleccione</option>';				
+			foreach($resulta as $res){
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]).'</option>';				
+			}
+			echo $html;
+		}else if ($num==9) {
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
+			$sql1 = "SELECT grupoid, jornadaid FROM horario WHERE grupoid=".$valor." AND dia=9 ";
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["idjornada"];
+					$resulta[$j]["nombre"]=$jorna[$j]["jornada"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["jornadaid"];
+			}
+
+			$html='<option value="0">Seleccione</option>';				
+			foreach($resulta as $res){
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]).'</option>';				
+			}
+
+			echo $html;
+		}else if ($num==10) {
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
+			$sql1 = "SELECT grupoid, jornadaid FROM horario WHERE grupoid=".$valor." AND dia=10 ";
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["idjornada"];
+					$resulta[$j]["nombre"]=$jorna[$j]["jornada"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["jornadaid"];
+			}
+
+			$html='<option value="0">Seleccione</option>';				
+			foreach($resulta as $res){
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]).'</option>';				
+			}
+
+			echo $html;
+		}else if ($num==11) {
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
+			$sql1 = "SELECT grupoid, jornadaid FROM horario WHERE grupoid=".$valor." AND dia=11 ";
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["idjornada"];
+					$resulta[$j]["nombre"]=$jorna[$j]["jornada"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["jornadaid"];
+			}
+
+			$html='<option value="0">Seleccione</option>';				
+			foreach($resulta as $res){
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]).'</option>';				
+			}
+
+			echo $html;
+		}else if ($num==12) {
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
+			$sql1 = "SELECT grupoid, jornadaid FROM horario WHERE grupoid=".$valor." AND dia=12 ";
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["idjornada"];
+					$resulta[$j]["nombre"]=$jorna[$j]["jornada"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["jornadaid"];
+			}
+
+			$html='<option value="0">Seleccione</option>';				
+			foreach($resulta as $res){
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]).'</option>';				
+			}
+
+			echo $html;
+		}else if ($num==13) {
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
+			$sql1 = "SELECT grupoid, jornadaid FROM horario WHERE grupoid=".$valor." AND dia=13 ";
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["idjornada"];
+					$resulta[$j]["nombre"]=$jorna[$j]["jornada"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["jornadaid"];
+			}
+
+			$html='<option value="0">Seleccione</option>';				
+			foreach($resulta as $res){
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]).'</option>';				
+			}
+
+			echo $html;
+		}else if ($num==14) {
+			$number = 7;
+			$sql = "SELECT  P.programa, U.nombres, U.apellidos, U.idusuario, U.identificacion, D.jornadaid, J.jornada, D.dia, U.horas_formacion, C.calificado
 			FROM programa as P
 			RIGHT JOIN competencia as C ON P.idprograma = C.programaid
 			INNER JOIN usuario as U ON C.usuarioid = U.idusuario
 			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
             INNER JOIN jornada as J ON D.jornadaid = J.idjornada
-			WHERE P.idprograma=".$varia." ";
+			WHERE P.idprograma='".$grup."' AND J.idjornada=".$valor." AND D.dia=".$number." GROUP BY U.idusuario ";
 
+			$sql1 = "SELECT grupoid, jornadaid, usuarioid FROM horario WHERE grupoid='".$varia."' AND dia='".$number."';";
+		
 			$conexionBD = new conexion();
 			$conexionBD->conectarBD();
-			$estados = $conexionBD->ejeCon($sql,0);
-			$instructores = $conexionBD->ejeCon($sql1,0);
-			$docentes = $conexionBD->ejeCon($sql2,0);
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
 			$resulta=array();
-			$segundo=array();
-			$x=0;
-			$jornada = 0;
-			$idinstructor;
-			for($j=0; $j < count($instructores); $j++){
-				$segundo[$j]["idgrup"]=$instructores[$j]["idgrupo"];
-				$segundo[$j]["grup"]=$instructores[$j]["grupo"];
-				$segundo[$j]["nombre"]=$instructores[$j]["nombres"];
-				$segundo[$j]["apellido"]=$instructores[$j]["apellidos"];
-				$segundo[$j]["jorna"]=$instructores[$j]["jornada"];
-				$segundo[$j]["idjorna"]=$instructores[$j]["idjornada"];
-				$segundo[$j]["inicio"]=$instructores[$j]["hora_inicio"];
-				$segundo[$j]["fin"]=$instructores[$j]["hora_fin"];
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["identificacion"];
+					$resulta[$j]["nombre"]=$jorna[$j]["nombres"];
+					$resulta[$j]["apellido"]=$jorna[$j]["apellidos"];
+					$resulta[$j]["HF"]=$jorna[$j]["horas_formacion"];
+					$resulta[$j]["CA"]=$jorna[$j]["calificado"];
 			}
 
-			for($j=0; $j < 7; $j++){
-				$instructor[$j]="<label>No hay Instructor</label>";
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["usuarioid"];
 			}
-
-			foreach($estados as $res){
-				if ($res["jornadaid"]==1) {
-					$jornada = 1;
-				} else if ($res["jornadaid"]==2) {
-					$jornada = 2;
-				} else if ($res["jornadaid"]==3) {
-					$jornada = 3;
-				} else if ($res["jornadaid"]==4) {
-					$jornada = 4;
-				}else if ($res["jornadaid"]==5) {
-					$jornada = 5;
+			$div='<label>Instructor Actual:</label>';
+			$html='<select name="day[7]"   style="width: 95px">';
+			$html.='<option value="0">Seleccione</option>';
+			$html.='<optgroup label="Parciales">';		
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==0) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
 				}
-
-				if ($res["dia"]==7) {
-					$instructor[0]=$res["nombres"]." ".$res["apellidos"];
-					$idinstructor[0]=$res["identificacion"];
-				} else if ($res["dia"]==8) {
-					$instructor[1]=$res["nombres"]." ".$res["apellidos"];
-					$idinstructor[1]=$res["identificacion"];
-				} else if ($res["dia"]==9) {
-					$instructor[2]=$res["nombres"]." ".$res["apellidos"];
-					$idinstructor[2]=$res["identificacion"];
-				} else if ($res["dia"]==10) {
-					$instructor[3]=$res["nombres"]." ".$res["apellidos"];
-					$idinstructor[3]=$res["identificacion"];
-				} else if ($res["dia"]==11) {
-					$instructor[4]=$res["nombres"]." ".$res["apellidos"];
-					$idinstructor[4]=$res["identificacion"];
-				} else if ($res["dia"]==12) {
-					$instructor[5]=$res["nombres"]." ".$res["apellidos"];
-					$idinstructor[5]=$res["identificacion"];
-				} else if ($res["dia"]==13) {
-					$instructor[6]=$res["nombres"]." ".$res["apellidos"];
-					$idinstructor[6]=$res["identificacion"];
-				} 
-				$x++;
 			}
-
-				$aye = '<table align="center" border="0" cellspacing="" cellpadding="3" width="920px">';
-				foreach($segundo as $seg){
-				$aye.= '<tr><td><label>Nombre del Grupo:  '.$seg["grup"].'</label><input type="hidden" name="grupo" value="'.$seg["idgrup"].'" /></td>';
+				$html.='</optgroup>';
+				$html.='<optgroup label="Calificados">';			
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==1) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
 				}
-				foreach($segundo as $res){
-				$aye.= '<td><label>Jornada del Grupo:  '.$res["jorna"].'</label></td></tr>';
-				}
-				foreach($segundo as $res){
-				$aye.= '<tr><td><label>Director del Grupo:  '.$res["nombre"].'  '.$res["apellido"].'</label></td><td><label>Horario de la Jornada: desde las '.$res["inicio"].' hasta las '.$res["fin"].'</label></td></tr>';
-				}
-				$aye.= '<tr><td>&nbsp;</td></tr>';
-				$aye.= '</table>';
-				$boton = '<input type="submit" value="Actualizar" />';
-				$msj = 'Instructor Actual: ';
-
-			if ($jornada==5) {
-				
-				$div = '<div class="coll"><input type="hidden" name="actu" value="actu" /><input type="hidden" name="jornada" value="1" />';
-				$div.= '<div id="day" align="center" class="dias">Lunes</div>';
-				$div.= '<div id="day1" align="center" class="dias">Martes</div>';
-				$div.= '<div id="day2" align="center" class="dias">Miercoles</div>';
-				$div.= '<div id="day3" align="center" class="dias">Jueves</div>';
-				$div.= '<div id="day4" align="center" class="dias">Viernes</div>';
-				$div.= '<div id="day5" align="center" class="dias">Sabado</div>';
-				$div.= '</div>';
-				echo $aye;
-				echo $div;
-				$div1 = '<div class="coll">';
-				$div1.= '<div id="cont" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[7]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==7 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[0]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont1" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[8]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==8 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[1]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[9]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==9 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[2]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont3" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[10]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==10 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[3]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont4" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[11]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==11 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[4]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont5" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[12]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==12 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[5]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '</div>';
-				echo $div1;
-				echo $boton;
-			} else if ($jornada==1) {
-				$div = '<div class="coll">';
-				$div.= '<div id="day" align="center" class="dias">Lunes</div>';
-				$div.= '<div id="day1" align="center" class="dias">Martes</div>';
-				$div.= '<div id="day2" align="center" class="dias">Miercoles</div>';
-				$div.= '<div id="day3" align="center" class="dias">Jueves</div>';
-				$div.= '<div id="day4" align="center" class="dias">Viernes</div>';
-				$div.= '</div>';
-				echo $aye;
-				echo $div;
-				$div1 = '<div class="coll">';
-				$div1.= '<div id="cont" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[7]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==7 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[0]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[8]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==8 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[1]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[9]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==9 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[2]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[10]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==10 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[3]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[11]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==11 && $va["idjornada"]==1) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[4]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '</div>';
-				echo $div1;
-				echo $boton;
-			}else if ($jornada==2) {
-				$div = '<div class="coll">';
-				$div.= '<div id="day" align="center" class="dias">Lunes</div>';
-				$div.= '<div id="day1" align="center" class="dias">Martes</div>';
-				$div.= '<div id="day2" align="center" class="dias">Miercoles</div>';
-				$div.= '<div id="day3" align="center" class="dias">Jueves</div>';
-				$div.= '<div id="day4" align="center" class="dias">Viernes</div>';
-				$div.= '</div>';
-				echo $aye;
-				echo $div;
-				$div1 = '<div class="coll">';
-				$div1.= '<div id="cont" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[7]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==7 && $va["idjornada"]==2) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[0]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[8]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==8 && $va["idjornada"]==2) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[1]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[9]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==9 && $va["idjornada"]==2) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[2]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[10]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==10 && $va["idjornada"]==2) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[3]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[11]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==11 && $va["idjornada"]==2) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[4]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '</div>';
-				echo $div1;
-				echo $boton;
-			} else if ($jornada==3) {
-				$div = '<div class="coll">';
-				$div.= '<div id="day" align="center" class="dias">Lunes</div>';
-				$div.= '<div id="day1" align="center" class="dias">Martes</div>';
-				$div.= '<div id="day2" align="center" class="dias">Miercoles</div>';
-				$div.= '<div id="day3" align="center" class="dias">Jueves</div>';
-				$div.= '<div id="day4" align="center" class="dias">Viernes</div>';
-				$div.= '</div>';
-				echo $aye;
-				echo $div;
-				$div1 = '<div class="coll">';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[7]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==7 && $va["idjornada"]==3) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[0]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.='</select></div>';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[8]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==8 && $va["idjornada"]==3) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[1]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[9]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==9 && $va["idjornada"]==3) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[2]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[10]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==10 && $va["idjornada"]==3) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[3]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[11]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==11 && $va["idjornada"]==3) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[4]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.= '</div>';
-				echo $div1;
-				echo $boton;
-			} else if ($jornada==4) {
-				$div = '<div class="coll">';
-				$div.= '<div id="day" align="center" class="dias">Sabado</div>';
-				$div.= '<div id="day1" align="center" class="dias">Domingo</div>';
-				$div.= '</div>';
-				echo $aye;
-				echo $div;
-				$div1 = '<div class="coll">';
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[12]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==12 && $va["idjornada"]==4) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[5]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.= '<div id="cont2" align="center" class="reis"><label>'.$msj.'</label><br><select name="day[13]" class="selec"><option value="">Seleccione</option>';
-				foreach ($docentes as $va) {
-					if ($va["dia"]==13 && $va["idjornada"]==4) {
-						$div1.='<option value="'.$va["identificacion"].'"';
-						if($idinstructor[6]==$va["identificacion"]) $div1.= 'selected';
-						$div1.=' >'.$va["nombres"].' '.$va["apellidos"].'</option>';
-					}
-				}
-				$div1.= '</div>';
-				echo $div1;
-				echo $boton;
 			}
+			$html.='</select>';
+			echo $div;
+			echo $html;
+		}else if ($num==15) {
+			$number = 8;
+			$sql = "SELECT  P.programa, U.nombres, U.apellidos, U.idusuario, U.identificacion, D.jornadaid, J.jornada, D.dia, U.horas_formacion, C.calificado
+			FROM programa as P
+			RIGHT JOIN competencia as C ON P.idprograma = C.programaid
+			INNER JOIN usuario as U ON C.usuarioid = U.idusuario
+			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
+            INNER JOIN jornada as J ON D.jornadaid = J.idjornada
+			WHERE P.idprograma='".$grup."' AND J.idjornada=".$valor." AND D.dia=".$number." GROUP BY U.idusuario ";
+
+			$sql1 = "SELECT grupoid, jornadaid, usuarioid FROM horario WHERE grupoid='".$varia."' AND dia='".$number."';";
 		
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["identificacion"];
+					$resulta[$j]["nombre"]=$jorna[$j]["nombres"];
+					$resulta[$j]["apellido"]=$jorna[$j]["apellidos"];
+					$resulta[$j]["HF"]=$jorna[$j]["horas_formacion"];
+					$resulta[$j]["CA"]=$jorna[$j]["calificado"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["usuarioid"];
+			}
+			$div='<label>Instructor Actual:</label>';
+			$html='<select name="day[8]"   style="width: 95px">';
+			$html.='<option value="0">Seleccione</option>';				
+			$html.='<optgroup label="Parciales">';		
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==0) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+				$html.='</optgroup>';
+				$html.='<optgroup label="Calificados">';			
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==1) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+			$html.='</select>';
+			echo $div;
+			echo $html;
+		}else if ($num==16) {
+			$number = 9;
+			$sql = "SELECT  P.programa, U.nombres, U.apellidos, U.idusuario, U.identificacion, D.jornadaid, J.jornada, D.dia, U.horas_formacion, C.calificado
+			FROM programa as P
+			RIGHT JOIN competencia as C ON P.idprograma = C.programaid
+			INNER JOIN usuario as U ON C.usuarioid = U.idusuario
+			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
+            INNER JOIN jornada as J ON D.jornadaid = J.idjornada
+			WHERE P.idprograma='".$grup."' AND J.idjornada=".$valor." AND D.dia=".$number." GROUP BY U.idusuario ";
+
+			$sql1 = "SELECT grupoid, jornadaid, usuarioid FROM horario WHERE grupoid='".$varia."' AND dia='".$number."';";
+		
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["identificacion"];
+					$resulta[$j]["nombre"]=$jorna[$j]["nombres"];
+					$resulta[$j]["apellido"]=$jorna[$j]["apellidos"];
+					$resulta[$j]["HF"]=$jorna[$j]["horas_formacion"];
+					$resulta[$j]["CA"]=$jorna[$j]["calificado"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["usuarioid"];
+			}
+			$div='<label>Instructor Actual:</label>';
+			$html='<select name="day[9]"   style="width: 95px">';
+			$html.='<option value="0">Seleccione</option>';				
+			$html.='<optgroup label="Parciales">';		
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==0) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+				$html.='</optgroup>';
+				$html.='<optgroup label="Calificados">';			
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==1) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+			$html.='</select>';
+			echo $div;
+			echo $html;
+		}else if ($num==17) {
+			$number = 10;
+			$sql = "SELECT  P.programa, U.nombres, U.apellidos, U.idusuario, U.identificacion, D.jornadaid, J.jornada, D.dia, U.horas_formacion, C.calificado
+			FROM programa as P
+			RIGHT JOIN competencia as C ON P.idprograma = C.programaid
+			INNER JOIN usuario as U ON C.usuarioid = U.idusuario
+			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
+            INNER JOIN jornada as J ON D.jornadaid = J.idjornada
+			WHERE P.idprograma='".$grup."' AND J.idjornada=".$valor." AND D.dia=".$number." GROUP BY U.idusuario ";
+
+			$sql1 = "SELECT grupoid, jornadaid, usuarioid FROM horario WHERE grupoid='".$varia."' AND dia='".$number."';";
+		
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["identificacion"];
+					$resulta[$j]["nombre"]=$jorna[$j]["nombres"];
+					$resulta[$j]["apellido"]=$jorna[$j]["apellidos"];
+					$resulta[$j]["HF"]=$jorna[$j]["horas_formacion"];
+					$resulta[$j]["CA"]=$jorna[$j]["calificado"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["usuarioid"];
+			}
+			$div='<label>Instructor Actual:</label>';
+			$html='<select name="day[10]"   style="width: 95px">';
+			$html.='<option value="0">Seleccione</option>';				
+			$html.='<optgroup label="Parciales">';		
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==0) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+				$html.='</optgroup>';
+				$html.='<optgroup label="Calificados">';			
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==1) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+			$html.='</select>';
+			echo $div;
+			echo $html;
+		}else if ($num==18) {
+			$number = 11;
+			$sql = "SELECT  P.programa, U.nombres, U.apellidos, U.idusuario, U.identificacion, D.jornadaid, J.jornada, D.dia, U.horas_formacion, C.calificado
+			FROM programa as P
+			RIGHT JOIN competencia as C ON P.idprograma = C.programaid
+			INNER JOIN usuario as U ON C.usuarioid = U.idusuario
+			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
+            INNER JOIN jornada as J ON D.jornadaid = J.idjornada
+			WHERE P.idprograma='".$grup."' AND J.idjornada=".$valor." AND D.dia=".$number." GROUP BY U.idusuario ";
+
+			$sql1 = "SELECT grupoid, jornadaid, usuarioid FROM horario WHERE grupoid='".$varia."' AND dia='".$number."';";
+		
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["identificacion"];
+					$resulta[$j]["nombre"]=$jorna[$j]["nombres"];
+					$resulta[$j]["apellido"]=$jorna[$j]["apellidos"];
+					$resulta[$j]["HF"]=$jorna[$j]["horas_formacion"];
+					$resulta[$j]["CA"]=$jorna[$j]["calificado"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["usuarioid"];
+			}
+			$div='<label>Instructor Actual:</label>';
+			$html='<select name="day[11]"   style="width: 95px">';
+			$html.='<option value="0">Seleccione</option>';				
+			$html.='<optgroup label="Parciales">';		
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==0) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+				$html.='</optgroup>';
+				$html.='<optgroup label="Calificados">';			
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==1) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+			$html.='</select>';
+			echo $div;
+			echo $html;
+		}else if ($num==19) {
+			$number = 12;
+			$sql = "SELECT  P.programa, U.nombres, U.apellidos, U.idusuario, U.identificacion, D.jornadaid, J.jornada, D.dia, U.horas_formacion, C.calificado
+			FROM programa as P
+			RIGHT JOIN competencia as C ON P.idprograma = C.programaid
+			INNER JOIN usuario as U ON C.usuarioid = U.idusuario
+			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
+            INNER JOIN jornada as J ON D.jornadaid = J.idjornada
+			WHERE P.idprograma='".$grup."' AND J.idjornada=".$valor." AND D.dia=".$number." GROUP BY U.idusuario ";
+
+			$sql1 = "SELECT grupoid, jornadaid, usuarioid FROM horario WHERE grupoid='".$varia."' AND dia='".$number."';";
+		
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["identificacion"];
+					$resulta[$j]["nombre"]=$jorna[$j]["nombres"];
+					$resulta[$j]["apellido"]=$jorna[$j]["apellidos"];
+					$resulta[$j]["HF"]=$jorna[$j]["horas_formacion"];
+					$resulta[$j]["CA"]=$jorna[$j]["calificado"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["usuarioid"];
+			}
+			$div='<label>Instructor Actual:</label>';
+			$html='<select name="day[12]"   style="width: 95px">';
+			$html.='<option value="0">Seleccione</option>';				
+			$html.='<optgroup label="Parciales">';		
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==0) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+				$html.='</optgroup>';
+				$html.='<optgroup label="Calificados">';			
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==1) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+			$html.='</select>';
+			echo $div;
+			echo $html;
+		}else if ($num==20) {
+			$number = 13;
+			$sql = "SELECT  P.programa, U.nombres, U.apellidos, U.idusuario, U.identificacion, D.jornadaid, J.jornada, D.dia, U.horas_formacion, C.calificado
+			FROM programa as P
+			RIGHT JOIN competencia as C ON P.idprograma = C.programaid
+			INNER JOIN usuario as U ON C.usuarioid = U.idusuario
+			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
+            INNER JOIN jornada as J ON D.jornadaid = J.idjornada
+			WHERE P.idprograma='".$grup."' AND J.idjornada=".$valor." AND D.dia=".$number." GROUP BY U.idusuario ";
+
+			$sql1 = "SELECT grupoid, jornadaid, usuarioid FROM horario WHERE grupoid='".$varia."' AND dia='".$number."';";
+		
+			$conexionBD = new conexion();
+			$conexionBD->conectarBD();
+			$jorna = $conexionBD->ejeCon($sql,0);
+			$hora = $conexionBD->ejeCon($sql1,0);
+			$resulta=array();
+			$jornadas;
+			$j=0;
+			for($j=0; $j < count($jorna); $j++){
+					$resulta[$j]["value"]=$jorna[$j]["identificacion"];
+					$resulta[$j]["nombre"]=$jorna[$j]["nombres"];
+					$resulta[$j]["apellido"]=$jorna[$j]["apellidos"];
+					$resulta[$j]["HF"]=$jorna[$j]["horas_formacion"];
+					$resulta[$j]["CA"]=$jorna[$j]["calificado"];
+			}
+
+			foreach ($hora as $h ) {
+				$jornadas[0]=$h["usuarioid"];
+			}
+			$div='<label>Instructor Actual:</label>';
+			$html='<select name="day[13]"   style="width: 95px">';
+			$html.='<option value="0">Seleccione</option>';				
+			$html.='<optgroup label="Parciales">';		
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==0) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+				$html.='</optgroup>';
+				$html.='<optgroup label="Calificados">';			
+			foreach($resulta as $res){
+				if ($res["HF"]>0 && $res["calificado"]==1) {
+					$html.='<option value="'.$res["value"].'"';
+						if($jornadas[0]==$res["value"]) $html.= 'selected';
+						$html.=' >'.utf8_encode($res["nombre"]." ".$res["apellido"]).'</option>';
+				}
+			}
+			$html.='</select>';
+			echo $div;
+			echo $html;
 		}
 
 	}

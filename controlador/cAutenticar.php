@@ -12,7 +12,7 @@
 		$datetime1=$datosUsuario[0]["fecha_expiracion"];
 		$datetime2=new DateTime("now");
 		$validar_fecha=($datetime1<=$datetime2);
-		if($datosUsuario[0]["clave"]==$clave && $validar_fecha){
+		if($datosUsuario[0]["clave"]==$clave && $validar_fecha && $datosUsuario[0]["estado"]==2){
 			$_SESSION["user"] = $datosUsuario[0]['nombres']." ".$datosUsuario[0]['apellidos'];
 			$_SESSION["idUser"] = $datosUsuario[0]['idusuario'];
 			$_SESSION["documento"] = isset($datosUsuario[0]['identificacion']) ? $datosUsuario[0]['identificacion']:NULL;
@@ -22,7 +22,7 @@
 			echo "<script type='text/javascript'>window.location='home.php';</script>";
 		}else{
 			session_destroy();
-			$msg="Identificacion ó contraseña invalidos!";
+			$msg="Identificacion ó contraseña invalidos, o comuniquese con el administrador!";
 		}
 	}
 

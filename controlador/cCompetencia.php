@@ -34,7 +34,10 @@ if ($usuario && $idprograma && !is_null($calificado) && $actu){
 	$nreg = 10;//numero de registros a mostrar
 	$pag = new mpagina($nreg);
 	$conp ="SELECT count(c.idcompetencia) as Npe, p.programa FROM competencia as c inner join programa as p on p.idprograma = c.programaid";  
-	if($filtro) $conp.= " WHERE p.programa LIKE '%".$filtro."%'";
+	if($filtro){
+		$conp.= " WHERE p.programa LIKE '%".$filtro."%'";
+	}
+	
 	$programa = $ins -> SelPrograma();
 
 ?>

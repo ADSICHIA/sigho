@@ -2,9 +2,15 @@
 	include("modelo/mhorario.php");
 	$ins = new mhorario();
 	$idGrupo=isset($_REQUEST["idGrupo"]) ? $_REQUEST["idGrupo"]:NULL;
+	$pr=isset($_REQUEST["pr"]) ? $_REQUEST["pr"]:NULL;
 	$day = date('w');
-	$week_lunes = date('Y-m-d', strtotime('-'.(1-$day).' days'));
+	$arestar=$ins->getDiaSuma(7);
+	$grupo=$ins->selgrupo();
+	$week_lunes = date('Y-m-d', strtotime('-'.(5-$day).' days'));
 	$week_domingo = date('Y-m-d', strtotime('+'.(7-$day).' days'));
-	$horario_grupo=$ins->getHorarioGrupo(1);
+	if($pr){
+		$horario_grupo=$ins->getHorarioGrupo($pr);
+	}
+	
 
 ?>

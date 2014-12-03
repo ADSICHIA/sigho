@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
     include ("controlador/chorario.php");
 ?>
 
@@ -29,20 +29,29 @@
               }
         });
       }else if (num==3) {
-        $.ajax({
-          data: variable,
-          url: 'vista/area-programa.php',
-          type: 'post',
-            success: function (respuesta){
-                $("#ReloadJornada").html(respuesta);
-                $("#ReloadJornada1").html(respuesta);
-                $("#ReloadJornada2").html(respuesta);
-                $("#ReloadJornada3").html(respuesta);
-                $("#ReloadJornada4").html(respuesta);
-                $("#ReloadJornada5").html(respuesta);
-                $("#ReloadJornada6").html(respuesta);
-              }
-        });
+        var dia=0;
+        for(dia=0;dia++;dia<7){
+          variable.dia=dia;
+          if(dia==0){
+            var capa="#ReloadJornada";
+          }else{
+            var capa="#ReloadJornada"+dia;
+          }
+          $.ajax({
+            data: variable,
+            url: 'vista/area-programa.php',
+            type: 'post',
+              success: function (respuesta){
+                  $(capa).html(respuesta);
+                  /*$("#ReloadJornada1").html(respuesta);
+                  $("#ReloadJornada2").html(respuesta);
+                  $("#ReloadJornada3").html(respuesta);
+                  $("#ReloadJornada4").html(respuesta);
+                  $("#ReloadJornada5").html(respuesta);
+                  $("#ReloadJornada6").html(respuesta);*/
+                }
+          });
+        }
       }else if (num==7) {
         var hensu = {"variables" : values, "Numero" : num, "jornada" : suji};
         $.ajax({
@@ -133,7 +142,7 @@
         <?php
             for ($i=0; $i <count($dat) ; $i++) {
         ?>
-        <option value='<?php echo $dat[$i]["idarea"] ?>'><?php echo $dat[$i]['area'] ?></option>
+        <option value='<?php echo $dat[$i]["idarea"] ?>'><?php echo utf8_encode($dat[$i]['area']) ?></option>
         <?php
             }
         ?>

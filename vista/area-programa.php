@@ -1,16 +1,19 @@
-﻿<?php
+<?php
 
 include ("../controlador/conexion.php");
 
 	$valor = $_REQUEST["variables"];
 	$num = $_REQUEST["Numero"];
 	$hi = $_REQUEST["jornada"];
+	$dia = isset($_REQUEST["dia"])?$_REQUEST["dia"]+7:'';
 	//echo "programa: ".$valor.", numero: ".$num.", jornada: ".$hi;
 	if ($valor==0 || $num==0 || $hi==0) {
 
     }else if($valor){
     	if($num==1){
-		$sql2 = "SELECT programa.idprograma, programa.programa  AS pro, programa.areaid, area.idarea FROM programa INNER JOIN area ON programa.areaid = area.idarea WHERE area.idarea=".$valor." ";
+		$sql2 = "SELECT programa.idprograma, programa.programa  AS pro, 
+					programa.areaid, area.idarea 
+					FROM programa INNER JOIN area ON programa.areaid = area.idarea WHERE area.idarea=".$valor." order by pro ASC";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$estados = $conexionBD->ejeCon($sql2,0);
@@ -24,7 +27,7 @@ include ("../controlador/conexion.php");
 		$html='<select name="programaid" id="programaid" required onchange="javascript:RecargarProgramas(this.value,2,1);RecargarProgramas(this.value,4);" >';
 		$html.='<option value=""  >Seleccione</option>';
 		foreach($result as $res){
-			$html.='<option value="'.$res["value"].'">'.$res["nombre"].'</option>';
+			$html.='<option value="'.$res["value"].'">'.utf8_encode($res["nombre"]).'</option>';
 		}
 		$html.='</select>';
 		echo $div;
@@ -35,6 +38,7 @@ include ("../controlador/conexion.php");
 			INNER JOIN ficha_grupo as FG ON G.idgrupo = FG.grupoid
 			INNER JOIN ficha as F ON F.idficha = FG.fichaid
 			WHERE F.programaid=".$valor."  GROUP BY G.IDGRUPO";
+			//echo $sql;
 			$conexionBD = new conexion();
 			$conexionBD->conectarBD();
 			$estados = $conexionBD->ejeCon($sql,0);
@@ -50,7 +54,7 @@ include ("../controlador/conexion.php");
 			$html.='<option value=""  >Seleccione</option>';
 			foreach($resulta as $res){
 				if ($res["agen"]==0) {
-					$html.='<option value="'.$res["value"].'">'.$res["nombre"].'</option>';
+					$html.='<option value="'.$res["value"].'">'.utf8_encode($res["nombre"]).'</option>';
 				}
 				
 			}
@@ -60,7 +64,11 @@ include ("../controlador/conexion.php");
 			echo $html;
 			//echo $sql;
 		}else if ($num==3) {
-			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas, activo FROM jornada  ";
+
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas FROM jornada  ";
+
+			$sql = "SELECT idjornada, jornada, hora_inicio, hora_fin, horas, activo, (Select jornadaid from horario where grupoid='$valor' and dia='$dia') as seleccionado FROM jornada  ";
+
 			$conexionBD = new conexion();
 			$conexionBD->conectarBD();
 			$estados = $conexionBD->ejeCon($sql,0);
@@ -69,11 +77,16 @@ include ("../controlador/conexion.php");
 			for($j=0; $j < count($estados); $j++){
 					$resulta[$j]["value"]=$estados[$j]["idjornada"];
 					$resulta[$j]["nombre"]=$estados[$j]["jornada"];
+					$resulta[$j]["select"]=is_null($estados[$j]["seleccionado"])?'':'selected';
 			}		   
 			
 			$html='<option value=""  >Seleccione</option>';
 			foreach($resulta as $res){
-					$html.='<option value="'.$res["value"].'">'.$res["nombre"].'</option>';				
+
+					$html.='<option value="'.$res["value"].'">'.utf8_encode($res["nombre"]).'</option>';				
+
+					$html.='<option value="'.$res["value"].'" '.$res["select"].'>'.$res["nombre"].'</option>';				
+
 			}
 			echo $html;
 		}else if ($num==7) {
@@ -84,6 +97,7 @@ include ("../controlador/conexion.php");
 			INNER JOIN disponiblidad as D ON U.idusuario = D.usuarioid
             INNER JOIN jornada as J ON D.jornadaid = J.idjornada
 			WHERE P.idprograma=".$valor." AND J.idjornada=".$hi." AND D.dia=".$num." ";
+			//echo $sql3;
 			$conexionBD = new conexion();
 			$conexionBD->conectarBD();
 			$estados = $conexionBD->ejeCon($sql3,0);
@@ -102,7 +116,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Parciales">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==0) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -110,7 +124,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Calificados">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==1) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -144,7 +158,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Parciales">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==0) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -152,7 +166,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Calificados">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==1) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -186,7 +200,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Parciales">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==0) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -194,7 +208,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Calificados">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==1) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -228,7 +242,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Parciales">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==0) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -236,7 +250,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Calificados">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==1) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -270,7 +284,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Parciales">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==0) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -278,7 +292,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Calificados">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==1) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -312,7 +326,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Parciales">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==0) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -320,7 +334,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Calificados">';
 			foreach($resulta as $res){
 				if ($res["HF"]>0 && $res["calificado"]==1) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -354,7 +368,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Parciales">';
 			foreach($resulta as $res){
 				if ($res["Horas"]>0 && $res["calificado"]==0) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}
@@ -362,7 +376,7 @@ include ("../controlador/conexion.php");
 			$html.='<optgroup label="Calificados">';
 			foreach($resulta as $res){
 				if ($res["Horas"]>0 && $res["calificado"]==1) {
-					$html.='<option value="'.$res["Id"].'">'.$res["Nom"].' '.$res["Ape"].'</option>';		
+					$html.='<option value="'.$res["Id"].'">'.utf8_encode($res["Nom"].' '.$res["Ape"]).'</option>';		
 				}
 				
 			}

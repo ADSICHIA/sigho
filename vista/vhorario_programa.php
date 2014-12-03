@@ -1,8 +1,32 @@
 <?php
 	include_once("controlador/chorario_programa.php");
 ?>
+<script type="text/javascript">
+function vali(val){
+	if(val!=null){
+		window.location='home.php?pac=111&pr='+val;
+	}
+}
+</script>
+
+<div id="filtro">
+	<form name="form1" action="" method="REQUEST" >
+		<table>
+			<tr>
+				<td>
+					<select name="grupo" onchange="vali(this.value);" required>
+						<option value="">..Seleccione un grupo..</option>
+						<?php for($i=0;$i<count($grupo);$i++){?>
+						<option value="<?php echo $grupo[$i]['idgrupo'] ?>"><?php echo $grupo[$i]['grupo'] ?></option>
+						<?php } ?>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
 <div id="horario">
-<?php echo $day." ".$week_lunes." ".$week_domingo; ?>
+
 </div>
 <script type="text/javascript">
 
@@ -40,8 +64,6 @@
 						}
 						$registros++;
 
-						
-								
 					}
 					?>
 			]
