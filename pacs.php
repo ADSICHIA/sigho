@@ -101,4 +101,7 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                  else if ($Pac == "805") {
                     include("vista/vgrupoficha.php");
                 }
+                else if ($Pac == "808") {
+                    include("vista/vprocompetencia.php");
+                }
 ?>

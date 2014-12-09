@@ -20,7 +20,7 @@ class mCompetencia{
 	}
 
 	function SelPrograma(){
-		$sql = "SELECT p.idprograma, p.programa from programa as p left join competencia as c on p.idprograma = c.programaid where c.programaid is null order by p.programa ASC";
+		$sql = "SELECT p.idprograma, p.programa from programa as p left join competencia as c on p.idprograma = c.programaid  order by p.programa ASC";
 		$conexionBD = new conexion();
 		$conexionBD->conectarBD();
 		$data = $conexionBD->ejeCon($sql,0);
