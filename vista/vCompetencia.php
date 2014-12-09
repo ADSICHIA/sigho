@@ -3,7 +3,6 @@ include ("controlador/cCompetencia.php");
 
 $usuario = isset($_SESSION["idUser"]) ? $_SESSION["idUser"]:NULL;
 ?>
-
 <div>
 <h3>AGREGAR COMPETENCIA</h3>
 
@@ -23,8 +22,11 @@ $usuario = isset($_SESSION["idUser"]) ? $_SESSION["idUser"]:NULL;
     ?>
     </select><br/>
 Totalmente Calificado&nbsp;&nbsp;&nbsp;
+
 <input type="radio" name="calificado" value=1 required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Parcialmente Calificado&nbsp;&nbsp;&nbsp;<input type="radio" name="calificado" value=0 required="required" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">	<br/>
+
+
 <br/>    
 <input type="submit" id="Guardar" value="Guardar" class="btn btn-default" >
 <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>     
