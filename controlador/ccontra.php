@@ -22,7 +22,7 @@
 
    
         //Actualizar
-    echo $documento,$pas1;
+
     if ($documento && $pas1) {
      
        $ins->UpDate($pas1, $documento);

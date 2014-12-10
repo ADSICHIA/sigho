@@ -8,6 +8,10 @@ class mCompetencia{
 		$sql = "INSERT INTO competencia(usuarioid, programaid, calificado) VALUES ('".$usuarioid."', '".$programaid."', '".$calificado."');";
 		$this->cons($sql);
 	}
+        function insert1($usuarioid, $programaid, $calificado,$competencia,$resultado){
+		$sql = "INSERT INTO competencia(usuarioid, programaid, calificado,competenciaid,resultadoid) VALUES ('".$usuarioid."', '".$programaid."', '".$calificado."', '".$competencia."','".$resultado."');";
+		$this->cons($sql);
+	}
 
 	function update($idcompetencia, $calificado){
 		$sql = "UPDATE competencia SET calificado = '".$calificado."' WHERE idcompetencia = '".$idcompetencia."';";
