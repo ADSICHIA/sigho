@@ -15,7 +15,7 @@
 </br></br></br><table width="500px" height="300px">
 <tr>
 <td>
-<img src="image/programa.png"/>
+<img src="image/competencia.jpg" width="600" height="300px" />
 </tr>
 </td>
 </table>

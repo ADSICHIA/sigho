@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include ("controlador/cficha.php");
 ?>
 
@@ -86,7 +86,7 @@ include ("controlador/cficha.php");
 </tr></table></div>
 <br/>
 <br/>
-<form  name="form2" method="get" action="home.php?pac=106" onSubmit="return confirm('¿Desea eliminar?')">
+<form  name="form2" method="get" action="home.php?pac=106" onSubmit="return confirm('Â¿Desea eliminar?')">
 <table class="table table-bordered table-hover table-striped">
 <thead>
 <tr>
@@ -114,6 +114,7 @@ for($i = 0; $i<count($dat); $i++){
     <td><?php echo utf8_encode($dat[$i]['programa']);?></td>
     <td><?php echo $dat[$i]['cant_aprendices']?></td>
     <td align = "center"><a href = "home.php?pr=<?php echo $dat[$i]['idficha'] ?>&pac=<?php echo $pac; ?>&up=12"><input type="button" name="del" value="Editar"/></a>
+    <a href = "home.php?pr=<?php echo $dat[$i]['idficha'] ?>&pac=815&up=12"><input type="button" name="comp" value="Competencia"/></a>
     <a href = "home.php?del=<?php echo $dat[$i]['idficha'] ?>&pac=<?php echo $pac; ?>"><button value="<?php echo $dat[$i]['idficha'] ?>" name="del">Eliminar</button></a></td>
 </tr>
     <?php

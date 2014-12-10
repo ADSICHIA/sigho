@@ -104,4 +104,13 @@ $Up = isset($_GET["up"]) ? $_GET["up"] : NULL;
                 else if ($Pac == "808") {
                     include("vista/vprocompetencia.php");
                 }
+                else if ($Pac == "890") {
+                    include("vista/vlistarresultados.php");
+                }
+                else if ($Pac == "891") {
+                    include("vista/vresultado.php");
+                }
+                 else if ($Pac == "815") {
+                    include("vista/vfichacomp.php");
+                }
 ?>
